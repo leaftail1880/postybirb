@@ -8,15 +8,15 @@ msgstr ""
 "Language: sv\n"
 "Project-Id-Version: postybirb-leaftail\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-02-02 05:46\n"
+"PO-Revision-Date: 2024-02-02 05:47\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: postybirb-leaftail\n"
 "X-Crowdin-Project-ID: 639602\n"
 "X-Crowdin-Language: sv-SE\n"
-"X-Crowdin-File: /i18n/lang/ru.po\n"
-"X-Crowdin-File-ID: 14\n"
+"X-Crowdin-File: /i18n/lang/ru-crowdin.po\n"
+"X-Crowdin-File-ID: 16\n"
 
 #. js-lingui-explicit-id
 #: apps/postybirb-ui/src/components/account/account-login-card/account-table-actions.tsx:84
