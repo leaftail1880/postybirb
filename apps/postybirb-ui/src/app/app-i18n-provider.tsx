@@ -3,7 +3,7 @@ import { i18n } from '@lingui/core';
 import { I18nProvider as LinguiI18nProvider } from '@lingui/react';
 import { Group, Loader } from '@mantine/core';
 import { DatesProvider } from '@mantine/dates';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { use18n } from '../hooks/use-i18n';
 
 declare module '@lingui/core' {
@@ -18,35 +18,25 @@ export function AppI18nProvider({ children }: AppI18nProviderProps) {
   const [locale] = use18n();
   const [loaded, setLoaded] = useState(false);
 
-  const setLocale = useCallback(
-    async (lang: string) => {
-      // Vite plugin lingui automatically convert .po
-      // files into plain json during production build
-      // and vite converts dynamic import into the path map
-      //
-      // We dont need to cache these imported messages
-      // because browser's import call does it automatically
-      // eslint-disable-next-line no-param-reassign
-      lang = lang ?? 'en';
-      const { messages } = await import(`../../../../lang/${lang}.po`);
-      i18n.loadAndActivate({ locale: lang, messages });
-      if (!loaded) setLoaded(true);
-    },
-    [loaded]
-  );
-
   useEffect(() => {
-    setLocale(locale);
-  }, [locale, setLocale]);
+    // Vite plugin lingui automatically converts .po
+    // files into plain json during production build
+    // and vite converts dynamic import into the path map
+    //
+    // We dont need to cache these imported messages
+    // because browser's import call does it automatically
+    import(`../../../../lang/${locale}.po`).then(({ messages }) => {
+      i18n.loadAndActivate({ locale, messages });
+      setLoaded(true);
+    });
+  }, [locale]);
 
   const [tooLongLoading, setTooLongLoading] = useState(false);
+
   useEffect(() => {
     setTimeout(() => {
-      if (!loaded) {
-        setTooLongLoading(true);
-      }
+      if (!loaded) setTooLongLoading(true);
     }, 5000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loaded) {
