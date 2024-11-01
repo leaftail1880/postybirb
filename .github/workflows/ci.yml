@@ -37,26 +37,8 @@ jobs:
 
         # Note: This step is needed for nx affected to work when CI is running on a PR
       - name: Track right branch
-        run: npx exitzero git branch --track main origin/main
+        run: npx exitzero git branch --track ci origin/ci
 
       - name: Lint changes affected by this pr
-        run: npx exitzero nx affected --parallel -t lint --fix
+        run: nx affected --parallel -t lint --fix
 
-        # It commits extracted eslint/prettier fixes
-      - name: Commit changes
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          npx exitzero "git add './' && git commit -m 'ci: prettier and eslint fixes'"
-          exit 0
-
-      - name: Push changes back to PR
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.head_ref }}
-
-      # Actually this does nothing except for ignoring failed pushes
-      - name: Finish
-        if: ${{ !cancelled() }}
-        run: echo 'Done!'
