@@ -40,5 +40,5 @@ jobs:
         run: npx exitzero git branch --track ci origin/ci
 
       - name: Lint changes affected by this pr
-        run: nx affected --parallel -t lint --fix
+        run: npx exitzero nx affected --parallel -t lint --fix
 
