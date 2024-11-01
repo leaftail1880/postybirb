@@ -36,7 +36,7 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "postinstall": "run-p --continue-on-error postinstall:*",
+    "postinstall": "node -e \"process.env.NO_POSTINSTALL===1&&process.exit(1)\" || run-p --continue-on-error postinstall:*",
     "postinstall:deps": "exitzero electron-builder install-app-deps",
     "postinstall:i18n": "lingui extract --clean",
     "setup": "run-s setup:husky",
