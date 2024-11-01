@@ -3,6 +3,7 @@ on:
   pull_request:
     branches:
       - main
+      - ci
 
 # Needed for nx-set-shas when run on the main branch
 permissions:
