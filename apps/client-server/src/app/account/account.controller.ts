@@ -30,6 +30,8 @@ export class AccountController extends PostyBirbController<Account> {
     return this.service
       .create(createAccountDto)
       .then((account) => account.toJSON());
+
+    console.log("Lint me!") // Note missing of the semicolon
   }
 
   @Post('/clear/:id')
