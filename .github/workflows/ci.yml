@@ -27,36 +27,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           cache: yarn
+          node-version: 20
 
-        # Note: This flags needed to speed up build
+        # Note: These flags needed to speed up build
       - name: Install dependencies
         run: NO_POSTINSTALL=1 yarn install --frozen-lockfile --prefer-offline
 
       - name: Set git SHA for NX affected
-        uses: nrwl/nx-set-shas@v3
-
-        # Note: This step is needed for nx affected to work when CI is running on a PR
-      - name: Track right branch
-        run: npx exitzero git branch --track main origin/main
+        uses: nrwl/nx-set-shas@v4
 
       - name: Lint changes affected by this pr
-        run: npx exitzero nx affected --parallel -t lint --fix
-
-        # It commits extracted eslint/prettier fixes
-      - name: Commit changes
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          npx exitzero "git add './' && git commit -m 'ci: prettier and eslint fixes'"
-          exit 0
-
-      - name: Push changes back to PR
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.head_ref }}
-
-      # Actually this does nothing except for ignoring failed pushes
-      - name: Finish
-        if: ${{ !cancelled() }}
-        run: echo 'Done!'
+        run: yarn nx affected --parallel -t lint
