@@ -1,7 +1,17 @@
 msgid ""
-msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2024-01-07 14:44+0300\nPO-Revision-Date: 2025-01-28 17:02+0000\nLast-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\nLanguage-Team: Tamil <https://hosted.weblate.org/projects/postybirb/postybirb/ta/>\nLanguage: ta\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.10-dev\n"
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:89
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:93
 msgid "({fileSizeString}) is too large (max {maxFileSizeString}) and an attempt will be made to reduce size when posting"
 msgstr "({fileSizeString}) மிகப் பெரியது (அதிகபட்சம் {maxFileSizeString}) மற்றும் இடுகையிடும்போது அளவைக் குறைக்க முயற்சி செய்யப்படும்"
 
@@ -21,6 +31,10 @@ msgstr "செயல்கள்"
 #: apps/postybirb-ui/src/components/submissions/directory-watchers-view/directory-watchers-view.tsx:183
 msgid "Add folder watcher"
 msgstr "கோப்புறை பார்வையாளரைச் சேர்க்கவும்"
+
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:62
+msgid "All files are marked ignored."
+msgstr ""
 
 #: apps/postybirb-ui/src/app/postybirb-layout/drawers/settings-drawer.tsx:31
 msgid "Allow PostyBirb to insert an Ad into the description"
@@ -64,7 +78,7 @@ msgstr "இதை நீக்க விரும்புகிறீர்க�
 msgid "Are you sure you want to post all selected submissions?"
 msgstr "தேர்ந்தெடுக்கப்பட்ட அனைத்து சமர்ப்பிப்புகளையும் இடுகையிட விரும்புகிறீர்களா?"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:75
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:79
 msgid "Audio"
 msgstr "ஆடியோ"
 
@@ -299,7 +313,7 @@ msgstr "கோப்பு சமர்ப்பிப்புகள்"
 msgid "File types do not match. Please upload a file of the same type."
 msgstr "கோப்பு வகைகள் பொருந்தவில்லை. அதே வகை கோப்பை பதிவேற்றவும்."
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:97
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:101
 msgid "File will be modified to support website requirements"
 msgstr "வலைத்தள தேவைகளை ஆதரிக்க கோப்பு மாற்றப்படும்"
 
@@ -311,6 +325,10 @@ msgstr "கோப்புறை"
 msgctxt "directory-watcher.description"
 msgid "Folder watchers allow you to automatically upload files from a folder to PostyBirb."
 msgstr "கோப்புறை பார்வையாளர்கள் ஒரு கோப்புறையிலிருந்து போச்டிபிர்பிற்கு கோப்புகளை தானாக பதிவேற்ற அனுமதிக்கின்றனர்."
+
+#: apps/postybirb-ui/src/app/languages.tsx:11
+msgid "German"
+msgstr ""
 
 #: apps/postybirb-ui/src/pages/not-found/not-found.tsx:15
 msgid "Go back"
@@ -339,7 +357,7 @@ msgstr "முகப்பு பக்கம்"
 msgid "Hours"
 msgstr "மணி"
 
-#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:90
+#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:105
 msgctxt "discord.webhook-help"
 msgid "How to create a webhook"
 msgstr "வெப்ஊக்கை எவ்வாறு உருவாக்குவது"
@@ -349,7 +367,7 @@ msgctxt "override-default"
 msgid "Ignore default tags"
 msgstr "இயல்புநிலை குறிச்சொற்களை புறக்கணிக்கவும்"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:66
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:70
 msgid "Image"
 msgstr "படம்"
 
@@ -368,6 +386,14 @@ msgstr "தவறான கிரான் சரம்"
 #: apps/postybirb-ui/src/components/submissions/submission-edit-form/submission-file-manager/submission-file-card/file-card-file-actions.tsx:158
 msgid "Invalid file type"
 msgstr "தவறான கோப்பு வகை"
+
+#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:129
+msgid "Is a forum"
+msgstr ""
+
+#: apps/postybirb-ui/src/app/languages.tsx:9
+msgid "Lithuanian"
+msgstr ""
 
 #: apps/postybirb-ui/src/app/postybirb-layout/drawers/account-drawer/website-card.tsx:174
 msgid "Logged In As"
@@ -411,7 +437,7 @@ msgstr "வானோடல்"
 msgid "No items"
 msgstr "உருப்படிகள் இல்லை"
 
-#: apps/postybirb-ui/src/app/postybirb-layout/drawers/account-drawer/website-login-panel/website-login-panel.tsx:19
+#: apps/postybirb-ui/src/app/postybirb-layout/drawers/account-drawer/website-login-panel/website-login-panel.tsx:23
 msgid "No login component found."
 msgstr "உள்நுழைவு கூறு எதுவும் கிடைக்கவில்லை."
 
@@ -459,6 +485,10 @@ msgstr "மேலெழுதும் ஒன்றுடன் ஒன்று 
 msgid "Page not found"
 msgstr "பக்கம் கிடைக்கவில்லை"
 
+#: apps/postybirb-ui/src/app/languages.tsx:10
+msgid "Portuguese (Brazil)"
+msgstr ""
+
 #: apps/postybirb-ui/src/components/submissions/submission-view/submission-view-card/submission-view-card-actions.tsx:159
 #: apps/postybirb-ui/src/pages/submission/edit-submission-page.tsx:193
 msgid "Post"
@@ -504,9 +534,9 @@ msgctxt "import.override-title"
 msgid "Replace title"
 msgstr "தலைப்பை மாற்றவும்"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:118
-msgid "Requires at least {minLength} tags"
-msgstr "குறைந்தபட்சம் {minLength} குறிச்சொற்கள் தேவை"
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:122
+msgid "Requires at least {minLength, plural, one {tag} other {tags}}"
+msgstr ""
 
 #: apps/postybirb-ui/src/app/postybirb-layout/drawers/account-drawer/website-card.tsx:48
 msgid "Reset"
@@ -519,7 +549,7 @@ msgstr "ரச்ய"
 #: apps/postybirb-ui/src/app/postybirb-layout/drawers/tag-converter-drawer.tsx:190
 #: apps/postybirb-ui/src/app/postybirb-layout/drawers/tag-group-drawer.tsx:171
 #: apps/postybirb-ui/src/components/form/user-specified-website-options-modal/user-specified-website-options-modal.tsx:96
-#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:106
+#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:142
 msgid "Save"
 msgstr "சேமி"
 
@@ -539,7 +569,7 @@ msgstr "கோப்புறை பதிவேற்ற மாற்றங்�
 
 #: apps/postybirb-ui/src/components/submissions/submission-edit-form/submission-edit-form.tsx:153
 #: apps/postybirb-ui/src/components/submissions/submission-view/submission-view-card/submission-view-card-actions.tsx:129
-#: apps/postybirb-ui/src/components/submissions/submission-view/submission-view-card/submission-view-card.tsx:141
+#: apps/postybirb-ui/src/components/submissions/submission-view/submission-view-card/submission-view-card.tsx:207
 #: apps/postybirb-ui/src/pages/submission/edit-submission-page.tsx:91
 msgid "Schedule"
 msgstr "அட்டவணை"
@@ -566,6 +596,14 @@ msgstr "கோப்புறையைத் தேர்ந்தெடு"
 msgid "Send Messages"
 msgstr "செய்திகளை அனுப்பவும்"
 
+#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:115
+msgid "Server Level"
+msgstr ""
+
+#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:121
+msgid "Server level perks"
+msgstr ""
+
 #: apps/postybirb-ui/src/app/postybirb-layout/drawers/settings-drawer.tsx:155
 #: apps/postybirb-ui/src/app/postybirb-layout/postybirb-layout.tsx:105
 msgid "Settings"
@@ -583,6 +621,10 @@ msgstr "ச்பானிச்"
 #: apps/postybirb-ui/src/components/translations/field-translations.ts:12
 msgid "Species"
 msgstr "இனங்கள்"
+
+#: apps/postybirb-ui/src/components/translations/field-translations.ts:15
+msgid "Spoiler"
+msgstr ""
 
 #: apps/postybirb-ui/src/components/submissions/submission-edit-form/submission-file-manager/submission-file-card/file-metadata-manager.tsx:177
 msgid "Spoiler Text"
@@ -611,8 +653,8 @@ msgid "Submission templates"
 msgstr "சமர்ப்பிக்கும் வார்ப்புருக்கள்"
 
 #: apps/postybirb-ui/src/components/translations/validation-translation.tsx:35
-msgid "Submission will be split into {expectedBatchesToCreate} different submissions with {maxBatchSize} files each."
-msgstr "சமர்ப்பிப்பு ஒவ்வொன்றும் {expectedBatchesToCreate} கோப்புகளுடன் வெவ்வேறு சமர்ப்பிப்புகளாக {maxBatchSize} என பிரிக்கப்படும்."
+msgid "Submission will be split into {expectedBatchesToCreate} different submissions with {maxBatchSize, plural, other {files each} one {file each}}."
+msgstr ""
 
 #: apps/postybirb-ui/src/components/submission-templates/template-picker-modal/template-picker-modal.tsx:114
 #: apps/postybirb-ui/src/components/submissions/submission-picker/submission-picker.tsx:67
@@ -643,7 +685,7 @@ msgstr "குறிச்சொல் குழு புதுப்பிக�
 msgid "Tag Groups"
 msgstr "குறிச்சொல் குழுக்கள்"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:108
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:112
 msgid "Tag limit reached ({currentLength} / {maxLength})"
 msgstr "குறிச்சொல் வரம்பு அடைந்தது ({currentLength} / {maxLength})"
 
@@ -653,12 +695,16 @@ msgstr "குறிச்சொல் வரம்பு அடைந்தத�
 msgid "Tags"
 msgstr "குறிச்சொற்கள்"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:130
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:134
 msgid "Tags longer than {maxLength} characters will be skipped"
 msgstr "{maxLength} எழுத்துக்களை விட நீளமான குறிச்சொற்கள் தவிர்க்கப்படும்"
 
+#: apps/postybirb-ui/src/app/languages.tsx:12
+msgid "Tamil"
+msgstr ""
+
 #: apps/postybirb-ui/src/components/submissions/directory-watchers-view/directory-watchers-view.tsx:98
-#: apps/postybirb-ui/src/models/dtos/submission.dto.ts:130
+#: apps/postybirb-ui/src/models/dtos/submission.dto.ts:133
 msgid "Template"
 msgstr "வார்ப்புரு"
 
@@ -687,7 +733,7 @@ msgstr "வார்ப்புரு பெயர் புதுப்பி�
 msgid "Templates"
 msgstr "வார்ப்புருக்கள்"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:72
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:76
 msgid "Text"
 msgstr "உரை"
 
@@ -707,15 +753,15 @@ msgstr "சிறுபடம்"
 msgid "Title"
 msgstr "தலைப்பு"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:139
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:143
 msgid "Title is too long and will be truncated"
 msgstr "தலைப்பு மிக நீளமானது மற்றும் துண்டிக்கப்படும்"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:153
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:157
 msgid "Title is too short"
 msgstr "தலைப்பு மிகக் குறைவு"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:171
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:175
 msgid "Translation {id} not found"
 msgstr "மொழிபெயர்ப்பு {id} காணப்படவில்லை"
 
@@ -728,7 +774,7 @@ msgstr "படிவத்தைக் காட்ட முடியவில�
 #: apps/postybirb-ui/src/components/submission-templates/template-picker-modal/template-picker-modal.tsx:145
 #: apps/postybirb-ui/src/components/submissions/submission-edit-form/submission-edit-form.tsx:97
 #: apps/postybirb-ui/src/components/submissions/submission-picker/submission-picker.tsx:55
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:78
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:82
 msgid "Unknown"
 msgstr "தெரியவில்லை"
 
@@ -749,7 +795,7 @@ msgstr "ஆதரிக்கப்படாத கோப்பு வகை {fi
 msgid "Unsupported file type {mimeType}"
 msgstr "ஆதரிக்கப்படாத கோப்பு வகை {mimeType}"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:81
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:85
 msgid "Unsupported submission type: {fileTypeString}"
 msgstr "ஆதரிக்கப்படாத சமர்ப்பிப்பு வகை: {fileTypeString}"
 
@@ -782,11 +828,15 @@ msgstr "புதிய சிறுபடத்தை பதிவேற்ற�
 msgid "Use custom description"
 msgstr "தனிப்பயன் விளக்கத்தைப் பயன்படுத்தவும்"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:69
+#: apps/postybirb-ui/src/components/translations/field-translations.ts:16
+msgid "Use title"
+msgstr ""
+
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:73
 msgid "Video"
 msgstr "ஒளிதோற்றம்"
 
-#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:86
+#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:101
 msgid "Webhook is required"
 msgstr "வெப்ஊக் தேவை"
 

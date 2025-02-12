@@ -1,7 +1,17 @@
 msgid ""
-msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: \nPOT-Creation-Date: \nPO-Revision-Date: 2025-01-23 16:01+0000\nLast-Translator: Zanito <bugcontrol4the64@duck.com>\nLanguage-Team: Spanish <https://hosted.weblate.org/projects/postybirb/postybirb/es/>\nLanguage: es\nContent-Type: \nContent-Transfer-Encoding: \nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.10-dev\n"
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:89
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:93
 msgid "({fileSizeString}) is too large (max {maxFileSizeString}) and an attempt will be made to reduce size when posting"
 msgstr "({fileSizeString}) es demasiado grande (máx. {maxFileSizeString}) y se intentará reducir el tamaño al publicarlo"
 
@@ -21,6 +31,10 @@ msgstr "Acciones"
 #: apps/postybirb-ui/src/components/submissions/directory-watchers-view/directory-watchers-view.tsx:183
 msgid "Add folder watcher"
 msgstr "Añadir observador de carpeta"
+
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:62
+msgid "All files are marked ignored."
+msgstr ""
 
 #: apps/postybirb-ui/src/app/postybirb-layout/drawers/settings-drawer.tsx:31
 msgid "Allow PostyBirb to insert an Ad into the description"
@@ -64,7 +78,7 @@ msgstr "¿Está seguro de que desea eliminar esto? Esta acción no se puede desh
 msgid "Are you sure you want to post all selected submissions?"
 msgstr "¿Está seguro de que desea subir todas las publicaciones seleccionadas ?"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:75
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:79
 msgid "Audio"
 msgstr "Audio"
 
@@ -169,7 +183,6 @@ msgid "Default"
 msgstr "Por defecto"
 
 #: apps/postybirb-ui/src/components/form/user-specified-website-options-modal/user-specified-website-options-modal.tsx:77
-#, fuzzy
 msgctxt "default-options-saved"
 msgid "Defaults saved"
 msgstr "Guardados por defecto"
@@ -300,7 +313,7 @@ msgstr "Cargas de Archivos"
 msgid "File types do not match. Please upload a file of the same type."
 msgstr "Los tipos de archivo no coinciden. Por favor, cargue un archivo del mismo tipo."
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:97
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:101
 msgid "File will be modified to support website requirements"
 msgstr "El archivo se modificará para cumplir los requisitos de la página web"
 
@@ -312,6 +325,10 @@ msgstr "Carpeta"
 msgctxt "directory-watcher.description"
 msgid "Folder watchers allow you to automatically upload files from a folder to PostyBirb."
 msgstr "Los observadores de carpetas le permiten cargar automáticamente archivos desde una carpeta a PostyBirb."
+
+#: apps/postybirb-ui/src/app/languages.tsx:11
+msgid "German"
+msgstr ""
 
 #: apps/postybirb-ui/src/pages/not-found/not-found.tsx:15
 msgid "Go back"
@@ -340,7 +357,7 @@ msgstr "Página de inicio"
 msgid "Hours"
 msgstr "Horas"
 
-#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:90
+#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:105
 msgctxt "discord.webhook-help"
 msgid "How to create a webhook"
 msgstr "Cómo crear un webhook"
@@ -350,7 +367,7 @@ msgctxt "override-default"
 msgid "Ignore default tags"
 msgstr "Ignorar etiquetas predeterminadas"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:66
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:70
 msgid "Image"
 msgstr "Imagen"
 
@@ -369,6 +386,14 @@ msgstr "String CRON inválido"
 #: apps/postybirb-ui/src/components/submissions/submission-edit-form/submission-file-manager/submission-file-card/file-card-file-actions.tsx:158
 msgid "Invalid file type"
 msgstr "Tipo de archivo no válido"
+
+#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:129
+msgid "Is a forum"
+msgstr ""
+
+#: apps/postybirb-ui/src/app/languages.tsx:9
+msgid "Lithuanian"
+msgstr ""
 
 #: apps/postybirb-ui/src/app/postybirb-layout/drawers/account-drawer/website-card.tsx:174
 msgid "Logged In As"
@@ -412,7 +437,7 @@ msgstr "Navegar"
 msgid "No items"
 msgstr "Sin artículos"
 
-#: apps/postybirb-ui/src/app/postybirb-layout/drawers/account-drawer/website-login-panel/website-login-panel.tsx:19
+#: apps/postybirb-ui/src/app/postybirb-layout/drawers/account-drawer/website-login-panel/website-login-panel.tsx:23
 msgid "No login component found."
 msgstr "No se encontró un componente de inicio de sesión."
 
@@ -460,6 +485,10 @@ msgstr "Sobrescribir solo las opciones superpuestas del sitio web. Esto mantendr
 msgid "Page not found"
 msgstr "Página no encontrada"
 
+#: apps/postybirb-ui/src/app/languages.tsx:10
+msgid "Portuguese (Brazil)"
+msgstr ""
+
 #: apps/postybirb-ui/src/components/submissions/submission-view/submission-view-card/submission-view-card-actions.tsx:159
 #: apps/postybirb-ui/src/pages/submission/edit-submission-page.tsx:193
 msgid "Post"
@@ -505,9 +534,9 @@ msgctxt "import.override-title"
 msgid "Replace title"
 msgstr "Reemplazar Título"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:118
-msgid "Requires at least {minLength} tags"
-msgstr "Requiere al menos {minLength} etiquetas"
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:122
+msgid "Requires at least {minLength, plural, one {tag} other {tags}}"
+msgstr ""
 
 #: apps/postybirb-ui/src/app/postybirb-layout/drawers/account-drawer/website-card.tsx:48
 msgid "Reset"
@@ -520,7 +549,7 @@ msgstr "Ruso"
 #: apps/postybirb-ui/src/app/postybirb-layout/drawers/tag-converter-drawer.tsx:190
 #: apps/postybirb-ui/src/app/postybirb-layout/drawers/tag-group-drawer.tsx:171
 #: apps/postybirb-ui/src/components/form/user-specified-website-options-modal/user-specified-website-options-modal.tsx:96
-#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:106
+#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:142
 msgid "Save"
 msgstr "Guardar"
 
@@ -540,7 +569,7 @@ msgstr "Guardar cambios de carpeta de publicación"
 
 #: apps/postybirb-ui/src/components/submissions/submission-edit-form/submission-edit-form.tsx:153
 #: apps/postybirb-ui/src/components/submissions/submission-view/submission-view-card/submission-view-card-actions.tsx:129
-#: apps/postybirb-ui/src/components/submissions/submission-view/submission-view-card/submission-view-card.tsx:141
+#: apps/postybirb-ui/src/components/submissions/submission-view/submission-view-card/submission-view-card.tsx:207
 #: apps/postybirb-ui/src/pages/submission/edit-submission-page.tsx:91
 msgid "Schedule"
 msgstr "Programar"
@@ -567,6 +596,14 @@ msgstr "Seleccionar carpeta"
 msgid "Send Messages"
 msgstr "Enviar mensajes"
 
+#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:115
+msgid "Server Level"
+msgstr ""
+
+#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:121
+msgid "Server level perks"
+msgstr ""
+
 #: apps/postybirb-ui/src/app/postybirb-layout/drawers/settings-drawer.tsx:155
 #: apps/postybirb-ui/src/app/postybirb-layout/postybirb-layout.tsx:105
 msgid "Settings"
@@ -584,6 +621,10 @@ msgstr "Español"
 #: apps/postybirb-ui/src/components/translations/field-translations.ts:12
 msgid "Species"
 msgstr "Especies"
+
+#: apps/postybirb-ui/src/components/translations/field-translations.ts:15
+msgid "Spoiler"
+msgstr ""
 
 #: apps/postybirb-ui/src/components/submissions/submission-edit-form/submission-file-manager/submission-file-card/file-metadata-manager.tsx:177
 msgid "Spoiler Text"
@@ -612,8 +653,8 @@ msgid "Submission templates"
 msgstr "Plantillas de envío"
 
 #: apps/postybirb-ui/src/components/translations/validation-translation.tsx:35
-msgid "Submission will be split into {expectedBatchesToCreate} different submissions with {maxBatchSize} files each."
-msgstr "El envío se dividirá en {expectedBatchesToCreate} envíos diferentes con {maxBatchSize} archivos cada uno."
+msgid "Submission will be split into {expectedBatchesToCreate} different submissions with {maxBatchSize, plural, other {files each} one {file each}}."
+msgstr ""
 
 #: apps/postybirb-ui/src/components/submission-templates/template-picker-modal/template-picker-modal.tsx:114
 #: apps/postybirb-ui/src/components/submissions/submission-picker/submission-picker.tsx:67
@@ -644,7 +685,7 @@ msgstr "Grupo de etiquetas actualizado"
 msgid "Tag Groups"
 msgstr "Grupos de Etiquetas"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:108
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:112
 msgid "Tag limit reached ({currentLength} / {maxLength})"
 msgstr "Se alcanzó el límite de etiquetas ({currentLength} / {maxLength})"
 
@@ -654,12 +695,16 @@ msgstr "Se alcanzó el límite de etiquetas ({currentLength} / {maxLength})"
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:130
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:134
 msgid "Tags longer than {maxLength} characters will be skipped"
 msgstr "Se omitirán las etiquetas con más de {maxLength} caracteres"
 
+#: apps/postybirb-ui/src/app/languages.tsx:12
+msgid "Tamil"
+msgstr ""
+
 #: apps/postybirb-ui/src/components/submissions/directory-watchers-view/directory-watchers-view.tsx:98
-#: apps/postybirb-ui/src/models/dtos/submission.dto.ts:130
+#: apps/postybirb-ui/src/models/dtos/submission.dto.ts:133
 msgid "Template"
 msgstr "Plantilla"
 
@@ -688,7 +733,7 @@ msgstr "Se ha actualizado el nombre de la plantilla"
 msgid "Templates"
 msgstr "Plantillas"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:72
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:76
 msgid "Text"
 msgstr "Texto"
 
@@ -708,15 +753,15 @@ msgstr "Miniatura"
 msgid "Title"
 msgstr "Título"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:139
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:143
 msgid "Title is too long and will be truncated"
 msgstr "El título es demasiado largo y se truncará"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:153
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:157
 msgid "Title is too short"
 msgstr "El título es demasiado corto"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:171
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:175
 msgid "Translation {id} not found"
 msgstr "Traducción {id} no encontrada"
 
@@ -729,7 +774,7 @@ msgstr "No se puede mostrar el formulario"
 #: apps/postybirb-ui/src/components/submission-templates/template-picker-modal/template-picker-modal.tsx:145
 #: apps/postybirb-ui/src/components/submissions/submission-edit-form/submission-edit-form.tsx:97
 #: apps/postybirb-ui/src/components/submissions/submission-picker/submission-picker.tsx:55
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:78
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:82
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -750,7 +795,7 @@ msgstr "Tipo de archivo no compatible {fileExtension}. Proporcione un texto alte
 msgid "Unsupported file type {mimeType}"
 msgstr "Archivo no compatible {mimeType}"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:81
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:85
 msgid "Unsupported submission type: {fileTypeString}"
 msgstr "Tipo de envío no soportado : {fileTypeString}"
 
@@ -783,11 +828,15 @@ msgstr "Cargar nueva miniatura"
 msgid "Use custom description"
 msgstr "Utilizar una descripción personalizada"
 
-#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:69
+#: apps/postybirb-ui/src/components/translations/field-translations.ts:16
+msgid "Use title"
+msgstr ""
+
+#: apps/postybirb-ui/src/components/translations/validation-translation.tsx:73
 msgid "Video"
 msgstr "Vídeo"
 
-#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:86
+#: apps/postybirb-ui/src/website-components/discord/discord-login-view.tsx:101
 msgid "Webhook is required"
 msgstr "Se requiere webhook"
 
