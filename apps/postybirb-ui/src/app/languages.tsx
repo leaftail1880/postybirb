@@ -8,5 +8,6 @@ export const languages = [
   [msg`Spanish`, 'es'],
   [msg`Lithuanian`, 'lt'],
   [msg`Portuguese (Brazil)`, 'pt_BR'],
-  [msg`German`, 'de']
+  [msg`German`, 'de'],
+  [msg`Tamil`, 'ta']
 ] as const;
