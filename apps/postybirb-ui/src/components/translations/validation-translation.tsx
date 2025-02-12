@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/macro';
+import { Plural, Trans } from '@lingui/macro';
 import {
   FileType,
   ValidationMessage,
@@ -34,7 +34,7 @@ export const TranslationMessages: Partial<TranslationsMap> = {
     return (
       <Trans>
         Submission will be split into {expectedBatchesToCreate} different
-        submissions with {maxBatchSize} files each.
+        submissions with <Plural value={maxBatchSize} other="files each" one="file each"/>.
       </Trans>
     );
   },
@@ -119,7 +119,7 @@ export const TranslationMessages: Partial<TranslationsMap> = {
     const { minLength, currentLength } = props.values;
     return (
       <>
-        <Trans>Requires at least {minLength} tags</Trans>
+        <Trans>Requires at least <Plural value={minLength} one="tag" other="tags" /></Trans>
         <span>
           ({currentLength} / {minLength})
         </span>
