@@ -70,7 +70,15 @@ export class SubmissionService
             account: true,
           },
         },
-        posts: true,
+        posts: {
+          with: {
+            children: {
+              with: {
+                account: true,
+              },
+            },
+          },
+        },
         postQueueRecord: true,
         files: true,
       }),
@@ -117,9 +125,9 @@ export class SubmissionService
         async (s) =>
           ({
             ...s.toDTO(),
-            validations: await this.websiteOptionsService.validateSubmission(
-              s.id,
-            ),
+            validations: s.isArchived
+              ? []
+              : await this.websiteOptionsService.validateSubmission(s.id),
           }) as ISubmissionDto<ISubmissionMetadata>,
       ),
     );
@@ -129,7 +137,7 @@ export class SubmissionService
     const existing = await this.repository.findOne({
       where: (submission, { eq: equals, and }) =>
         and(
-          eq(submission.id, type),
+          eq(submission.type, type),
           equals(submission.isMultiSubmission, true),
         ),
     });
@@ -307,7 +315,7 @@ export class SubmissionService
   async update(id: SubmissionId, update: UpdateSubmissionDto) {
     this.logger.withMetadata(update).info(`Updating Submission '${id}'`);
     const submission = await this.findById(id, { failOnMissing: true });
-
+    submission.isArchived = update.isArchived ?? submission.isArchived;
     submission.isScheduled = update.isScheduled ?? submission.isScheduled;
     submission.schedule = {
       scheduledFor: update.scheduledFor ?? submission.schedule.scheduledFor,
@@ -459,13 +467,7 @@ export class SubmissionService
             account: true,
           },
         },
-        files: {
-          with: {
-            file: true,
-            altFile: true,
-            thumbnail: true,
-          },
-        },
+        files: true,
       },
     });
     await this.repository.db.transaction(async (tx: PostyBirbTransaction) => {
@@ -493,6 +495,7 @@ export class SubmissionService
       );
 
       for (const file of entityToDuplicate.files) {
+        await file.load();
         const newFile = (
           await tx
             .insert(SubmissionFileSchema)
@@ -635,6 +638,17 @@ export class SubmissionService
         this.repository.update(s.id, { order: s.order }),
       ),
     );
+    this.emit();
+  }
+
+  async unarchive(id: SubmissionId) {
+    const submission = await this.findById(id, { failOnMissing: true });
+    if (!submission.isArchived) {
+      throw new BadRequestException(`Submission '${id}' is not archived`);
+    }
+    await this.repository.update(id, {
+      isArchived: false,
+    });
     this.emit();
   }
 }
