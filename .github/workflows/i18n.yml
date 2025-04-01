@@ -1,8 +1,7 @@
 name: i18n CI
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    branches: main
 
 permissions:
   actions: read
@@ -38,7 +37,7 @@ jobs:
           git config --local user.name "github-actions[bot]"   
           # pull only from main branch so it will not fetch all tags
           git pull origin main
-          
+
           git add lang/*
           # ignore when nothing to commit
           yarn exitzero "git commit -m 'ci: extract i18n messages'"
