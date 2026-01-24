@@ -1,44 +1,46 @@
-# Use a suitable Node.js base image
-FROM node:lts-stretch
+# Use a base image with Node.js and required dependencies for Electron
+FROM node:20-bullseye-slim
 
-# Install system dependencies for Electron and Xvfb
-RUN apt-get update && apt-get install -yq --no-install-suggests --no-install-recommends \
-    g++ \
-    libgtk2.0-0 \
-    libgtk2.0-dev \
-    xvfb \
-    libxtst6 \
-    libgbm-dev \
-    libxss1 \
+# Install dependencies for Electron and headless display
+RUN apt-get update && apt-get install -y \
+    libgtk-3-0 \
     libnss3 \
     libasound2 \
+    libxss1 \
     libgconf-2-4 \
-    git \
-    libx11-xcb1 \
-    libxcb-dri3-0 \
-    libdbus-1-dev \
-    libavahi-compat-libdnssd-dev
+    libgbm-dev \
+    libxshmfence-dev \
+    libdrm-dev \
+    xvfb \
+    && rm -rf /var/lib/apt/lists/*
 
-# Create an application directory
+# Set working directory
 WORKDIR /app
 
-# Copy application code (make sure you have your package.json here)
-COPY . .
+# Copy the AppImage
+COPY ./release/linux-unpacked .
 
-# Install application dependencies
-RUN npm install
-# If you use native modules, run electron-rebuild to ensure compatibility with the installed Electron version
-RUN npx electron-rebuild
+# Move native node modules to path where they're accessible 
+RUN cp -r resources/app.asar.unpacked/ .
 
-# Add a non-root user and switch to it for security
-RUN useradd -m appuser
-USER appuser
+# Make AppImage executable
+RUN chmod +x ./PostyBirb
 
-# Create an entrypoint script to start Xvfb and your app
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+# # Switch to non-root user
+# USER appuser
 
-# Define the command to run when the container starts
-CMD ["npm", "start"] 
-# or directly execute your app: CMD ["electron", "your_main.js"]
+# Set display for headless operation
+ENV DISPLAY=:99
+
+# Expose the port (default from your app)
+EXPOSE 8080
+
+# Health check (adjust port as needed)
+# HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+#     CMD curl -f http://localhost:8080/ || exit 1
+
+# Command to run with xvfb for headless execution
+CMD set -o pipefail \
+    && xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" \
+    ./PostyBirb --no-sandbox --headless --port=${PORT:-8080} \
+    | grep -v -E "ERROR:viz_main_impl\.cc\(183\)|ERROR:object_proxy\.cc\(576\)|ERROR:bus\.cc\(408\)"'

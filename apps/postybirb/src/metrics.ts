@@ -31,6 +31,8 @@ function createLogger() {
   initializeLogger(w, environment.production);
 }
 
+startMetrics();
+
 export function startMetrics() {
   createLogger();
 }
