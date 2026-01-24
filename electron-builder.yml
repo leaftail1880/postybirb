@@ -49,10 +49,10 @@ linux:
   synopsis: 'PostyBirb is a desktop application for posting to multiple websites'
   description: 'PostyBirb helps artists post art and other multimedia to multiple websites more quickly.'
   target:
-    - target: AppImage
-    - target: snap
-    - target: deb
-    - target: rpm
+    # - target: AppImage
+    # - target: snap
+    # - target: deb
+    # - target: rpm
 
 snap:
   publish:
