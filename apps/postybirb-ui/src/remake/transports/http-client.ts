@@ -10,6 +10,8 @@ export const REMOTE_MODE_KEY = 'remote_mode';
 export const defaultTargetPath = `https://localhost:${window.electron.app_port}`;
 
 export const defaultTargetProvider = () => {
+  return 'http://192.168.3.227:9487/';
+
   const remoteUrl = localStorage.getItem(REMOTE_HOST_KEY);
   if (remoteUrl?.trim()) {
     return `https://${remoteUrl}`;
@@ -49,7 +51,10 @@ export class HttpError<T = unknown> extends Error {
   constructor(response: HttpResponse<T>) {
     super(`HTTP ${response.status}: ${response.statusText}`);
     this.name = 'HttpError';
-    this.response = { ...response, error: response.body as unknown as ErrorResponse };
+    this.response = {
+      ...response,
+      error: response.body as unknown as ErrorResponse,
+    };
     this.statusCode = response.status;
   }
 }
@@ -214,7 +219,10 @@ export class HttpClient {
         return resObj;
       } catch (error) {
         // Handle network-level errors (no response received)
-        if (error instanceof TypeError || (error as Error)?.name === 'TypeError') {
+        if (
+          error instanceof TypeError ||
+          (error as Error)?.name === 'TypeError'
+        ) {
           lastError = error as Error;
           if (attempt < maxRetries) {
             await this.delay(attempt, retryDelay);
@@ -246,7 +254,11 @@ export class HttpClient {
       body = await this.processResponse<T>(res);
     } catch (parseError) {
       // If we can't parse the response, use empty object or error message
-      body = (res.ok ? {} : { error: 'Parse error', message: 'Failed to parse response body' }) as T;
+      body = (
+        res.ok
+          ? {}
+          : { error: 'Parse error', message: 'Failed to parse response body' }
+      ) as T;
     }
 
     return {

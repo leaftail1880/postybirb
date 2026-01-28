@@ -87,3 +87,25 @@ declare global {
     };
   }
 }
+
+window.electron = {
+  getAppVersion: async () => 'test',
+  getLanIp: async () => '192.168.3.227:9847',
+  getRemoteConfig: () => ({
+    enabled: true,
+    password: '1d60a110-c97d-4a6c-a0f5-f8277482510b',
+  }),
+  pickDirectory: async () => '',
+  openExternalLink: () => {},
+  getCookiesForAccount: async () => '',
+  quit: () => window.close(),
+  platform: 'android',
+  app_port: '9487',
+  app_version: 'test2',
+  setSpellCheckerEnabled() {},
+  setSpellcheckerLanguages: async () => {},
+  getSpellcheckerLanguages: async () => [],
+  getAllSpellcheckerLanguages: async () => [],
+  getSpellcheckerWords: async () => [],
+  setSpellcheckerWords: async () => {},
+};

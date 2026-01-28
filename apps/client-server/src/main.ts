@@ -10,7 +10,7 @@ import { NestFactory, Reflector } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import {
   IsTestEnvironment,
-  PostyBirbEnvConfig
+  PostyBirbEnvConfig,
 } from '@postybirb/utils/electron';
 import compression from 'compression';
 import sharp from 'sharp';
@@ -34,7 +34,7 @@ class CustomClassSerializer extends ClassSerializerInterceptor {
 
 async function bootstrap() {
   let app: INestApplication;
-  if (!IsTestEnvironment()) {
+  if (!IsTestEnvironment() && false) {
     // TLS/SSL on non-test
     const { cert, key } = await SSL.getOrCreateSSL();
     app = await NestFactory.create(AppModule, {
@@ -88,7 +88,7 @@ async function bootstrap() {
 
   const { port } = PostyBirbEnvConfig;
 
-  await app.listen(port, () => {
+  await app.listen(port, '0.0.0.0', () => {
     Logger.log(`Listening at https://localhost:${port}/${globalPrefix}`);
   });
 
@@ -96,4 +96,3 @@ async function bootstrap() {
 }
 
 export { bootstrap as bootstrapClientServer };
-

@@ -5,12 +5,13 @@ export const REMOTE_PASSWORD_KEY = 'remote_password';
 export const REMOTE_HOST_KEY = 'remote_host';
 export const REMOTE_MODE_KEY = 'remote_mode';
 
-export const defaultTargetPath = `https://localhost:${window.electron.app_port}`;
+export const defaultTargetPath = `http://localhost:${window.electron.app_port}`;
 
 export const defaultTargetProvider = () => {
+  return 'http://192.168.3.227:9487/';
   const remoteUrl = localStorage.getItem(REMOTE_HOST_KEY);
   if (remoteUrl?.trim()) {
-    return `https://${remoteUrl}`;
+    return `http://${remoteUrl}`;
   }
 
   return defaultTargetPath;
