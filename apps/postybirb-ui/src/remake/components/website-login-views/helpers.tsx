@@ -68,7 +68,13 @@ export function notifyLoginError(error: Error) {
  * Use this as a .catch() handler for API calls.
  */
 export function createLoginHttpErrorHandler(action?: React.ReactNode) {
-  return ({ error }: { error: HttpErrorResponse }) => {
+  return (response: { error: HttpErrorResponse } | Error) => {
+    // Convert error to HttpErrorResponse
+    const error: HttpErrorResponse =
+      response instanceof Error
+        ? { statusCode: 0, error: String(response), message: '' }
+        : response.error;
+
     notifications.show({
       title: (
         <span>

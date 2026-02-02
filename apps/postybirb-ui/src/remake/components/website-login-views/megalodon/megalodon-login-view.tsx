@@ -118,7 +118,7 @@ export default function MegalodonLoginView(
                           showSuccessNotification(
                             <Trans>App registered successfully</Trans>,
                           );
-                        } else if (!res.success && res.message) {
+                        } else {
                           throw new Error(res.message);
                         }
                       })
