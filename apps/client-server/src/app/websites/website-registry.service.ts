@@ -223,11 +223,22 @@ export class WebsiteRegistryService {
     }
   }
 
+  public async performOAuthStep(
+oauthRequestDto: OAuthWebsiteRequestDto<DynamicObject>,
+  ) {
+    try {
+      const result = await this.performOAuthSte(authRequestDto);
+      console.log(result)
+      return result
+    } catch (e) {
+      console.error(e)
+    }
+  }
   /**
    * Runs an authorization step for a website.
    * @param {OAuthWebsiteRequestDto<unknown>} oauthRequestDto
    */
-  public async performOAuthStep(
+  public async performOAuthSte(
     oauthRequestDto: OAuthWebsiteRequestDto<DynamicObject>,
   ) {
     this.logger.info(`OAuth website route for '${oauthRequestDto.id}'`);
