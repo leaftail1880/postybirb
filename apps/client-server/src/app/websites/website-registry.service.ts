@@ -226,8 +226,9 @@ export class WebsiteRegistryService {
   public async performOAuthStep(
 oauthRequestDto: OAuthWebsiteRequestDto<DynamicObject>,
   ) {
+    console.log("request",oauthRequestDto)
     try {
-      const result = await this.performOAuthSte(authRequestDto);
+      const result = await this.performOAuthSte(oauthRequestDto);
       console.log(result)
       return result
     } catch (e) {
