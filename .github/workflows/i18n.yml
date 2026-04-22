@@ -1,0 +1,36 @@
+name: i18n & Formatting CI
+on:
+  pull-request:
+
+permissions:
+  contents: write
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    if: github.head_ref != 'weblate-postybirb-postybirb'
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+          persist-credentials: true
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v6
+        with:
+          cache: yarn
+
+        # Note: These flags needed to speed up ci
+      - name: Install dependencies
+        run: yarn install --immutable
+        env:
+          CYPRESS_INSTALL_BINARY: 0 # Skip downloading Cypress binary (not needed for CI)
+
+        # Extracts i18n strings from code
+      - name: Extract i18n keys
+        run: yarn lingui:extract
+
+      - uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: 'ci(i18n): extract messages'
