@@ -70,6 +70,7 @@ export function LanguagePicker({ collapsed = false, kbd }: LanguagePickerProps) 
       shadow="md"
       offset={8}
     >
+      <Trans>Hahahaah</Trans>
       <Menu.Target>
         {collapsed ? (
           <Tooltip
