@@ -40,13 +40,13 @@ jobs:
 
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
           fetch-depth: 0
 
       - name: Use eslint, jest and tsc cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           # out-tsc needed because we use incremental in typecheck which uses files from tsc output
           path: |
@@ -61,15 +61,16 @@ jobs:
         run: corepack enable
 
       - name: Install Node.js and Yarn
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: "24"
           cache: yarn
-        # These flags needed to speed up ci
+
       - name: Install dependencies
         run: yarn install --immutable
         env:
           CYPRESS_INSTALL_BINARY: 0 # Skip downloading Cypress binary (not needed for CI)
+
         # Used to calculate affected
       - name: Setup SHAs
         uses: nrwl/nx-set-shas@v4

@@ -23,16 +23,20 @@ jobs:
         with:
           cache: yarn
 
-        # Note: These flags needed to speed up ci
       - name: Install dependencies
         run: yarn install --immutable
         env:
           CYPRESS_INSTALL_BINARY: 0 # Skip downloading Cypress binary (not needed for CI)
 
-        # Extracts i18n strings from code
       - name: Extract i18n keys
         run: yarn lingui:extract
 
       - uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: 'ci(i18n): extract messages'
+          commit_message: 'ci(i18n): extract messages [skip ci]'
+      - name: Run prettier
+        run: yarn prettier -w ./
+
+      - uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: 'ci(i18n): format code [skip ci]'
