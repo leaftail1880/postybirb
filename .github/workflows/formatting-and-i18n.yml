@@ -33,10 +33,11 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: 'ci(i18n): extract messages [skip ci]'
+          commit_message: 'ci(i18n): extract messages'
+
       - name: Run prettier
-        run: yarn prettier -w ./
+        run: yarn prettier -w ./{apps,libs}/
 
       - uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: 'ci(i18n): format code [skip ci]'
+          commit_message: 'ci(i18n): format code'
