@@ -1,19 +1,19 @@
 /* eslint-disable lingui/no-unlocalized-strings */
 import {
-    ActionIcon,
-    CloseButton,
-    ColorInput,
-    Group,
-    Popover,
-    Stack,
-    Tooltip,
+  ActionIcon,
+  CloseButton,
+  ColorInput,
+  Group,
+  Popover,
+  Stack,
+  Tooltip,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
-    IconBold,
-    IconItalic,
-    IconStrikethrough,
-    IconUnderline,
+  IconBold,
+  IconItalic,
+  IconStrikethrough,
+  IconUnderline,
 } from '@tabler/icons-react';
 import type { Editor } from '@tiptap/react';
 import { BubbleMenu } from '@tiptap/react/menus';
@@ -28,7 +28,8 @@ interface BubbleToolbarProps {
  * Shows compact inline formatting options.
  */
 export function BubbleToolbar({ editor }: BubbleToolbarProps) {
-  const [colorOpened, { toggle: toggleColor, close: closeColor }] = useDisclosure(false);
+  const [colorOpened, { toggle: toggleColor, close: closeColor }] =
+    useDisclosure(false);
   const bubbleRef = useRef<HTMLDivElement>(null);
 
   // Close the color picker when the selection collapses (bubble menu hides)
@@ -61,7 +62,13 @@ export function BubbleToolbar({ editor }: BubbleToolbarProps) {
   return (
     <BubbleMenu
       editor={editor}
-      options={{ placement: 'top', offset: 8, flip: true, shift: true, inline: true }}
+      options={{
+        placement: 'top',
+        offset: 8,
+        flip: true,
+        shift: true,
+        inline: true,
+      }}
     >
       <div
         className="pb-bubble-menu"
@@ -125,7 +132,9 @@ export function BubbleToolbar({ editor }: BubbleToolbarProps) {
                   style={currentColor ? { color: currentColor } : undefined}
                   onClick={toggleColor}
                 >
-                  <span style={{ fontWeight: 'bold', fontSize: '12px' }}>A</span>
+                  <span style={{ fontWeight: 'bold', fontSize: '12px' }}>
+                    A
+                  </span>
                 </ActionIcon>
               </Tooltip>
             </Popover.Target>
@@ -140,16 +149,33 @@ export function BubbleToolbar({ editor }: BubbleToolbarProps) {
             >
               <Stack gap={4}>
                 <Group justify="flex-end">
-                  <CloseButton size="xs" onClick={() => { closeColor(); editor.commands.focus(); }} />
+                  <CloseButton
+                    size="xs"
+                    onClick={() => {
+                      closeColor();
+                      editor.commands.focus();
+                    }}
+                  />
                 </Group>
                 <ColorInput
                   size="xs"
                   value={currentColor}
                   onChange={handleColorChange}
                   swatches={[
-                    '#000000', '#868e96', '#fa5252', '#e64980', '#be4bdb',
-                    '#7950f2', '#4c6ef5', '#228be6', '#15aabf', '#12b886',
-                    '#40c057', '#82c91e', '#fab005', '#fd7e14',
+                    '#000000',
+                    '#868e96',
+                    '#fa5252',
+                    '#e64980',
+                    '#be4bdb',
+                    '#7950f2',
+                    '#4c6ef5',
+                    '#228be6',
+                    '#15aabf',
+                    '#12b886',
+                    '#40c057',
+                    '#82c91e',
+                    '#fab005',
+                    '#fd7e14',
                   ]}
                   swatchesPerRow={7}
                 />

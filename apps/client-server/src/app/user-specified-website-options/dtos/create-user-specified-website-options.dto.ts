@@ -7,9 +7,7 @@ import {
 } from '@postybirb/types';
 import { IsEnum, IsObject, IsString } from 'class-validator';
 
-export class CreateUserSpecifiedWebsiteOptionsDto
-  implements ICreateUserSpecifiedWebsiteOptionsDto
-{
+export class CreateUserSpecifiedWebsiteOptionsDto implements ICreateUserSpecifiedWebsiteOptionsDto {
   @ApiProperty()
   @IsObject()
   options: DynamicObject;

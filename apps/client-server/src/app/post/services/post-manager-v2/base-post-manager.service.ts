@@ -556,9 +556,7 @@ export abstract class BasePostManager {
       return;
     }
 
-    this.logger.info(
-      `Not logged in for ${instance.id}, triggering login...`,
-    );
+    this.logger.info(`Not logged in for ${instance.id}, triggering login...`);
 
     const result = await instance.login();
 

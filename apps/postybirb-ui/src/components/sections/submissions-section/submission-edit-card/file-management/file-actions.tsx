@@ -19,7 +19,12 @@ import {
 import { FileWithPath } from '@mantine/dropzone';
 import { FileType, ISubmissionFileDto, SubmissionId } from '@postybirb/types';
 import { getFileType } from '@postybirb/utils/file-type';
-import { IconCrop, IconFileUpload, IconPencil, IconReplace } from '@tabler/icons-react';
+import {
+  IconCrop,
+  IconFileUpload,
+  IconPencil,
+  IconReplace,
+} from '@tabler/icons-react';
 import { useState } from 'react';
 import fileSubmissionApi, {
   FileUpdateTarget,
@@ -127,9 +132,7 @@ export function FileActions({ file, submissionId }: FileActionsProps) {
       setEditorTarget('file');
       setEditorFile(primaryFile);
     } catch {
-      showErrorNotification(
-        <Trans>Failed to load file for editing.</Trans>
-      );
+      showErrorNotification(<Trans>Failed to load file for editing.</Trans>);
     } finally {
       setIsLoadingPrimary(false);
     }

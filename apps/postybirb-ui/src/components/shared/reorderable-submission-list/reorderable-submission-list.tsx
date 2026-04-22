@@ -188,8 +188,7 @@ function SortableReorderableItem({
 
   const title = submission.getDefaultOptions()?.data?.title;
   const lastPost = submission.latestPost;
-  const hasFailedPost =
-    lastPost && lastPost.state === PostRecordState.FAILED;
+  const hasFailedPost = lastPost && lastPost.state === PostRecordState.FAILED;
 
   return (
     <Paper

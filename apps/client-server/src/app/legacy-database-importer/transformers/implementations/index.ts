@@ -6,4 +6,3 @@ export * from './inkbunny-data-transformer';
 export * from './megalodon-data-transformer';
 export * from './telegram-data-transformer';
 export * from './twitter-data-transformer';
-

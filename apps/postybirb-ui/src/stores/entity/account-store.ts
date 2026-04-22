@@ -53,7 +53,7 @@ export const useAccountStore = createEntityStore<IAccountDto, AccountRecord>(
     storeName: 'AccountStore',
     websocketEvent: ACCOUNT_UPDATES,
     hasChanged: accountHasChanged,
-  }
+  },
 );
 
 /**
@@ -92,7 +92,7 @@ export const useAccountsLoading = () =>
       error: state.error,
       isLoading: state.loadingState === 'loading',
       isLoaded: state.loadingState === 'loaded',
-    }))
+    })),
   );
 
 /**
@@ -108,8 +108,8 @@ export const useAccount = (id: AccountId) =>
 export const useLoggedInAccounts = (): AccountRecord[] =>
   useAccountStore(
     useShallow((state: AccountStoreState) =>
-      state.records.filter((acc) => acc.isLoggedIn)
-    )
+      state.records.filter((acc) => acc.isLoggedIn),
+    ),
   );
 
 /**
@@ -117,7 +117,7 @@ export const useLoggedInAccounts = (): AccountRecord[] =>
  * This is a utility function, not a hook - use with useMemo in components.
  */
 export const groupAccountsByWebsite = (
-  accounts: AccountRecord[]
+  accounts: AccountRecord[],
 ): Map<string, AccountRecord[]> => {
   const grouped = new Map<string, AccountRecord[]>();
   accounts.forEach((account) => {
@@ -139,5 +139,5 @@ export const useAccountActions = () =>
       setRecords: state.setRecords,
       getById: state.getById,
       clear: state.clear,
-    }))
+    })),
   );

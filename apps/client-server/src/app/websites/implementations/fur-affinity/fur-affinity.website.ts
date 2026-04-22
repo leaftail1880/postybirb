@@ -94,9 +94,13 @@ export default class FurAffinity
       if (res.body.includes('logout-link')) {
         const $ = parse(res.body);
         this.getFolders($);
-        const username = $.querySelector('.loggedin_user_avatar')?.getAttribute('alt');
+        const username = $.querySelector('.loggedin_user_avatar')?.getAttribute(
+          'alt',
+        );
         if (!username) {
-          this.logger.warn('Failed to find loggedin_user_avatar element during login');
+          this.logger.warn(
+            'Failed to find loggedin_user_avatar element during login',
+          );
         }
         return this.loginState.setLogin(true, username ?? null);
       }

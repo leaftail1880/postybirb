@@ -15,7 +15,7 @@ import {
   app,
   nativeImage,
   nativeTheme,
-  screen
+  screen,
 } from 'electron';
 import { join } from 'path';
 import { environment } from '../environments/environment';

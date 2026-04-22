@@ -86,7 +86,10 @@ function UsernameShortcutView({
       // Check node before cursor
       if (pos > 0) {
         const nodeBefore = state.doc.nodeAt(pos - 1);
-        if (nodeBefore?.type.name === 'username' && nodeBefore.attrs.shortcut === shortcutName) {
+        if (
+          nodeBefore?.type.name === 'username' &&
+          nodeBefore.attrs.shortcut === shortcutName
+        ) {
           isAdjacentRef = 'after';
           return;
         }
@@ -94,7 +97,10 @@ function UsernameShortcutView({
 
       // Check node after cursor
       const nodeAfter = state.doc.nodeAt(pos);
-      if (nodeAfter?.type.name === 'username' && nodeAfter.attrs.shortcut === shortcutName) {
+      if (
+        nodeAfter?.type.name === 'username' &&
+        nodeAfter.attrs.shortcut === shortcutName
+      ) {
         isAdjacentRef = 'before';
         return;
       }
@@ -144,8 +150,8 @@ function UsernameShortcutView({
   const [debouncedSearchTerm] = useDebouncedValue(searchTerm, 300);
 
   // Local state for selected website IDs
-  const [selectedWebsiteIds, setSelectedWebsiteIds] = useState<string[]>(
-    () => (onlyProp ? onlyProp.split(',').filter(Boolean) : []),
+  const [selectedWebsiteIds, setSelectedWebsiteIds] = useState<string[]>(() =>
+    onlyProp ? onlyProp.split(',').filter(Boolean) : [],
   );
 
   useEffect(() => {
@@ -191,7 +197,8 @@ function UsernameShortcutView({
       const input = e.target as HTMLInputElement;
       const { selectionStart, selectionEnd, value } = input;
       const isAtStart = selectionStart === 0 && selectionEnd === 0;
-      const isAtEnd = selectionStart === value.length && selectionEnd === value.length;
+      const isAtEnd =
+        selectionStart === value.length && selectionEnd === value.length;
 
       if (e.key === 'Enter') {
         e.preventDefault();
@@ -207,15 +214,25 @@ function UsernameShortcutView({
         const pmView = tiptapEditor?.view;
         if (pmView) {
           const { state } = pmView;
-          state.doc.descendants((docNode: { type: { name: string }; attrs: { shortcut: string } }, pos: number) => {
-            if (docNode.type.name === 'username' && docNode.attrs.shortcut === shortcutName) {
-              const tr = state.tr.setSelection(Selection.near(state.doc.resolve(pos)));
-              pmView.dispatch(tr);
-              pmView.focus();
-              return false;
-            }
-            return true;
-          });
+          state.doc.descendants(
+            (
+              docNode: { type: { name: string }; attrs: { shortcut: string } },
+              pos: number,
+            ) => {
+              if (
+                docNode.type.name === 'username' &&
+                docNode.attrs.shortcut === shortcutName
+              ) {
+                const tr = state.tr.setSelection(
+                  Selection.near(state.doc.resolve(pos)),
+                );
+                pmView.dispatch(tr);
+                pmView.focus();
+                return false;
+              }
+              return true;
+            },
+          );
         }
       } else if (e.key === 'ArrowRight' && isAtEnd) {
         e.preventDefault();
@@ -223,15 +240,29 @@ function UsernameShortcutView({
         const pmView = tiptapEditor?.view;
         if (pmView) {
           const { state } = pmView;
-          state.doc.descendants((docNode: { type: { name: string }; attrs: { shortcut: string }; nodeSize: number }, pos: number) => {
-            if (docNode.type.name === 'username' && docNode.attrs.shortcut === shortcutName) {
-              const tr = state.tr.setSelection(Selection.near(state.doc.resolve(pos + docNode.nodeSize)));
-              pmView.dispatch(tr);
-              pmView.focus();
-              return false;
-            }
-            return true;
-          });
+          state.doc.descendants(
+            (
+              docNode: {
+                type: { name: string };
+                attrs: { shortcut: string };
+                nodeSize: number;
+              },
+              pos: number,
+            ) => {
+              if (
+                docNode.type.name === 'username' &&
+                docNode.attrs.shortcut === shortcutName
+              ) {
+                const tr = state.tr.setSelection(
+                  Selection.near(state.doc.resolve(pos + docNode.nodeSize)),
+                );
+                pmView.dispatch(tr);
+                pmView.focus();
+                return false;
+              }
+              return true;
+            },
+          );
         }
       }
     },
@@ -245,7 +276,9 @@ function UsernameShortcutView({
 
   const updateWebsiteSelection = useCallback(
     (newOnlyValue: string) => {
-      const newIds = newOnlyValue ? newOnlyValue.split(',').filter(Boolean) : [];
+      const newIds = newOnlyValue
+        ? newOnlyValue.split(',').filter(Boolean)
+        : [];
       setSelectedWebsiteIds(newIds);
       updateAttributes({ only: newOnlyValue });
     },
@@ -291,7 +324,11 @@ function UsernameShortcutView({
   }, [selectedWebsiteIds.length, websites.length]);
 
   return (
-    <NodeViewWrapper as="span" className="username-shortcut" style={{ verticalAlign: 'text-bottom', position: 'relative' }}>
+    <NodeViewWrapper
+      as="span"
+      className="username-shortcut"
+      style={{ verticalAlign: 'text-bottom', position: 'relative' }}
+    >
       <Badge
         className="username-shortcut-badge"
         variant="light"
@@ -305,7 +342,9 @@ function UsernameShortcutView({
         <IconArrowRight size={12} style={{ opacity: 0.5 }} />
         <Popover
           opened={opened}
-          onChange={(isOpen) => { if (!isOpen) close(); }}
+          onChange={(isOpen) => {
+            if (!isOpen) close();
+          }}
           position="bottom-start"
           width={300}
           shadow="md"
@@ -313,7 +352,10 @@ function UsernameShortcutView({
           withinPortal
         >
           <Popover.Target>
-            <Tooltip label={<Trans>Select websites to apply usernames to</Trans>} withArrow>
+            <Tooltip
+              label={<Trans>Select websites to apply usernames to</Trans>}
+              withArrow
+            >
               <Box
                 component="span"
                 className="only-website-selector"
@@ -349,7 +391,10 @@ function UsernameShortcutView({
             </Tooltip>
           </Popover.Target>
 
-          <Popover.Dropdown p={0} onMouseDown={(e: React.MouseEvent) => e.stopPropagation()}>
+          <Popover.Dropdown
+            p={0}
+            onMouseDown={(e: React.MouseEvent) => e.stopPropagation()}
+          >
             <Stack gap="xs">
               <Box>
                 <Group align="apart" p="xs" style={{ alignItems: 'center' }}>
@@ -357,10 +402,16 @@ function UsernameShortcutView({
                     <ThemeIcon size="sm" variant="light" color="blue">
                       <IconWorld size={14} />
                     </ThemeIcon>
-                    <Text size="sm" fw={600}><Trans>Websites</Trans></Text>
+                    <Text size="sm" fw={600}>
+                      <Trans>Websites</Trans>
+                    </Text>
                   </Group>
                   <Badge size="xs" variant="filled" color={badgeColor}>
-                    {selectedWebsiteIds.length === 0 ? <Trans>All</Trans> : `${selectedWebsiteIds.length} / ${websites.length}`}
+                    {selectedWebsiteIds.length === 0 ? (
+                      <Trans>All</Trans>
+                    ) : (
+                      `${selectedWebsiteIds.length} / ${websites.length}`
+                    )}
                   </Badge>
                 </Group>
                 <Divider />
@@ -372,14 +423,30 @@ function UsernameShortcutView({
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   size="xs"
-                  rightSection={searchTerm ? <UnstyledButton onClick={() => setSearchTerm('')}><IconX size={14} /></UnstyledButton> : null}
+                  rightSection={
+                    searchTerm ? (
+                      <UnstyledButton onClick={() => setSearchTerm('')}>
+                        <IconX size={14} />
+                      </UnstyledButton>
+                    ) : null
+                  }
                 />
               </Box>
 
               <Box px="sm" pb="0">
                 <Group gap="xs">
-                  <Button size="xs" variant="light" color="blue" onClick={handleSelectAll} style={{ flex: 1 }}>
-                    {selectedWebsiteIds.length === websites.length ? <Trans>Deselect all</Trans> : <Trans>Select all</Trans>}
+                  <Button
+                    size="xs"
+                    variant="light"
+                    color="blue"
+                    onClick={handleSelectAll}
+                    style={{ flex: 1 }}
+                  >
+                    {selectedWebsiteIds.length === websites.length ? (
+                      <Trans>Deselect all</Trans>
+                    ) : (
+                      <Trans>Select all</Trans>
+                    )}
                   </Button>
                 </Group>
               </Box>
@@ -390,7 +457,9 @@ function UsernameShortcutView({
                 {filteredWebsiteOptions.length > 0 ? (
                   <Stack gap={0} p="xs">
                     {filteredWebsiteOptions.map((option) => {
-                      const isSelected = selectedWebsiteIds.includes(option.value);
+                      const isSelected = selectedWebsiteIds.includes(
+                        option.value,
+                      );
                       return (
                         <UnstyledButton
                           className="only-website-toggle-btn"
@@ -404,10 +473,21 @@ function UsernameShortcutView({
                           }}
                         >
                           <Group gap="sm" wrap="nowrap">
-                            <Checkbox checked={isSelected} onChange={() => {}} size="xs" color="blue" styles={{ input: { cursor: 'pointer' } }} />
+                            <Checkbox
+                              checked={isSelected}
+                              onChange={() => {}}
+                              size="xs"
+                              color="blue"
+                              styles={{ input: { cursor: 'pointer' } }}
+                            />
                             <Text
                               size="sm"
-                              style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}
+                              style={{
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                                flex: 1,
+                              }}
                               fw={isSelected ? 500 : 400}
                               c={isSelected ? 'blue' : undefined}
                             >
@@ -420,7 +500,9 @@ function UsernameShortcutView({
                   </Stack>
                 ) : (
                   <Box p="md">
-                    <Text ta="center" c="dimmed" size="sm"><Trans>No results found</Trans></Text>
+                    <Text ta="center" c="dimmed" size="sm">
+                      <Trans>No results found</Trans>
+                    </Text>
                   </Box>
                 )}
               </Box>
@@ -428,10 +510,7 @@ function UsernameShortcutView({
           </Popover.Dropdown>
         </Popover>
 
-        <span
-          className="username-shortcut-separator"
-          contentEditable={false}
-        />
+        <span className="username-shortcut-separator" contentEditable={false} />
         <input
           ref={inputRef}
           type="text"
@@ -470,7 +549,10 @@ export const UsernameShortcutExtension = Node.create({
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['span', mergeAttributes(HTMLAttributes, { 'data-type': 'username' })];
+    return [
+      'span',
+      mergeAttributes(HTMLAttributes, { 'data-type': 'username' }),
+    ];
   },
 
   addNodeView() {
@@ -483,7 +565,8 @@ export const UsernameShortcutExtension = Node.create({
       insertUsernameShortcut:
         (attrs: { shortcut: string; only?: string; username?: string }) =>
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ({ commands }: { commands: any }) => commands.insertContent([
+        ({ commands }: { commands: any }) =>
+          commands.insertContent([
             {
               type: this.name,
               attrs: {

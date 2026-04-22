@@ -35,7 +35,7 @@ function RatingFieldControl({
   const { t } = useLingui();
 
   const baseOptions = field.options;
-  
+
   const options =
     field.formField === 'rating' && !option.isDefault
       ? [{ label: t`Default`, value: '' }, ...baseOptions]

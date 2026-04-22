@@ -18,7 +18,10 @@ interface UseSubmissionPostResult {
   /** Handle canceling a queued/posting submission */
   handleCancel: (id: string) => Promise<void>;
   /** Handle posting submissions with specified order */
-  handlePostSelected: (orderedIds: string[], resumeMode?: PostRecordResumeMode) => Promise<void>;
+  handlePostSelected: (
+    orderedIds: string[],
+    resumeMode?: PostRecordResumeMode,
+  ) => Promise<void>;
   /** ID of submission waiting for resume mode selection */
   pendingResumeSubmissionId: string | null;
   /** Close the resume mode modal without posting */
@@ -38,36 +41,33 @@ export function useSubmissionPost(): UseSubmissionPostResult {
   >(null);
 
   // Handle posting a submission — reads submissionsMap at call time
-  const handlePost = useCallback(
-    async (id: string) => {
-      try {
-        // Get the submission to check if last post failed
-        const submission = useSubmissionStore.getState().recordsMap.get(id);
+  const handlePost = useCallback(async (id: string) => {
+    try {
+      // Get the submission to check if last post failed
+      const submission = useSubmissionStore.getState().recordsMap.get(id);
 
-        if (!submission) {
-          showPostErrorNotification();
-          return;
-        }
-
-        // Check if the last post record was failed
-        const lastPost = submission.latestPost;
-        const shouldPromptResumeMode =
-          lastPost && lastPost.state === PostRecordState.FAILED;
-
-        if (shouldPromptResumeMode) {
-          // Set pending state to show the modal
-          setPendingResumeSubmissionId(id);
-          return;
-        }
-
-        // No failed post, proceed normally
-        await postQueueApi.enqueue([id]);
-      } catch {
+      if (!submission) {
         showPostErrorNotification();
+        return;
       }
-    },
-    [],
-  );
+
+      // Check if the last post record was failed
+      const lastPost = submission.latestPost;
+      const shouldPromptResumeMode =
+        lastPost && lastPost.state === PostRecordState.FAILED;
+
+      if (shouldPromptResumeMode) {
+        // Set pending state to show the modal
+        setPendingResumeSubmissionId(id);
+        return;
+      }
+
+      // No failed post, proceed normally
+      await postQueueApi.enqueue([id]);
+    } catch {
+      showPostErrorNotification();
+    }
+  }, []);
 
   // Cancel resume mode selection
   const cancelResume = useCallback(() => {
@@ -123,7 +123,7 @@ export function useSubmissionPost(): UseSubmissionPostResult {
         showPostErrorNotification();
       }
     },
-    [setViewState]
+    [setViewState],
   );
 
   return {

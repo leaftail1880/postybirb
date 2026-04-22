@@ -348,7 +348,7 @@ export const useNavigationHistory = () =>
     useShallow((state) => ({
       goBack: state.goBack,
       goForward: state.goForward,
-    }))
+    })),
   );
 
 /** Check if navigation can go back */

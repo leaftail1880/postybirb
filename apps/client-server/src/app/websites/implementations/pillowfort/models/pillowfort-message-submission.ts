@@ -1,8 +1,4 @@
-import {
-  BooleanField,
-  RadioField,
-  RatingField
-} from '@postybirb/form-builder';
+import { BooleanField, RadioField, RatingField } from '@postybirb/form-builder';
 import { SubmissionRating } from '@postybirb/types';
 import { BaseWebsiteOptions } from '../../../models/base-website-options';
 

@@ -91,23 +91,25 @@ interface ThumbnailPreviewProps {
   size?: number;
 }
 
-export const ThumbnailPreview = memo(({ file, size = 60 }: ThumbnailPreviewProps) => {
-  if (!file.hasThumbnail || !file.thumbnailId) {
-    return null;
-  }
+export const ThumbnailPreview = memo(
+  ({ file, size = 60 }: ThumbnailPreviewProps) => {
+    if (!file.hasThumbnail || !file.thumbnailId) {
+      return null;
+    }
 
-  const src = `${defaultTargetProvider()}/api/file/file/${file.thumbnailId}?${file.hash}`;
+    const src = `${defaultTargetProvider()}/api/file/file/${file.thumbnailId}?${file.hash}`;
 
-  return (
-    <Image
-      radius={4}
-      loading="lazy"
-      h={size}
-      w={size}
-      fit="contain"
-      // eslint-disable-next-line lingui/no-unlocalized-strings
-      alt="Thumbnail"
-      src={src}
-    />
-  );
-});
+    return (
+      <Image
+        radius={4}
+        loading="lazy"
+        h={size}
+        w={size}
+        fit="contain"
+        // eslint-disable-next-line lingui/no-unlocalized-strings
+        alt="Thumbnail"
+        src={src}
+      />
+    );
+  },
+);

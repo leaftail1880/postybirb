@@ -1,13 +1,13 @@
 /* eslint-disable lingui/no-unlocalized-strings */
 import { Trans } from '@lingui/react/macro';
 import {
-    ActionIcon,
-    Group,
-    NumberInput,
-    Popover,
-    Stack,
-    Text,
-    Tooltip,
+  ActionIcon,
+  Group,
+  NumberInput,
+  Popover,
+  Stack,
+  Text,
+  Tooltip,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconTrash } from '@tabler/icons-react';
@@ -138,25 +138,22 @@ function ResizableImageView({
   );
 
   // --- Drag resize logic ---
-  const onDragStart = useCallback(
-    (e: React.MouseEvent, handle: string) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const img = imgRef.current;
-      if (!img) return;
+  const onDragStart = useCallback((e: React.MouseEvent, handle: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const img = imgRef.current;
+    if (!img) return;
 
-      const rect = img.getBoundingClientRect();
-      dragState.current = {
-        startX: e.clientX,
-        startY: e.clientY,
-        startWidth: rect.width,
-        startHeight: rect.height,
-        handle,
-      };
-      setDragging(true);
-    },
-    [],
-  );
+    const rect = img.getBoundingClientRect();
+    dragState.current = {
+      startX: e.clientX,
+      startY: e.clientY,
+      startWidth: rect.width,
+      startHeight: rect.height,
+      handle,
+    };
+    setDragging(true);
+  }, []);
 
   useEffect(() => {
     if (!dragging) return undefined;
@@ -237,14 +234,25 @@ function ResizableImageView({
     if (pos.includes('right') && pos.includes('-')) base.right = -4;
 
     // Edge-only handles (centered)
-    if (pos === 'right') { base.right = -4; base.top = '50%'; base.transform = 'translateY(-50%)'; }
-    if (pos === 'bottom') { base.bottom = -4; base.left = '50%'; base.transform = 'translateX(-50%)'; }
+    if (pos === 'right') {
+      base.right = -4;
+      base.top = '50%';
+      base.transform = 'translateY(-50%)';
+    }
+    if (pos === 'bottom') {
+      base.bottom = -4;
+      base.left = '50%';
+      base.transform = 'translateX(-50%)';
+    }
 
     return base;
   };
 
   return (
-    <NodeViewWrapper as="span" style={{ display: 'inline-block', lineHeight: 0 }}>
+    <NodeViewWrapper
+      as="span"
+      style={{ display: 'inline-block', lineHeight: 0 }}
+    >
       <Popover
         opened={opened}
         position="top"
@@ -256,7 +264,11 @@ function ResizableImageView({
           <div
             ref={wrapperRef}
             className={`resizable-image-wrapper${active || selected ? ' resizable-image-wrapper--active' : ''}`}
-            style={{ position: 'relative', display: 'inline-block', lineHeight: 0 }}
+            style={{
+              position: 'relative',
+              display: 'inline-block',
+              lineHeight: 0,
+            }}
           >
             {/* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-noninteractive-tabindex */}
             <img
@@ -394,9 +406,16 @@ export const ResizableImageExtension = Node.create({
   addCommands() {
     return {
       setImage:
-        (attrs: { src: string; alt?: string; title?: string; width?: number; height?: number }) =>
+        (attrs: {
+          src: string;
+          alt?: string;
+          title?: string;
+          width?: number;
+          height?: number;
+        }) =>
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ({ commands }: { commands: any }) => commands.insertContent({
+        ({ commands }: { commands: any }) =>
+          commands.insertContent({
             type: this.name,
             attrs,
           }),

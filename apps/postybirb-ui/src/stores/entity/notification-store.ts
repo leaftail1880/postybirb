@@ -114,7 +114,9 @@ export const useNotifications = (): NotificationRecord[] =>
  * Uses useShallow for stable reference when items haven't changed.
  */
 export const useNotificationsMap = (): Map<string, NotificationRecord> =>
-  useNotificationStore(useShallow((state: NotificationStore) => state.recordsMap));
+  useNotificationStore(
+    useShallow((state: NotificationStore) => state.recordsMap),
+  );
 
 /**
  * Select notification loading state.
@@ -126,7 +128,7 @@ export const useNotificationsLoading = () =>
       error: state.error,
       isLoading: state.loadingState === 'loading',
       isLoaded: state.loadingState === 'loaded',
-    }))
+    })),
   );
 
 /**
@@ -135,14 +137,19 @@ export const useNotificationsLoading = () =>
  */
 export const useUnreadNotifications = (): NotificationRecord[] =>
   useNotificationStore(
-    useShallow((state: NotificationStore) => state.records.filter((n) => n.isUnread))
+    useShallow((state: NotificationStore) =>
+      state.records.filter((n) => n.isUnread),
+    ),
   );
 
 /**
  * Select unread notification count.
  */
 export const useUnreadNotificationCount = (): number =>
-  useNotificationStore((state: NotificationStore) => state.records.filter((n) => n.isUnread).length);
+  useNotificationStore(
+    (state: NotificationStore) =>
+      state.records.filter((n) => n.isUnread).length,
+  );
 
 /**
  * Select error notifications.
@@ -150,7 +157,9 @@ export const useUnreadNotificationCount = (): number =>
  */
 export const useErrorNotifications = (): NotificationRecord[] =>
   useNotificationStore(
-    useShallow((state: NotificationStore) => state.records.filter((n) => n.isError))
+    useShallow((state: NotificationStore) =>
+      state.records.filter((n) => n.isError),
+    ),
   );
 
 /**
@@ -159,7 +168,9 @@ export const useErrorNotifications = (): NotificationRecord[] =>
  */
 export const useWarningNotifications = (): NotificationRecord[] =>
   useNotificationStore(
-    useShallow((state: NotificationStore) => state.records.filter((n) => n.isWarning))
+    useShallow((state: NotificationStore) =>
+      state.records.filter((n) => n.isWarning),
+    ),
   );
 
 /**
@@ -173,5 +184,5 @@ export const useNotificationActions = () =>
       setRecords: state.setRecords,
       getById: state.getById,
       clear: state.clear,
-    }))
+    })),
   );

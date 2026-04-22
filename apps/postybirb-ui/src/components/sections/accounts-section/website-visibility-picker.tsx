@@ -5,15 +5,15 @@
 
 import { Trans } from '@lingui/react/macro';
 import {
-    ActionIcon,
-    Badge,
-    Box,
-    Checkbox,
-    Popover,
-    ScrollArea,
-    Stack,
-    Text,
-    Tooltip,
+  ActionIcon,
+  Badge,
+  Box,
+  Checkbox,
+  Popover,
+  ScrollArea,
+  Stack,
+  Text,
+  Tooltip,
 } from '@mantine/core';
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import { useWebsites } from '../../../stores/entity/website-store';

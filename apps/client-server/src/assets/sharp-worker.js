@@ -433,7 +433,9 @@ module.exports = async function processImage(input) {
       // Create a tiny 1x1 JPEG, read it back — exercises the full
       // sharp pipeline including native bindings
       const pixel = Buffer.from([255, 0, 0]); // 1 red pixel
-      const testImg = await sharp(pixel, { raw: { width: 1, height: 1, channels: 3 } })
+      const testImg = await sharp(pixel, {
+        raw: { width: 1, height: 1, channels: 3 },
+      })
         .jpeg({ quality: 50 })
         .toBuffer();
       const testMeta = await sharp(testImg).metadata();

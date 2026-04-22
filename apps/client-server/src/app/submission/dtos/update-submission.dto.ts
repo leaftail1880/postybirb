@@ -4,7 +4,7 @@ import {
   IUpdateSubmissionDto,
   IWebsiteFormFields,
   ScheduleType,
-  WebsiteOptionsDto
+  WebsiteOptionsDto,
 } from '@postybirb/types';
 import {
   IsArray,

@@ -25,7 +25,11 @@ function ContentWarningShortcutView({
   );
 
   return (
-    <NodeViewWrapper as="span" className="system-shortcut-container" style={{ verticalAlign: 'text-bottom' }}>
+    <NodeViewWrapper
+      as="span"
+      className="system-shortcut-container"
+      style={{ verticalAlign: 'text-bottom' }}
+    >
       <Badge
         variant="light"
         radius="xl"
@@ -35,9 +39,14 @@ function ContentWarningShortcutView({
         contentEditable={false}
         styles={{ label: { display: 'flex', alignItems: 'center', gap: 4 } }}
       >
-        <span style={{ fontWeight: 600 }}><Trans>Content warning</Trans></span>
+        <span style={{ fontWeight: 600 }}>
+          <Trans>Content warning</Trans>
+        </span>
         <IconArrowRight size={12} style={{ opacity: 0.5 }} />
-        <WebsiteOnlySelector only={node.attrs.only} onOnlyChange={handleOnlyChange} />
+        <WebsiteOnlySelector
+          only={node.attrs.only}
+          onOnlyChange={handleOnlyChange}
+        />
       </Badge>
     </NodeViewWrapper>
   );
@@ -64,7 +73,12 @@ export const ContentWarningShortcutExtension = Node.create({
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['span', mergeAttributes(HTMLAttributes, { 'data-type': 'contentWarningShortcut' })];
+    return [
+      'span',
+      mergeAttributes(HTMLAttributes, {
+        'data-type': 'contentWarningShortcut',
+      }),
+    ];
   },
 
   addNodeView() {
@@ -77,7 +91,8 @@ export const ContentWarningShortcutExtension = Node.create({
       insertContentWarningShortcut:
         (attrs?: { only?: string }) =>
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ({ commands }: { commands: any }) => commands.insertContent([
+        ({ commands }: { commands: any }) =>
+          commands.insertContent([
             { type: this.name, attrs: { only: attrs?.only ?? '' } },
             { type: 'text', text: ' ' },
           ]),

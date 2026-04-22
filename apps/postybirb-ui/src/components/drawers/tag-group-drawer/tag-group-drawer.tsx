@@ -7,15 +7,15 @@
 import { t } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import {
-    ActionIcon,
-    Box,
-    Checkbox,
-    Group,
-    Stack,
-    Table,
-    TagsInput,
-    TextInput,
-    Tooltip,
+  ActionIcon,
+  Box,
+  Checkbox,
+  Group,
+  Stack,
+  Table,
+  TagsInput,
+  TextInput,
+  Tooltip,
 } from '@mantine/core';
 import { useDebouncedCallback, useDebouncedValue } from '@mantine/hooks';
 import { IconHelp, IconPlus, IconTrash } from '@tabler/icons-react';
@@ -23,14 +23,17 @@ import React, { useCallback, useMemo, useState } from 'react';
 import tagGroupsApi from '../../../api/tag-groups.api';
 import { useTagGroups } from '../../../stores';
 import type { TagGroupRecord } from '../../../stores/records';
-import { useActiveDrawer, useDrawerActions } from '../../../stores/ui/drawer-store';
+import {
+  useActiveDrawer,
+  useDrawerActions,
+} from '../../../stores/ui/drawer-store';
 import { useTourActions } from '../../../stores/ui/tour-store';
 import {
-    showCreatedNotification,
-    showCreateErrorNotification,
-    showDeletedNotification,
-    showDeleteErrorNotification,
-    showUpdateErrorNotification,
+  showCreatedNotification,
+  showCreateErrorNotification,
+  showDeletedNotification,
+  showDeleteErrorNotification,
+  showUpdateErrorNotification,
 } from '../../../utils/notifications';
 import { EmptyState } from '../../empty-state';
 import { HoldToConfirmButton } from '../../hold-to-confirm';
@@ -52,12 +55,14 @@ function useTagGroupSearch(searchQuery: string) {
     if (debouncedSearch.trim()) {
       const lowerSearch = debouncedSearch.toLowerCase();
       groups = groups.filter((group) =>
-        group.name.toLowerCase().includes(lowerSearch)
+        group.name.toLowerCase().includes(lowerSearch),
       );
     }
 
     // Sort alphabetically by name
-    groups.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+    groups.sort((a, b) =>
+      a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
+    );
 
     return groups;
   }, [tagGroups, debouncedSearch]);
@@ -288,15 +293,16 @@ function CreateTagGroupForm() {
 /**
  * Tag group table row component.
  */
-const TagGroupRow = React.memo(({
-  group,
-  isSelected,
-  onToggleSelect,
-}: {
-  group: TagGroupRecord;
-  isSelected: boolean;
-  onToggleSelect: (id: string) => void;
-}) => (
+const TagGroupRow = React.memo(
+  ({
+    group,
+    isSelected,
+    onToggleSelect,
+  }: {
+    group: TagGroupRecord;
+    isSelected: boolean;
+    onToggleSelect: (id: string) => void;
+  }) => (
     <Table.Tr>
       <Table.Td w={40}>
         <Checkbox
@@ -319,7 +325,8 @@ const TagGroupRow = React.memo(({
         />
       </Table.Td>
     </Table.Tr>
-  ));
+  ),
+);
 
 /**
  * Tag groups table component.
@@ -339,8 +346,10 @@ function TagGroupsTable({
     return <EmptyState preset="no-results" />;
   }
 
-  const allSelected = groups.length > 0 && groups.every((g) => selectedIds.has(g.id));
-  const someSelected = groups.some((g) => selectedIds.has(g.id)) && !allSelected;
+  const allSelected =
+    groups.length > 0 && groups.every((g) => selectedIds.has(g.id));
+  const someSelected =
+    groups.some((g) => selectedIds.has(g.id)) && !allSelected;
 
   return (
     <Table striped highlightOnHover>
@@ -444,7 +453,11 @@ function TagGroupDrawerContent({ onClose }: { onClose: () => void }) {
         <Group gap="xs">
           <Trans>Tag Groups</Trans>
           <Tooltip label={<Trans>Tag Groups Tour</Trans>}>
-            <ActionIcon variant="subtle" size="xs" onClick={() => startTour(TAG_GROUPS_TOUR_ID)}>
+            <ActionIcon
+              variant="subtle"
+              size="xs"
+              onClick={() => startTour(TAG_GROUPS_TOUR_ID)}
+            >
               <IconHelp size={16} />
             </ActionIcon>
           </Tooltip>
@@ -474,7 +487,10 @@ function TagGroupDrawerContent({ onClose }: { onClose: () => void }) {
         </Group>
 
         {/* Table */}
-        <Box data-tour-id="tag-groups-table" style={{ flex: 1, overflow: 'auto' }}>
+        <Box
+          data-tour-id="tag-groups-table"
+          style={{ flex: 1, overflow: 'auto' }}
+        >
           <TagGroupsTable
             groups={filteredGroups}
             selectedIds={selectedIds}

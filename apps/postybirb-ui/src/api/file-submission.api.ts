@@ -1,9 +1,9 @@
 import {
-    EntityId,
-    IReorderSubmissionFilesDto,
-    ISubmissionDto,
-    SubmissionFileMetadata,
-    SubmissionId,
+  EntityId,
+  IReorderSubmissionFilesDto,
+  ISubmissionDto,
+  SubmissionFileMetadata,
+  SubmissionId,
 } from '@postybirb/types';
 import { HttpClient } from '../transports/http-client';
 

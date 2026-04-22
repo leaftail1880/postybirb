@@ -6,9 +6,7 @@ import {
 } from '@postybirb/types';
 import { IsArray, IsOptional } from 'class-validator';
 
-export class UpdateSubmissionWebsiteOptionsDto
-  implements IUpdateSubmissionWebsiteOptionsDto
-{
+export class UpdateSubmissionWebsiteOptionsDto implements IUpdateSubmissionWebsiteOptionsDto {
   @ApiProperty()
   @IsOptional()
   @IsArray()

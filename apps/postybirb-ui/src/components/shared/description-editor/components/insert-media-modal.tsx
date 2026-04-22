@@ -1,13 +1,13 @@
 /* eslint-disable lingui/no-unlocalized-strings */
 import { Trans } from '@lingui/react/macro';
 import {
-    Button,
-    Group,
-    Modal,
-    NumberInput,
-    SegmentedControl,
-    Stack,
-    TextInput,
+  Button,
+  Group,
+  Modal,
+  NumberInput,
+  SegmentedControl,
+  Stack,
+  TextInput,
 } from '@mantine/core';
 import type { Editor } from '@tiptap/react';
 import { useCallback, useState } from 'react';

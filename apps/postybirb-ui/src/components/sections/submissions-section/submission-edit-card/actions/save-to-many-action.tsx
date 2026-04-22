@@ -20,7 +20,8 @@ import { useSubmissionEditCardContext } from '../context';
  * settings to multiple target submissions.
  */
 export function SaveToManyAction() {
-  const { submission, targetSubmissionIds = [] } = useSubmissionEditCardContext();
+  const { submission, targetSubmissionIds = [] } =
+    useSubmissionEditCardContext();
   const [modalOpened, setModalOpened] = useState(false);
 
   const handleConfirm = async (submissionIds: string[], merge: boolean) => {
@@ -31,7 +32,7 @@ export function SaveToManyAction() {
         merge,
       });
       showSuccessNotification(
-        <Trans>Applied to {submissionIds.length} submission(s)</Trans>
+        <Trans>Applied to {submissionIds.length} submission(s)</Trans>,
       );
       setModalOpened(false);
     } catch {

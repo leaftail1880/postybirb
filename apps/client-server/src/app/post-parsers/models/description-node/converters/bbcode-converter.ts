@@ -8,10 +8,7 @@ export class BBCodeConverter extends BaseConverter {
     return '\n';
   }
 
-  convertBlockNode(
-    node: TipTapNode,
-    context: ConversionContext,
-  ): string {
+  convertBlockNode(node: TipTapNode, context: ConversionContext): string {
     const attrs = node.attrs ?? {};
 
     if (node.type === 'defaultShortcut') {
@@ -94,10 +91,7 @@ export class BBCodeConverter extends BaseConverter {
     return this.convertContent(node.content, context);
   }
 
-  convertInlineNode(
-    node: TipTapNode,
-    context: ConversionContext,
-  ): string {
+  convertInlineNode(node: TipTapNode, context: ConversionContext): string {
     const attrs = node.attrs ?? {};
 
     if (node.type === 'username') {
@@ -138,10 +132,7 @@ export class BBCodeConverter extends BaseConverter {
     return this.convertContent(node.content, context);
   }
 
-  convertTextNode(
-    node: TipTapNode,
-    context: ConversionContext,
-  ): string {
+  convertTextNode(node: TipTapNode, context: ConversionContext): string {
     const textNode = node as any;
     if (!textNode.text) return '';
 
@@ -155,7 +146,10 @@ export class BBCodeConverter extends BaseConverter {
     const linkMark = marks.find((m: any) => m.type === 'link');
     if (linkMark) {
       const href = linkMark.attrs?.href ?? '';
-      const innerText = this.renderTextWithMarks(textNode.text, marks.filter((m: any) => m.type !== 'link'));
+      const innerText = this.renderTextWithMarks(
+        textNode.text,
+        marks.filter((m: any) => m.type !== 'link'),
+      );
       return `[url=${href}]${innerText}[/url]`;
     }
 
@@ -205,4 +199,3 @@ export class BBCodeConverter extends BaseConverter {
     return segmentedText;
   }
 }
-

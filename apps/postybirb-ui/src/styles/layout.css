@@ -13,23 +13,23 @@
   --z-base: 0;
   --z-section-panel: 1;
   --z-sticky: 10;
-  
+
   /* Navigation */
   --z-sidenav: 100;
-  
+
   /* Drawers */
   --z-drawer-overlay: 200;
   --z-drawer: 201;
-  
+
   /* Modals */
   --z-modal-overlay: 300;
   --z-modal: 301;
   --z-modal-nested: 400;
-  
+
   /* Floating elements */
   --z-popover: 500;
   --z-tooltip: 600;
-  
+
   /* Always on top */
   --z-notification: 700;
 }
@@ -445,7 +445,9 @@
 
 .postybirb__stat-card--clickable {
   cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
 }
 
 .postybirb__stat-card--clickable:hover {

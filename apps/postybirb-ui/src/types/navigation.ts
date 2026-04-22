@@ -118,16 +118,25 @@ export type NavigationItem =
  * Type guard to check if a navigation item has standard properties (label, icon).
  */
 export function isStandardNavItem(
-  item: NavigationItem
-): item is NavigationViewItem | NavigationLinkItem | NavigationDrawerItem | NavigationCustomItem {
-  return item.type === 'view' || item.type === 'link' || item.type === 'drawer' || item.type === 'custom';
+  item: NavigationItem,
+): item is
+  | NavigationViewItem
+  | NavigationLinkItem
+  | NavigationDrawerItem
+  | NavigationCustomItem {
+  return (
+    item.type === 'view' ||
+    item.type === 'link' ||
+    item.type === 'drawer' ||
+    item.type === 'custom'
+  );
 }
 
 /**
  * Type guard to check if a navigation item is a view state item.
  */
 export function isViewNavItem(
-  item: NavigationItem
+  item: NavigationItem,
 ): item is NavigationViewItem {
   return item.type === 'view';
 }
@@ -136,7 +145,7 @@ export function isViewNavItem(
  * Type guard to check if a navigation item is a special item (theme, language).
  */
 export function isSpecialNavItem(
-  item: NavigationItem
+  item: NavigationItem,
 ): item is NavigationThemeItem | NavigationLanguageItem {
   return item.type === 'theme' || item.type === 'language';
 }

@@ -10,7 +10,10 @@ import type { BaseRecord } from './records/base-record';
 /**
  * Configuration for creating a typed store.
  */
-export interface TypedStoreConfig<TDto extends { id: string; updatedAt: string }, TRecord extends BaseRecord> {
+export interface TypedStoreConfig<
+  TDto extends { id: string; updatedAt: string },
+  TRecord extends BaseRecord,
+> {
   /** Async function that fetches DTOs from the API */
   fetchFn: () => Promise<TDto[]>;
   /** Function that converts a DTO to a Record class */
@@ -75,9 +78,10 @@ export interface TypedStoreResult<TRecord extends BaseRecord> {
  * });
  * ```
  */
-export function createTypedStore<TDto extends { id: string; updatedAt: string }, TRecord extends BaseRecord>(
-  config: TypedStoreConfig<TDto, TRecord>
-): TypedStoreResult<TRecord> {
+export function createTypedStore<
+  TDto extends { id: string; updatedAt: string },
+  TRecord extends BaseRecord,
+>(config: TypedStoreConfig<TDto, TRecord>): TypedStoreResult<TRecord> {
   type StoreState = EntityStore<TRecord>;
 
   const useStore = createEntityStore<TDto, TRecord>(
@@ -87,7 +91,7 @@ export function createTypedStore<TDto extends { id: string; updatedAt: string },
       storeName: config.storeName,
       websocketEvent: config.websocketEvent,
       hasChanged: config.hasChanged,
-    }
+    },
   );
 
   /**
@@ -101,8 +105,7 @@ export function createTypedStore<TDto extends { id: string; updatedAt: string },
    * Hook to get records map for O(1) lookup.
    * Reference stability is handled upstream by diffRecords.
    */
-  const useRecordsMap = () =>
-    useStore((state: StoreState) => state.recordsMap);
+  const useRecordsMap = () => useStore((state: StoreState) => state.recordsMap);
 
   /**
    * Hook to get loading state.
@@ -114,7 +117,7 @@ export function createTypedStore<TDto extends { id: string; updatedAt: string },
         error: state.error,
         isLoading: state.loadingState === 'loading',
         isLoaded: state.loadingState === 'loaded',
-      }))
+      })),
     );
 
   /**
@@ -129,7 +132,7 @@ export function createTypedStore<TDto extends { id: string; updatedAt: string },
         setRecords: state.setRecords,
         getById: state.getById,
         clear: state.clear,
-      }))
+      })),
     );
 
   return {
@@ -144,6 +147,5 @@ export function createTypedStore<TDto extends { id: string; updatedAt: string },
 /**
  * Type alias for extracting the store type from a typed store result.
  */
-export type ExtractStoreType<T> = T extends TypedStoreResult<infer R>
-  ? EntityStore<R>
-  : never;
+export type ExtractStoreType<T> =
+  T extends TypedStoreResult<infer R> ? EntityStore<R> : never;

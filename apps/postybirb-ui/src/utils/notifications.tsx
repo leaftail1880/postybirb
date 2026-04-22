@@ -194,7 +194,7 @@ export function showErrorNotification(message?: React.ReactNode) {
  */
 export function showErrorWithTitleNotification(
   title: React.ReactNode,
-  message: React.ReactNode
+  message: React.ReactNode,
 ) {
   notifications.show({
     title,
@@ -210,7 +210,7 @@ export function showErrorWithTitleNotification(
  */
 export function showErrorWithContext(
   error: unknown,
-  fallbackMessage: React.ReactNode
+  fallbackMessage: React.ReactNode,
 ) {
   const message = error instanceof Error ? error.message : fallbackMessage;
   notifications.show({
@@ -269,7 +269,7 @@ export function showUploadErrorNotification(message?: React.ReactNode) {
  */
 export function showConnectionErrorNotification(
   title: React.ReactNode,
-  message: React.ReactNode
+  message: React.ReactNode,
 ) {
   notifications.show({
     title,
@@ -299,7 +299,7 @@ export function showSaveErrorNotification(message?: React.ReactNode) {
  */
 export function showInfoNotification(
   message: React.ReactNode,
-  title?: React.ReactNode
+  title?: React.ReactNode,
 ) {
   notifications.show({
     title,
@@ -314,7 +314,7 @@ export function showInfoNotification(
  */
 export function showWarningNotification(
   message: React.ReactNode,
-  title?: React.ReactNode
+  title?: React.ReactNode,
 ) {
   notifications.show({
     title,

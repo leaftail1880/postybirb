@@ -35,7 +35,9 @@ import { SideNav } from './side-nav';
  */
 export function Layout() {
   const collapsed = useSidenavCollapsed();
-  const setSidenavCollapsed = useSubmissionsUIStore((state) => state.setSidenavCollapsed);
+  const setSidenavCollapsed = useSubmissionsUIStore(
+    (state) => state.setSidenavCollapsed,
+  );
   const viewState = useViewState();
   const { visible: isSectionPanelVisible } = useSubNavVisible();
 
@@ -55,11 +57,17 @@ export function Layout() {
       />
 
       {/* Main Content Area */}
-      <Box className={cn(['postybirb__main'], { 'postybirb__main--sidenav_collapsed': collapsed })}>
+      <Box
+        className={cn(['postybirb__main'], {
+          'postybirb__main--sidenav_collapsed': collapsed,
+        })}
+      >
         {/* Split Content Area: Section Panel + Primary Content */}
         <Box id="postybirb-content-split" className="postybirb__content_split">
           {/* Section Panel (Master) - left side list */}
-          {isSectionPanelVisible ? <SectionPanel viewState={viewState} /> : null}
+          {isSectionPanelVisible ? (
+            <SectionPanel viewState={viewState} />
+          ) : null}
 
           {/* Primary Content (Detail) - right side detail view */}
           <PrimaryContent viewState={viewState} />

@@ -99,10 +99,10 @@ export class MisskeyApiService {
     instanceUrl: string,
     token: string,
   ): Promise<MisskeyUser> {
-    const res = await Http.post<MisskeyUser>(
-      `https://${instanceUrl}/api/i`,
-      { type: 'json', data: { i: token } },
-    );
+    const res = await Http.post<MisskeyUser>(`https://${instanceUrl}/api/i`, {
+      type: 'json',
+      data: { i: token },
+    });
 
     const body = ensureJson(res.body);
     if (!body?.username) {
@@ -116,9 +116,7 @@ export class MisskeyApiService {
    * Fetch instance metadata.
    * POST /api/meta
    */
-  static async getInstanceMeta(
-    instanceUrl: string,
-  ): Promise<MisskeyMeta> {
+  static async getInstanceMeta(instanceUrl: string): Promise<MisskeyMeta> {
     const res = await Http.post<MisskeyMeta>(
       `https://${instanceUrl}/api/meta`,
       { type: 'json', data: { detail: true } },

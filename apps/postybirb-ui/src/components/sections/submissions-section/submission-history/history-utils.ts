@@ -3,11 +3,11 @@
  */
 
 import {
-    EntityId,
-    PostEventDto,
-    PostEventType,
-    PostRecordDto,
-    PostRecordState,
+  EntityId,
+  PostEventDto,
+  PostEventType,
+  PostRecordDto,
+  PostRecordState,
 } from '@postybirb/types';
 import type { SubmissionRecord } from '../../../../stores/records';
 

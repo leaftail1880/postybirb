@@ -10,7 +10,7 @@ import type {
   UsernameShortcut,
   WebsiteFileOptions,
   WebsiteId,
-  WebsiteLoginType
+  WebsiteLoginType,
 } from '@postybirb/types';
 
 /**
@@ -43,7 +43,7 @@ export class WebsiteRecord {
 
     // Pre-compute filtered accounts
     this.cachedLoggedInAccounts = this.accounts.filter(
-      (account) => account.state.isLoggedIn
+      (account) => account.state.isLoggedIn,
     );
   }
 

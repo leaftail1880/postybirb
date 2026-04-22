@@ -1,7 +1,7 @@
 import {
-    ICreateCustomShortcutDto,
-    ICustomShortcutDto,
-    IUpdateCustomShortcutDto,
+  ICreateCustomShortcutDto,
+  ICustomShortcutDto,
+  IUpdateCustomShortcutDto,
 } from '@postybirb/types';
 import { BaseApi } from './base.api';
 

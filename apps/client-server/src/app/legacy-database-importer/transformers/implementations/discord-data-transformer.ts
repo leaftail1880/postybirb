@@ -20,9 +20,10 @@ interface LegacyDiscordAccountData {
  * - forum → isForum
  * - name is not used in modern (account name is stored separately)
  */
-export class DiscordDataTransformer
-  implements LegacyWebsiteDataTransformer<LegacyDiscordAccountData, DiscordAccountData>
-{
+export class DiscordDataTransformer implements LegacyWebsiteDataTransformer<
+  LegacyDiscordAccountData,
+  DiscordAccountData
+> {
   transform(legacyData: LegacyDiscordAccountData): DiscordAccountData | null {
     if (!legacyData) {
       return null;

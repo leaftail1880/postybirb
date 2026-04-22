@@ -246,7 +246,7 @@ export default class Inkbunny
         .withException(
           error instanceof Error ? error : new Error(String(error)),
         )
-        .withAdditionalInfo({ 
+        .withAdditionalInfo({
           fileCount: files.length,
           batchIndex: batch.index,
           totalBatches: batch.totalBatches,

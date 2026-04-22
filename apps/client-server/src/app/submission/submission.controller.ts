@@ -156,7 +156,9 @@ export class SubmissionController extends PostyBirbController<'SubmissionSchema'
 
   @Patch('apply/template/:id/:templateId')
   @ApiOkResponse({ description: 'Template applied to submission.' })
-  @ApiNotFoundResponse({ description: 'Submission Id or Template Id not found.' })
+  @ApiNotFoundResponse({
+    description: 'Submission Id or Template Id not found.',
+  })
   async applyTemplate(
     @Param('id') id: SubmissionId,
     @Param('templateId') templateId: SubmissionId,

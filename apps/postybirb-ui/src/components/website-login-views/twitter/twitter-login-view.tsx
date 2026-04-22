@@ -343,7 +343,8 @@ export default function TwitterLoginView(
                             setAuthorizationUrl('');
                             setRequestToken(undefined);
                             setActiveStep(3); // Advance to completion step
-                            if (res.screenName) setLoggedInAs(`@${res.screenName}`);
+                            if (res.screenName)
+                              setLoggedInAs(`@${res.screenName}`);
                           } else {
                             notifyLoginFailed(res.message);
                           }

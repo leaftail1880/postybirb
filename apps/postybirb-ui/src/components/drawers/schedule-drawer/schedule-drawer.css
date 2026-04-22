@@ -42,14 +42,14 @@
   --fc-button-hover-border-color: var(--mantine-color-blue-7);
   --fc-button-active-bg-color: var(--mantine-color-blue-8);
   --fc-button-active-border-color: var(--mantine-color-blue-8);
-  
+
   /* Month/week view */
   --fc-today-bg-color: var(--mantine-color-blue-0);
   --fc-highlight-color: var(--mantine-color-blue-1);
   --fc-event-text-color: var(--mantine-color-white);
   --fc-event-border-color: var(--mantine-color-blue-6);
   --fc-event-bg-color: var(--mantine-color-blue-6);
-  
+
   /* List view */
   --fc-list-event-hover-bg-color: var(--mantine-color-gray-0);
   --fc-theme-standard-list-day-cushion-background: var(--mantine-color-gray-0);
@@ -68,14 +68,14 @@
   --fc-button-hover-border-color: var(--mantine-color-blue-7);
   --fc-button-active-bg-color: var(--mantine-color-blue-8);
   --fc-button-active-border-color: var(--mantine-color-blue-8);
-  
+
   /* Month/week view */
   --fc-today-bg-color: rgba(59, 130, 246, 0.1);
   --fc-highlight-color: rgba(59, 130, 246, 0.2);
   --fc-event-text-color: var(--mantine-color-white);
   --fc-event-border-color: var(--mantine-color-blue-6);
   --fc-event-bg-color: var(--mantine-color-blue-6);
-  
+
   /* List view */
   --fc-list-event-hover-bg-color: var(--mantine-color-dark-6);
   --fc-theme-standard-list-day-cushion-background: var(--mantine-color-dark-6);
@@ -185,7 +185,7 @@
 /* Event hover and interaction effects */
 .schedule-drawer-calendar .fc-event {
   cursor: pointer;
-  transition: 
+  transition:
     transform 0.15s ease,
     box-shadow 0.15s ease,
     opacity 0.15s ease;
@@ -204,7 +204,10 @@
   border-color: var(--mantine-color-blue-3);
 }
 
-:root[data-mantine-color-scheme='dark'] .schedule-drawer-calendar .fc .fc-daygrid-day.fc-day-today {
+:root[data-mantine-color-scheme='dark']
+  .schedule-drawer-calendar
+  .fc
+  .fc-daygrid-day.fc-day-today {
   border-color: var(--mantine-color-blue-7);
 }
 
@@ -214,8 +217,14 @@
   background-color: var(--mantine-color-gray-0);
 }
 
-:root[data-mantine-color-scheme='dark'] .schedule-drawer-calendar .fc .fc-daygrid-day.fc-day-sat,
-:root[data-mantine-color-scheme='dark'] .schedule-drawer-calendar .fc .fc-daygrid-day.fc-day-sun {
+:root[data-mantine-color-scheme='dark']
+  .schedule-drawer-calendar
+  .fc
+  .fc-daygrid-day.fc-day-sat,
+:root[data-mantine-color-scheme='dark']
+  .schedule-drawer-calendar
+  .fc
+  .fc-daygrid-day.fc-day-sun {
   background-color: var(--mantine-color-dark-7);
 }
 

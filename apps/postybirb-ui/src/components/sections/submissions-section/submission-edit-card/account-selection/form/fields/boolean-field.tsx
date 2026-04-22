@@ -5,9 +5,9 @@
 import { useLingui } from '@lingui/react/macro';
 import { Checkbox } from '@mantine/core';
 import {
-    BooleanFieldType,
-    FieldAggregateType,
-    FieldType,
+  BooleanFieldType,
+  FieldAggregateType,
+  FieldType,
 } from '@postybirb/form-builder';
 import { useFormFieldsContext } from '../form-fields-context';
 import { useValidations } from '../hooks/use-validations';

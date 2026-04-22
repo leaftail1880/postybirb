@@ -57,7 +57,9 @@ export function TagsSettingsSection() {
           <Box>
             <Switch
               label={<Trans>Show wiki page related to tag on hover</Trans>}
-              checked={settings.tagSearchProvider?.showWikiInHelpOnHover ?? true}
+              checked={
+                settings.tagSearchProvider?.showWikiInHelpOnHover ?? true
+              }
               onChange={(event) => {
                 settingsApi.update(settings.id, {
                   settings: {

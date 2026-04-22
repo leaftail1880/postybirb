@@ -6,43 +6,46 @@
 
 import { Trans } from '@lingui/react/macro';
 import {
-    ActionIcon,
-    Badge,
-    Box,
-    Card,
-    Checkbox,
-    Group,
-    SegmentedControl,
-    Stack,
-    Text,
-    Tooltip,
+  ActionIcon,
+  Badge,
+  Box,
+  Card,
+  Checkbox,
+  Group,
+  SegmentedControl,
+  Stack,
+  Text,
+  Tooltip,
 } from '@mantine/core';
 import {
-    IconAlertTriangle,
-    IconBell,
-    IconCheck,
-    IconCircleCheck,
-    IconExclamationCircle,
-    IconHelp,
-    IconMail,
-    IconMailOpened,
-    IconTrash,
+  IconAlertTriangle,
+  IconBell,
+  IconCheck,
+  IconCircleCheck,
+  IconExclamationCircle,
+  IconHelp,
+  IconMail,
+  IconMailOpened,
+  IconTrash,
 } from '@tabler/icons-react';
 import React, { useCallback, useMemo, useState } from 'react';
 import notificationApi from '../../../api/notification.api';
 import { useLocale } from '../../../hooks';
 import {
-    useNotifications,
-    useUnreadNotificationCount,
+  useNotifications,
+  useUnreadNotificationCount,
 } from '../../../stores/entity/notification-store';
 import type { NotificationRecord } from '../../../stores/records';
-import { useActiveDrawer, useDrawerActions } from '../../../stores/ui/drawer-store';
+import {
+  useActiveDrawer,
+  useDrawerActions,
+} from '../../../stores/ui/drawer-store';
 import { useTourActions } from '../../../stores/ui/tour-store';
 import {
-    showDeletedNotification,
-    showDeleteErrorNotification,
-    showSuccessNotification,
-    showUpdateErrorNotification,
+  showDeletedNotification,
+  showDeleteErrorNotification,
+  showSuccessNotification,
+  showUpdateErrorNotification,
 } from '../../../utils/notifications';
 import { EmptyState } from '../../empty-state';
 import { HoldToConfirmButton } from '../../hold-to-confirm';
@@ -125,7 +128,7 @@ function useNotificationFilters() {
     // Sort by newest first
     notifications.sort(
       (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
     );
 
     return notifications;
@@ -264,7 +267,7 @@ function BulkActions({
   onClearSelection: () => void;
 }) {
   const selectedNotifications = notifications.filter((n) =>
-    selectedIds.has(n.id)
+    selectedIds.has(n.id),
   );
   const count = selectedIds.size;
   const hasUnread = selectedNotifications.some((n) => n.isUnread);
@@ -275,8 +278,8 @@ function BulkActions({
         selectedNotifications
           .filter((n) => n.isUnread)
           .map((n) =>
-            notificationApi.update(n.id, { isRead: true, hasEmitted: true })
-          )
+            notificationApi.update(n.id, { isRead: true, hasEmitted: true }),
+          ),
       );
       showSuccessNotification(<Trans>Marked as read</Trans>);
       onClearSelection();
@@ -329,112 +332,114 @@ function BulkActions({
 /**
  * Individual notification card.
  */
-const NotificationCard = React.memo(({
-  notification,
-  isSelected,
-  onSelect,
-  formatRelativeTime,
-}: {
-  notification: NotificationRecord;
-  isSelected: boolean;
-  onSelect: (id: string, selected: boolean) => void;
-  formatRelativeTime: (date: Date | string) => string;
-}) => {
-  const color = getTypeColor(notification.type);
-  const icon = getTypeIcon(notification.type);
+const NotificationCard = React.memo(
+  ({
+    notification,
+    isSelected,
+    onSelect,
+    formatRelativeTime,
+  }: {
+    notification: NotificationRecord;
+    isSelected: boolean;
+    onSelect: (id: string, selected: boolean) => void;
+    formatRelativeTime: (date: Date | string) => string;
+  }) => {
+    const color = getTypeColor(notification.type);
+    const icon = getTypeIcon(notification.type);
 
-  const handleToggleRead = useCallback(async () => {
-    try {
-      await notificationApi.update(notification.id, {
-        isRead: !notification.isRead,
-        hasEmitted: true,
-      });
-    } catch {
-      showUpdateErrorNotification();
-    }
-  }, [notification]);
+    const handleToggleRead = useCallback(async () => {
+      try {
+        await notificationApi.update(notification.id, {
+          isRead: !notification.isRead,
+          hasEmitted: true,
+        });
+      } catch {
+        showUpdateErrorNotification();
+      }
+    }, [notification]);
 
-  const handleDelete = useCallback(async () => {
-    try {
-      await notificationApi.remove([notification.id]);
-    } catch {
-      showDeleteErrorNotification();
-    }
-  }, [notification.id]);
+    const handleDelete = useCallback(async () => {
+      try {
+        await notificationApi.remove([notification.id]);
+      } catch {
+        showDeleteErrorNotification();
+      }
+    }, [notification.id]);
 
-  return (
-    <Card
-      padding="sm"
-      withBorder
-      style={{
-        borderLeftWidth: 3,
-        borderLeftColor: `var(--mantine-color-${color}-6)`,
-        opacity: notification.isRead ? 0.7 : 1,
-      }}
-    >
-      <Group gap="sm" wrap="nowrap" align="flex-start">
-        <Checkbox
-          checked={isSelected}
-          onChange={(e) => onSelect(notification.id, e.currentTarget.checked)}
-          // eslint-disable-next-line lingui/no-unlocalized-strings
-          aria-label="Select notification"
-        />
-        <Box c={color}>{icon}</Box>
-        <Stack gap={4} style={{ flex: 1, minWidth: 0 }}>
-          <Group gap="xs" justify="space-between" wrap="nowrap">
-            <Text size="sm" fw={notification.isUnread ? 600 : 400} truncate>
-              {notification.title}
-            </Text>
-            <Text size="xs" c="dimmed" style={{ flexShrink: 0 }}>
-              {formatRelativeTime(notification.createdAt)}
-            </Text>
-          </Group>
-          <Text size="xs" c="dimmed" lineClamp={2}>
-            {notification.message}
-          </Text>
-          {notification.tags.length > 0 && (
-            <Group gap={4}>
-              {notification.tags.map((tag) => (
-                <Badge key={tag} size="xs" variant="light">
-                  {tag}
-                </Badge>
-              ))}
+    return (
+      <Card
+        padding="sm"
+        withBorder
+        style={{
+          borderLeftWidth: 3,
+          borderLeftColor: `var(--mantine-color-${color}-6)`,
+          opacity: notification.isRead ? 0.7 : 1,
+        }}
+      >
+        <Group gap="sm" wrap="nowrap" align="flex-start">
+          <Checkbox
+            checked={isSelected}
+            onChange={(e) => onSelect(notification.id, e.currentTarget.checked)}
+            // eslint-disable-next-line lingui/no-unlocalized-strings
+            aria-label="Select notification"
+          />
+          <Box c={color}>{icon}</Box>
+          <Stack gap={4} style={{ flex: 1, minWidth: 0 }}>
+            <Group gap="xs" justify="space-between" wrap="nowrap">
+              <Text size="sm" fw={notification.isUnread ? 600 : 400} truncate>
+                {notification.title}
+              </Text>
+              <Text size="xs" c="dimmed" style={{ flexShrink: 0 }}>
+                {formatRelativeTime(notification.createdAt)}
+              </Text>
             </Group>
-          )}
-        </Stack>
-        <Group gap={4}>
-          <Tooltip
-            label={
-              notification.isRead ? (
-                <Trans>Mark as unread</Trans>
-              ) : (
-                <Trans>Mark as read</Trans>
-              )
-            }
-          >
-            <ActionIcon variant="subtle" size="sm" onClick={handleToggleRead}>
-              {notification.isRead ? (
-                <IconMail size={14} />
-              ) : (
-                <IconMailOpened size={14} />
-              )}
-            </ActionIcon>
-          </Tooltip>
-          <Tooltip label={<Trans>Hold to delete</Trans>}>
-            <HoldToConfirmButton
-              variant="subtle"
-              color="red"
-              size="sm"
-              onConfirm={handleDelete}
+            <Text size="xs" c="dimmed" lineClamp={2}>
+              {notification.message}
+            </Text>
+            {notification.tags.length > 0 && (
+              <Group gap={4}>
+                {notification.tags.map((tag) => (
+                  <Badge key={tag} size="xs" variant="light">
+                    {tag}
+                  </Badge>
+                ))}
+              </Group>
+            )}
+          </Stack>
+          <Group gap={4}>
+            <Tooltip
+              label={
+                notification.isRead ? (
+                  <Trans>Mark as unread</Trans>
+                ) : (
+                  <Trans>Mark as read</Trans>
+                )
+              }
             >
-              <IconTrash size={14} />
-            </HoldToConfirmButton>
-          </Tooltip>
+              <ActionIcon variant="subtle" size="sm" onClick={handleToggleRead}>
+                {notification.isRead ? (
+                  <IconMail size={14} />
+                ) : (
+                  <IconMailOpened size={14} />
+                )}
+              </ActionIcon>
+            </Tooltip>
+            <Tooltip label={<Trans>Hold to delete</Trans>}>
+              <HoldToConfirmButton
+                variant="subtle"
+                color="red"
+                size="sm"
+                onConfirm={handleDelete}
+              >
+                <IconTrash size={14} />
+              </HoldToConfirmButton>
+            </Tooltip>
+          </Group>
         </Group>
-      </Group>
-    </Card>
-  );
-});
+      </Card>
+    );
+  },
+);
 
 // ============================================================================
 // Notification List Component
@@ -543,7 +548,7 @@ function NotificationsDrawerContent({ onClose }: { onClose: () => void }) {
         setSelectedIds(new Set());
       }
     },
-    [notifications]
+    [notifications],
   );
 
   const handleClearSelection = useCallback(() => {
@@ -563,7 +568,11 @@ function NotificationsDrawerContent({ onClose }: { onClose: () => void }) {
             </Badge>
           )}
           <Tooltip label={<Trans>Notifications Tour</Trans>}>
-            <ActionIcon variant="subtle" size="xs" onClick={() => startTour(NOTIFICATIONS_TOUR_ID)}>
+            <ActionIcon
+              variant="subtle"
+              size="xs"
+              onClick={() => startTour(NOTIFICATIONS_TOUR_ID)}
+            >
               <IconHelp size={16} />
             </ActionIcon>
           </Tooltip>
@@ -575,14 +584,14 @@ function NotificationsDrawerContent({ onClose }: { onClose: () => void }) {
         {/* Filters */}
         <Stack gap="xs">
           <Box data-tour-id="notifications-read-filter">
-          <ReadStatusFilter
-            value={readFilter}
-            onChange={setReadFilter}
-            unreadCount={unreadCount}
-          />
+            <ReadStatusFilter
+              value={readFilter}
+              onChange={setReadFilter}
+              unreadCount={unreadCount}
+            />
           </Box>
           <Box data-tour-id="notifications-type-filter">
-          <TypeFilter value={typeFilter} onChange={setTypeFilter} />
+            <TypeFilter value={typeFilter} onChange={setTypeFilter} />
           </Box>
         </Stack>
 
@@ -594,7 +603,10 @@ function NotificationsDrawerContent({ onClose }: { onClose: () => void }) {
         />
 
         {/* Notification List */}
-        <Box data-tour-id="notifications-list" style={{ flex: 1, overflow: 'auto' }}>
+        <Box
+          data-tour-id="notifications-list"
+          style={{ flex: 1, overflow: 'auto' }}
+        >
           <NotificationList
             notifications={notifications}
             selectedIds={selectedIds}

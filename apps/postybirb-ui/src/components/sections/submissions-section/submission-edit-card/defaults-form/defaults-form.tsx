@@ -5,21 +5,18 @@
 
 import { Trans } from '@lingui/react/macro';
 import {
-    Box,
-    Collapse,
-    Group,
-    Paper,
-    Stack,
-    Text,
-    UnstyledButton,
+  Box,
+  Collapse,
+  Group,
+  Paper,
+  Stack,
+  Text,
+  UnstyledButton,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown, IconChevronRight } from '@tabler/icons-react';
 import { ComponentErrorBoundary } from '../../../../error-boundary';
-import {
-    FormFieldsProvider,
-    SectionLayout,
-} from '../account-selection/form';
+import { FormFieldsProvider, SectionLayout } from '../account-selection/form';
 import { useSubmissionEditCardContext } from '../context';
 import './defaults-form.css';
 

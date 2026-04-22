@@ -5,7 +5,12 @@
 
 import { Trans } from '@lingui/react/macro';
 import { Center, Stack, Text, ThemeIcon } from '@mantine/core';
-import { IconBell, IconFolder, IconInbox, IconSearch } from '@tabler/icons-react';
+import {
+  IconBell,
+  IconFolder,
+  IconInbox,
+  IconSearch,
+} from '@tabler/icons-react';
 import type { ReactNode } from 'react';
 
 /**
@@ -71,12 +76,27 @@ function getPresetMessage(preset: EmptyStatePreset): ReactNode {
 function getSizes(size: 'sm' | 'md' | 'lg') {
   switch (size) {
     case 'sm':
-      return { iconSize: 40, textSize: 'sm' as const, gap: 'xs' as const, py: 'md' as const };
+      return {
+        iconSize: 40,
+        textSize: 'sm' as const,
+        gap: 'xs' as const,
+        py: 'md' as const,
+      };
     case 'lg':
-      return { iconSize: 64, textSize: 'md' as const, gap: 'md' as const, py: 'xl' as const };
+      return {
+        iconSize: 64,
+        textSize: 'md' as const,
+        gap: 'md' as const,
+        py: 'xl' as const,
+      };
     case 'md':
     default:
-      return { iconSize: 48, textSize: 'sm' as const, gap: 'sm' as const, py: 'lg' as const };
+      return {
+        iconSize: 48,
+        textSize: 'sm' as const,
+        gap: 'sm' as const,
+        py: 'lg' as const,
+      };
   }
 }
 

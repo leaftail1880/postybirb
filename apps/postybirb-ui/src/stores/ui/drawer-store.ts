@@ -98,7 +98,7 @@ export const useDrawerActions = () =>
       openDrawer: state.openDrawer,
       closeDrawer: state.closeDrawer,
       toggleDrawer: state.toggleDrawer,
-    }))
+    })),
   );
 
 /** Check if a specific drawer is open */

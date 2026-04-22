@@ -53,9 +53,7 @@
       "indexes": {
         "account_id_unique": {
           "name": "account_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
@@ -114,9 +112,7 @@
       "indexes": {
         "directory-watcher_id_unique": {
           "name": "directory-watcher_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
@@ -125,12 +121,8 @@
           "name": "directory-watcher_templateId_submission_id_fk",
           "tableFrom": "directory-watcher",
           "tableTo": "submission",
-          "columnsFrom": [
-            "templateId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["templateId"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -216,9 +208,7 @@
       "indexes": {
         "file-buffer_id_unique": {
           "name": "file-buffer_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
@@ -227,12 +217,8 @@
           "name": "file-buffer_submissionFileId_submission-file_id_fk",
           "tableFrom": "file-buffer",
           "tableTo": "submission-file",
-          "columnsFrom": [
-            "submissionFileId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["submissionFileId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -320,9 +306,7 @@
       "indexes": {
         "notification_id_unique": {
           "name": "notification_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
@@ -373,9 +357,7 @@
       "indexes": {
         "post-queue_id_unique": {
           "name": "post-queue_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
@@ -384,12 +366,8 @@
           "name": "post-queue_postRecordId_post-record_id_fk",
           "tableFrom": "post-queue",
           "tableTo": "post-record",
-          "columnsFrom": [
-            "postRecordId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["postRecordId"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -397,12 +375,8 @@
           "name": "post-queue_submissionId_submission_id_fk",
           "tableFrom": "post-queue",
           "tableTo": "submission",
-          "columnsFrom": [
-            "submissionId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["submissionId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -469,9 +443,7 @@
       "indexes": {
         "post-record_id_unique": {
           "name": "post-record_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
@@ -480,12 +452,8 @@
           "name": "post-record_submissionId_submission_id_fk",
           "tableFrom": "post-record",
           "tableTo": "submission",
-          "columnsFrom": [
-            "submissionId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["submissionId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -538,16 +506,12 @@
       "indexes": {
         "settings_id_unique": {
           "name": "settings_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         },
         "settings_profile_unique": {
           "name": "settings_profile_unique",
-          "columns": [
-            "profile"
-          ],
+          "columns": ["profile"],
           "isUnique": true
         }
       },
@@ -677,9 +641,7 @@
       "indexes": {
         "submission-file_id_unique": {
           "name": "submission-file_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
@@ -688,12 +650,8 @@
           "name": "submission-file_submissionId_submission_id_fk",
           "tableFrom": "submission-file",
           "tableTo": "submission",
-          "columnsFrom": [
-            "submissionId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["submissionId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -701,12 +659,8 @@
           "name": "submission-file_primaryFileId_file-buffer_id_fk",
           "tableFrom": "submission-file",
           "tableTo": "file-buffer",
-          "columnsFrom": [
-            "primaryFileId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["primaryFileId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -714,12 +668,8 @@
           "name": "submission-file_thumbnailId_file-buffer_id_fk",
           "tableFrom": "submission-file",
           "tableTo": "file-buffer",
-          "columnsFrom": [
-            "thumbnailId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["thumbnailId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -727,12 +677,8 @@
           "name": "submission-file_altFileId_file-buffer_id_fk",
           "tableFrom": "submission-file",
           "tableTo": "file-buffer",
-          "columnsFrom": [
-            "altFileId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["altFileId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -826,9 +772,7 @@
       "indexes": {
         "submission_id_unique": {
           "name": "submission_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
@@ -879,16 +823,12 @@
       "indexes": {
         "tag-converter_id_unique": {
           "name": "tag-converter_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         },
         "tag-converter_tag_unique": {
           "name": "tag-converter_tag_unique",
-          "columns": [
-            "tag"
-          ],
+          "columns": ["tag"],
           "isUnique": true
         }
       },
@@ -939,16 +879,12 @@
       "indexes": {
         "tag-group_id_unique": {
           "name": "tag-group_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         },
         "tag-group_name_unique": {
           "name": "tag-group_name_unique",
-          "columns": [
-            "name"
-          ],
+          "columns": ["name"],
           "isUnique": true
         }
       },
@@ -1006,9 +942,7 @@
       "indexes": {
         "user-specified-website-options_id_unique": {
           "name": "user-specified-website-options_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
@@ -1017,12 +951,8 @@
           "name": "user-specified-website-options_accountId_account_id_fk",
           "tableFrom": "user-specified-website-options",
           "tableTo": "account",
-          "columnsFrom": [
-            "accountId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["accountId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1067,9 +997,7 @@
       "indexes": {
         "website-data_id_unique": {
           "name": "website-data_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
@@ -1078,12 +1006,8 @@
           "name": "website-data_id_account_id_fk",
           "tableFrom": "website-data",
           "tableTo": "account",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1148,9 +1072,7 @@
       "indexes": {
         "website-options_id_unique": {
           "name": "website-options_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
@@ -1159,12 +1081,8 @@
           "name": "website-options_accountId_account_id_fk",
           "tableFrom": "website-options",
           "tableTo": "account",
-          "columnsFrom": [
-            "accountId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["accountId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1172,12 +1090,8 @@
           "name": "website-options_submissionId_submission_id_fk",
           "tableFrom": "website-options",
           "tableTo": "submission",
-          "columnsFrom": [
-            "submissionId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["submissionId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1263,9 +1177,7 @@
       "indexes": {
         "website-post-record_id_unique": {
           "name": "website-post-record_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
@@ -1274,12 +1186,8 @@
           "name": "website-post-record_accountId_account_id_fk",
           "tableFrom": "website-post-record",
           "tableTo": "account",
-          "columnsFrom": [
-            "accountId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["accountId"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -1287,12 +1195,8 @@
           "name": "website-post-record_postRecordId_post-record_id_fk",
           "tableFrom": "website-post-record",
           "tableTo": "post-record",
-          "columnsFrom": [
-            "postRecordId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["postRecordId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }

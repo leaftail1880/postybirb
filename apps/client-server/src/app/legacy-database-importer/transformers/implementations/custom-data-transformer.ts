@@ -26,9 +26,10 @@ interface LegacyCustomAccountData {
  * - All fields pass through directly
  * - thumbnaiField (typo) → thumbnailField
  */
-export class CustomDataTransformer
-  implements LegacyWebsiteDataTransformer<LegacyCustomAccountData, CustomAccountData>
-{
+export class CustomDataTransformer implements LegacyWebsiteDataTransformer<
+  LegacyCustomAccountData,
+  CustomAccountData
+> {
   transform(legacyData: LegacyCustomAccountData): CustomAccountData | null {
     if (!legacyData) {
       return null;

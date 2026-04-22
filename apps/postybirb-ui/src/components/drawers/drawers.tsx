@@ -5,8 +5,8 @@
  */
 
 import {
-    useActiveDrawer,
-    useDrawerActions
+  useActiveDrawer,
+  useDrawerActions,
 } from '../../stores/ui/drawer-store';
 
 // Import the CustomShortcutsDrawer implementation for wrapping
@@ -44,7 +44,5 @@ export function CustomShortcutsDrawer() {
 
   if (activeDrawer !== 'customShortcuts') return null;
 
-  return (
-    <CustomShortcutsDrawerComponent opened onClose={closeDrawer} />
-  );
+  return <CustomShortcutsDrawerComponent opened onClose={closeDrawer} />;
 }

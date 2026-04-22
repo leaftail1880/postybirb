@@ -43,6 +43,6 @@ export type DirectoryWatcherStore = EntityStore<DirectoryWatcherRecord>;
 export const useActiveDirectoryWatchers = () =>
   useDirectoryWatcherStore(
     useShallow((state) =>
-      (state as DirectoryWatcherStore).records.filter((w) => w.hasPath)
-    )
+      (state as DirectoryWatcherStore).records.filter((w) => w.hasPath),
+    ),
   );

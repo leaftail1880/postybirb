@@ -244,4 +244,3 @@ export class DescriptionNodeTree {
     return nodes;
   }
 }
-

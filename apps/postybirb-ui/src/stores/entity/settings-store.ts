@@ -63,19 +63,27 @@ export const useLanguage = () =>
   useSettingsStore((state: SettingsStore) => state.records[0]?.language);
 
 export const useQueuePaused = () =>
-  useSettingsStore((state: SettingsStore) => state.records[0]?.queuePaused ?? false);
+  useSettingsStore(
+    (state: SettingsStore) => state.records[0]?.queuePaused ?? false,
+  );
 
 export const useHiddenWebsites = () =>
-  useSettingsStore((state: SettingsStore) => state.records[0]?.hiddenWebsites ?? []);
+  useSettingsStore(
+    (state: SettingsStore) => state.records[0]?.hiddenWebsites ?? [],
+  );
 
 export const useAllowAd = () =>
   useSettingsStore((state: SettingsStore) => state.records[0]?.allowAd ?? true);
 
 export const useDesktopNotifications = () =>
-  useSettingsStore((state: SettingsStore) => state.records[0]?.desktopNotifications);
+  useSettingsStore(
+    (state: SettingsStore) => state.records[0]?.desktopNotifications,
+  );
 
 export const useTagSearchProvider = () =>
-  useSettingsStore((state: SettingsStore) => state.records[0]?.tagSearchProvider);
+  useSettingsStore(
+    (state: SettingsStore) => state.records[0]?.tagSearchProvider,
+  );
 
 /**
  * Select settings loading state.
@@ -87,7 +95,7 @@ export const useSettingsLoading = () =>
       error: state.error,
       isLoading: state.loadingState === 'loading',
       isLoaded: state.loadingState === 'loaded',
-    }))
+    })),
   );
 
 /**
@@ -99,5 +107,5 @@ export const useSettingsActions = () =>
     useShallow((state: SettingsStore) => ({
       loadAll: state.loadAll,
       clear: state.clear,
-    }))
+    })),
   );

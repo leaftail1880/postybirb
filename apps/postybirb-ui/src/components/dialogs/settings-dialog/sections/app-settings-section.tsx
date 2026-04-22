@@ -12,7 +12,7 @@ import {
   Text,
   TextInput,
   Title,
-  useMantineColorScheme
+  useMantineColorScheme,
 } from '@mantine/core';
 import { IconFolder, IconRouter } from '@tabler/icons-react';
 import { useQuery } from 'react-query';

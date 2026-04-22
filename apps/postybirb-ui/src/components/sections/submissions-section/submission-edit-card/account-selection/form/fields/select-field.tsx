@@ -135,8 +135,12 @@ export function SelectField({
   // Use TreeSelect for hierarchical options
   if (useTreeSelect) {
     const treeValue = field.allowMultiple
-      ? (Array.isArray(value) ? value : [])
-      : (typeof value === 'string' ? value : '');
+      ? Array.isArray(value)
+        ? value
+        : []
+      : typeof value === 'string'
+        ? value
+        : '';
 
     return (
       <FieldLabel

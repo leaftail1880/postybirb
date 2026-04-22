@@ -8,14 +8,14 @@ import { Trans } from '@lingui/react/macro';
 import { ActionIcon, Group, Menu, Tooltip } from '@mantine/core';
 import { ISubmissionScheduleInfo, PostRecordState } from '@postybirb/types';
 import {
-    IconArchive,
-    IconCancel,
-    IconCopy,
-    IconDotsVertical,
-    IconEdit,
-    IconHistory,
-    IconSend,
-    IconTrash,
+  IconArchive,
+  IconCancel,
+  IconCopy,
+  IconDotsVertical,
+  IconEdit,
+  IconHistory,
+  IconSend,
+  IconTrash,
 } from '@tabler/icons-react';
 import { useCallback } from 'react';
 import { HoldToConfirmButton } from '../../../hold-to-confirm';
@@ -155,8 +155,8 @@ export function SubmissionActions({
               mostRecentPostState === PostRecordState.DONE
                 ? 'green'
                 : mostRecentPostState === PostRecordState.FAILED
-                ? 'red'
-                : 'gray'
+                  ? 'red'
+                  : 'gray'
             }
             disabled={!onViewHistory}
             onClick={handleViewHistory}

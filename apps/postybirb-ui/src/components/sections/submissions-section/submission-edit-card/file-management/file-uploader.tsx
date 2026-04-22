@@ -5,11 +5,11 @@
 import { Trans } from '@lingui/react/macro';
 import { Box, Group, Text, rem } from '@mantine/core';
 import {
-    Dropzone,
-    FileWithPath,
-    IMAGE_MIME_TYPE,
-    MS_WORD_MIME_TYPE,
-    PDF_MIME_TYPE,
+  Dropzone,
+  FileWithPath,
+  IMAGE_MIME_TYPE,
+  MS_WORD_MIME_TYPE,
+  PDF_MIME_TYPE,
 } from '@mantine/dropzone';
 import { FileType } from '@postybirb/types';
 import { getFileType } from '@postybirb/utils/file-type';
@@ -17,9 +17,9 @@ import { IconPhoto, IconUpload, IconX } from '@tabler/icons-react';
 import { useState } from 'react';
 import fileSubmissionApi from '../../../../../api/file-submission.api';
 import {
-    showErrorNotification,
-    showUploadErrorNotification,
-    showWarningNotification,
+  showErrorNotification,
+  showUploadErrorNotification,
+  showWarningNotification,
 } from '../../../../../utils/notifications';
 import { useSubmissionEditCardContext } from '../context';
 
@@ -73,7 +73,7 @@ export function FileUploader() {
     // Check file type compatibility before uploading
     if (existingFileType) {
       const incompatibleFiles = files.filter(
-        (file) => getFileType(file.name) !== existingFileType
+        (file) => getFileType(file.name) !== existingFileType,
       );
 
       if (incompatibleFiles.length > 0) {
@@ -83,7 +83,7 @@ export function FileUploader() {
             Cannot add {getFileTypeLabel(newFileType)} files to a submission
             containing {getFileTypeLabel(existingFileType)} files. All files in
             a submission must be of the same type.
-          </Trans>
+          </Trans>,
         );
         return;
       }
@@ -94,7 +94,7 @@ export function FileUploader() {
       await fileSubmissionApi.appendFiles(submission.id, 'file', files);
     } catch (error) {
       showUploadErrorNotification(
-        error instanceof Error ? error.message : undefined
+        error instanceof Error ? error.message : undefined,
       );
     } finally {
       setUploading(false);
@@ -103,7 +103,9 @@ export function FileUploader() {
 
   const handleReject = () => {
     showWarningNotification(
-      <Trans>Some files were rejected. Check file type and size (max 100MB).</Trans>
+      <Trans>
+        Some files were rejected. Check file type and size (max 100MB).
+      </Trans>,
     );
   };
 

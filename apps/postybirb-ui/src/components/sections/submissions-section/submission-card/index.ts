@@ -12,4 +12,3 @@ export { SubmissionThumbnail } from './submission-thumbnail';
 export { SubmissionTitle } from './submission-title';
 export type { SubmissionCardProps } from './types';
 export { getThumbnailUrl } from './utils';
-

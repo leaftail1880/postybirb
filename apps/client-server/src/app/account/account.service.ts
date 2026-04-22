@@ -51,13 +51,10 @@ export class AccountService
   ) {
     super('AccountSchema', webSocket);
     this.repository.subscribe('AccountSchema', () => this.emit());
-    this.loginStatePoller = new LoginStatePoller(
-      this.websiteRegistry,
-      () => {
-        this.emit();
-        this.websiteRegistry.emit();
-      },
-    );
+    this.loginStatePoller = new LoginStatePoller(this.websiteRegistry, () => {
+      this.emit();
+      this.websiteRegistry.emit();
+    });
   }
 
   /**

@@ -5,26 +5,26 @@
 
 import { Trans, useLingui } from '@lingui/react/macro';
 import {
-    Button,
-    Checkbox,
-    Group,
-    Popover,
-    ScrollArea,
-    Stack,
-    Text,
+  Button,
+  Checkbox,
+  Group,
+  Popover,
+  ScrollArea,
+  Stack,
+  Text,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
-    FieldAggregateType,
-    FormBuilderMetadata,
+  FieldAggregateType,
+  FormBuilderMetadata,
 } from '@postybirb/form-builder';
 import { DynamicObject } from '@postybirb/types';
 import { IconDeviceFloppy } from '@tabler/icons-react';
 import { useCallback, useState } from 'react';
 import userSpecifiedWebsiteOptionsApi from '../../../../../../api/user-specified-website-options.api';
 import {
-    showSaveErrorNotification,
-    showSuccessNotification,
+  showSaveErrorNotification,
+  showSuccessNotification,
 } from '../../../../../../utils/notifications';
 import { getTranslatedLabel } from './fields/field-label';
 import { useFormFieldsContext } from './form-fields-context';
@@ -174,9 +174,7 @@ export function SaveDefaultsPopover() {
             <Trans>Select fields to save as defaults for this account.</Trans>
             <br />
             <br />
-            <Trans>
-              These defaults apply to future submissions.
-            </Trans>
+            <Trans>These defaults apply to future submissions.</Trans>
           </Text>
 
           {/* Select All / None buttons */}

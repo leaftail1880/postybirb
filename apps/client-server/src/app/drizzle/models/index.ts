@@ -14,4 +14,3 @@ export * from './user-converter.entity';
 export * from './user-specified-website-options.entity';
 export * from './website-data.entity';
 export * from './website-options.entity';
-

@@ -24,9 +24,10 @@ interface LegacyTwitterAccountData {
  * - screen_name → screenName
  * - user_id → userId (number to string)
  */
-export class TwitterDataTransformer
-  implements LegacyWebsiteDataTransformer<LegacyTwitterAccountData, TwitterAccountData>
-{
+export class TwitterDataTransformer implements LegacyWebsiteDataTransformer<
+  LegacyTwitterAccountData,
+  TwitterAccountData
+> {
   transform(legacyData: LegacyTwitterAccountData): TwitterAccountData | null {
     if (!legacyData) {
       return null;

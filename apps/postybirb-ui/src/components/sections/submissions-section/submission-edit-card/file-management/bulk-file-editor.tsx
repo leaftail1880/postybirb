@@ -6,31 +6,31 @@
 
 import { Trans } from '@lingui/react/macro';
 import {
-    ActionIcon,
-    Box,
-    Button,
-    Divider,
-    Group,
-    MultiSelect,
-    NumberInput,
-    Stack,
-    Text,
-    TextInput,
-    Tooltip,
+  ActionIcon,
+  Box,
+  Button,
+  Divider,
+  Group,
+  MultiSelect,
+  NumberInput,
+  Stack,
+  Text,
+  TextInput,
+  Tooltip,
 } from '@mantine/core';
 import {
-    AccountId,
-    EntityId,
-    FileType,
-    ISubmissionFileDto,
+  AccountId,
+  EntityId,
+  FileType,
+  ISubmissionFileDto,
 } from '@postybirb/types';
 import { getFileType } from '@postybirb/utils/file-type';
 import { IconTrash } from '@tabler/icons-react';
 import { useCallback, useMemo, useState } from 'react';
 import fileSubmissionApi from '../../../../../api/file-submission.api';
 import {
-    showErrorWithContext,
-    showSuccessNotification,
+  showErrorWithContext,
+  showSuccessNotification,
 } from '../../../../../utils/notifications';
 import { BasicWebsiteSelect } from '../../../../shared';
 
@@ -109,9 +109,7 @@ export function BulkFileEditor({ files }: BulkFileEditorProps) {
     const validUrls = getValidUrls();
 
     try {
-      const selectedFiles = files.filter((f) =>
-        selectedFileIds.includes(f.id),
-      );
+      const selectedFiles = files.filter((f) => selectedFileIds.includes(f.id));
 
       await Promise.all(
         selectedFiles.map((file) => {
@@ -167,10 +165,7 @@ export function BulkFileEditor({ files }: BulkFileEditorProps) {
       setSourceUrls(['']);
       setScalePercent(null);
     } catch (error) {
-      showErrorWithContext(
-        error,
-        <Trans>Failed to apply bulk settings</Trans>,
-      );
+      showErrorWithContext(error, <Trans>Failed to apply bulk settings</Trans>);
     } finally {
       setIsApplying(false);
     }

@@ -16,8 +16,8 @@ import { Text } from '@tiptap/extension-text';
 import { Underline } from '@tiptap/extension-underline';
 import { generateJSON } from '@tiptap/html/dist/server';
 import {
-    LegacyConverterEntity,
-    MinimalEntity,
+  LegacyConverterEntity,
+  MinimalEntity,
 } from './legacy-converter-entity';
 
 const tiptapExtensions = [

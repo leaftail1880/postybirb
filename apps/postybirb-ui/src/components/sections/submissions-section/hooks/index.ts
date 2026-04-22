@@ -4,8 +4,8 @@
 
 export { useGlobalDropzone } from './use-global-dropzone';
 export {
-    useSubmissionActions,
-    type BoundSubmissionActions
+  useSubmissionActions,
+  type BoundSubmissionActions,
 } from './use-submission-actions';
 export { useSubmissionCreate } from './use-submission-create';
 export { useSubmissionDelete } from './use-submission-delete';
@@ -14,4 +14,3 @@ export { useSubmissionPost } from './use-submission-post';
 export { useSubmissionSelection } from './use-submission-selection';
 export { useSubmissionUpdate } from './use-submission-update';
 export { useSubmissions } from './use-submissions';
-

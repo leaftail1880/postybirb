@@ -5,14 +5,14 @@
 
 import { Trans } from '@lingui/react/macro';
 import {
-    Box,
-    Button,
-    CloseButton,
-    Group,
-    Paper,
-    Progress,
-    Text,
-    Title,
+  Box,
+  Button,
+  CloseButton,
+  Group,
+  Paper,
+  Progress,
+  Text,
+  Title,
 } from '@mantine/core';
 import type { TooltipRenderProps } from 'react-joyride';
 
@@ -29,14 +29,7 @@ export function MantineTooltip({
   isLastStep,
 }: TooltipRenderProps) {
   return (
-    <Paper
-      shadow="lg"
-      radius="md"
-      p="md"
-      maw={420}
-      miw={300}
-      {...tooltipProps}
-    >
+    <Paper shadow="lg" radius="md" p="md" maw={420} miw={300} {...tooltipProps}>
       {/* Header with close button */}
       <Group justify="space-between" mb="xs" wrap="nowrap">
         {step.title && (
@@ -45,7 +38,12 @@ export function MantineTooltip({
           </Title>
         )}
         {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-        <CloseButton onClick={skipProps.onClick} aria-label="Close" size="xs" variant="subtle" />
+        <CloseButton
+          onClick={skipProps.onClick}
+          aria-label="Close"
+          size="xs"
+          variant="subtle"
+        />
       </Group>
 
       {/* Content */}
@@ -63,7 +61,11 @@ export function MantineTooltip({
 
       {/* Progress indicator */}
       <Group gap="xs" mb="md" align="center">
-        <Progress value={((index + 1) / size) * 100} size="sm" style={{ flex: 1 }} />
+        <Progress
+          value={((index + 1) / size) * 100}
+          size="sm"
+          style={{ flex: 1 }}
+        />
         <Text size="xs" c="dimmed" style={{ whiteSpace: 'nowrap' }}>
           {index + 1} / {size}
         </Text>

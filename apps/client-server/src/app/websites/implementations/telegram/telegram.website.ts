@@ -14,7 +14,10 @@ import {
   TelegramOAuthRoutes,
   TipTapNode,
 } from '@postybirb/types';
-import { calculateImageResize, supportsImage } from '@postybirb/utils/file-type';
+import {
+  calculateImageResize,
+  supportsImage,
+} from '@postybirb/utils/file-type';
 import { Api, TelegramClient } from 'telegram';
 import { CustomFile } from 'telegram/client/uploads';
 import { Entity } from 'telegram/define';

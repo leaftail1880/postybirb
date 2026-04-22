@@ -4,7 +4,13 @@
  */
 
 import { Trans } from '@lingui/react/macro';
-import { Box, Kbd, NavLink as MantineNavLink, Tooltip, useMantineColorScheme } from '@mantine/core';
+import {
+  Box,
+  Kbd,
+  NavLink as MantineNavLink,
+  Tooltip,
+  useMantineColorScheme,
+} from '@mantine/core';
 import { IconMoon, IconSun } from '@tabler/icons-react';
 import { formatKeybindingDisplay } from '../../shared/platform-utils';
 import { useAppearanceActions } from '../../stores/ui/appearance-store';
@@ -24,7 +30,7 @@ interface ThemePickerProps {
 export function ThemePicker({ collapsed = false, kbd }: ThemePickerProps) {
   const { colorScheme: mantineColorScheme } = useMantineColorScheme();
   const { setColorScheme } = useAppearanceActions();
-  
+
   // Use Mantine's computed color scheme (handles 'auto' resolution)
   const isDark = mantineColorScheme === 'dark';
 
@@ -36,7 +42,9 @@ export function ThemePicker({ collapsed = false, kbd }: ThemePickerProps) {
   const themeIcon = isDark ? <IconSun size={20} /> : <IconMoon size={20} />;
   const themeLabel = collapsed ? undefined : (
     <Box className="postybirb__nav_item_label">
-      <span>{isDark ? <Trans>Light Mode</Trans> : <Trans>Dark Mode</Trans>}</span>
+      <span>
+        {isDark ? <Trans>Light Mode</Trans> : <Trans>Dark Mode</Trans>}
+      </span>
       {kbd && <Kbd size="xs">{formatKeybindingDisplay(kbd)}</Kbd>}
     </Box>
   );
@@ -54,7 +62,9 @@ export function ThemePicker({ collapsed = false, kbd }: ThemePickerProps) {
       <Tooltip
         label={
           <Box className="postybirb__tooltip_content">
-            <span>{isDark ? <Trans>Light Mode</Trans> : <Trans>Dark Mode</Trans>}</span>
+            <span>
+              {isDark ? <Trans>Light Mode</Trans> : <Trans>Dark Mode</Trans>}
+            </span>
             {kbd && (
               <Kbd size="xs" className="postybirb__kbd_aligned">
                 {formatKeybindingDisplay(kbd)}

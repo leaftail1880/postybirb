@@ -19,7 +19,10 @@ import { UserSpecifiedWebsiteOptionsModule } from '../../../user-specified-websi
 import { WebsitesModule } from '../../../websites/websites.module';
 import { InvalidPostChainError } from '../../errors';
 import { PostEventRepository } from './post-event.repository';
-import { PostRecordFactory, ResumeContext } from './post-record-factory.service';
+import {
+  PostRecordFactory,
+  ResumeContext,
+} from './post-record-factory.service';
 
 describe('PostRecordFactory', () => {
   let module: TestingModule;
@@ -106,12 +109,20 @@ describe('PostRecordFactory', () => {
       const submissionId = await createSubmission();
 
       // Create origin NEW record first
-      const originRecord = await factory.create(submissionId, PostRecordResumeMode.NEW);
-      
-      // Mark it as FAILED so CONTINUE is valid
-      await postRecordRepository.update(originRecord.id, { state: PostRecordState.FAILED });
+      const originRecord = await factory.create(
+        submissionId,
+        PostRecordResumeMode.NEW,
+      );
 
-      const continueRecord = await factory.create(submissionId, PostRecordResumeMode.CONTINUE);
+      // Mark it as FAILED so CONTINUE is valid
+      await postRecordRepository.update(originRecord.id, {
+        state: PostRecordState.FAILED,
+      });
+
+      const continueRecord = await factory.create(
+        submissionId,
+        PostRecordResumeMode.CONTINUE,
+      );
 
       expect(continueRecord.resumeMode).toBe(PostRecordResumeMode.CONTINUE);
       expect(continueRecord.originPostRecordId).toBe(originRecord.id);
@@ -121,12 +132,20 @@ describe('PostRecordFactory', () => {
       const submissionId = await createSubmission();
 
       // Create origin NEW record first
-      const originRecord = await factory.create(submissionId, PostRecordResumeMode.NEW);
-      
-      // Mark it as FAILED so CONTINUE_RETRY is valid
-      await postRecordRepository.update(originRecord.id, { state: PostRecordState.FAILED });
+      const originRecord = await factory.create(
+        submissionId,
+        PostRecordResumeMode.NEW,
+      );
 
-      const retryRecord = await factory.create(submissionId, PostRecordResumeMode.CONTINUE_RETRY);
+      // Mark it as FAILED so CONTINUE_RETRY is valid
+      await postRecordRepository.update(originRecord.id, {
+        state: PostRecordState.FAILED,
+      });
+
+      const retryRecord = await factory.create(
+        submissionId,
+        PostRecordResumeMode.CONTINUE_RETRY,
+      );
 
       expect(retryRecord.resumeMode).toBe(PostRecordResumeMode.CONTINUE_RETRY);
       expect(retryRecord.originPostRecordId).toBe(originRecord.id);
@@ -166,8 +185,13 @@ describe('PostRecordFactory', () => {
       const submissionId = await createSubmission();
 
       // Create origin NEW record and mark it DONE (closed chain)
-      const originRecord = await factory.create(submissionId, PostRecordResumeMode.NEW);
-      await postRecordRepository.update(originRecord.id, { state: PostRecordState.DONE });
+      const originRecord = await factory.create(
+        submissionId,
+        PostRecordResumeMode.NEW,
+      );
+      await postRecordRepository.update(originRecord.id, {
+        state: PostRecordState.DONE,
+      });
 
       await expect(
         factory.create(submissionId, PostRecordResumeMode.CONTINUE),
@@ -185,15 +209,28 @@ describe('PostRecordFactory', () => {
       const submissionId = await createSubmission();
 
       // Create first NEW record and mark it DONE
-      const oldOrigin = await factory.create(submissionId, PostRecordResumeMode.NEW);
-      await postRecordRepository.update(oldOrigin.id, { state: PostRecordState.DONE });
+      const oldOrigin = await factory.create(
+        submissionId,
+        PostRecordResumeMode.NEW,
+      );
+      await postRecordRepository.update(oldOrigin.id, {
+        state: PostRecordState.DONE,
+      });
 
       // Create second NEW record (new chain)
-      const newOrigin = await factory.create(submissionId, PostRecordResumeMode.NEW);
-      await postRecordRepository.update(newOrigin.id, { state: PostRecordState.FAILED });
+      const newOrigin = await factory.create(
+        submissionId,
+        PostRecordResumeMode.NEW,
+      );
+      await postRecordRepository.update(newOrigin.id, {
+        state: PostRecordState.FAILED,
+      });
 
       // CONTINUE should chain to the newer origin
-      const continueRecord = await factory.create(submissionId, PostRecordResumeMode.CONTINUE);
+      const continueRecord = await factory.create(
+        submissionId,
+        PostRecordResumeMode.CONTINUE,
+      );
 
       expect(continueRecord.originPostRecordId).toBe(newOrigin.id);
       expect(continueRecord.originPostRecordId).not.toBe(oldOrigin.id);
@@ -267,7 +304,10 @@ describe('PostRecordFactory', () => {
       });
 
       // Creating a NEW record should succeed (no PENDING/RUNNING blocking)
-      const record = await factory.create(submissionId, PostRecordResumeMode.NEW);
+      const record = await factory.create(
+        submissionId,
+        PostRecordResumeMode.NEW,
+      );
       expect(record).toBeDefined();
       expect(record.state).toBe(PostRecordState.PENDING);
     });
@@ -300,12 +340,12 @@ describe('PostRecordFactory', () => {
         eventType,
         ...additionalData,
       };
-      
+
       // Only add accountId if provided
       if (accountId) {
         eventData.accountId = accountId as EntityId;
       }
-      
+
       return postEventRepository.insert(eventData);
     }
 
@@ -359,7 +399,7 @@ describe('PostRecordFactory', () => {
       const submissionId = await createSubmission();
       const account1 = await createAccount('account-1');
       const account2 = await createAccount('account-2');
-      
+
       // Create origin NEW record
       const originRecord = await createPostRecordWithState(
         submissionId,
@@ -392,7 +432,7 @@ describe('PostRecordFactory', () => {
     it('should aggregate posted files in CONTINUE mode', async () => {
       const submissionId = await createSubmission();
       const account1 = await createAccount('account-1');
-      
+
       // Create origin NEW record
       const originRecord = await createPostRecordWithState(
         submissionId,
@@ -425,7 +465,7 @@ describe('PostRecordFactory', () => {
     it('should NOT aggregate posted files in CONTINUE_RETRY mode', async () => {
       const submissionId = await createSubmission();
       const account1 = await createAccount('account-1');
-      
+
       // Create origin NEW record
       const originRecord = await createPostRecordWithState(
         submissionId,
@@ -433,14 +473,9 @@ describe('PostRecordFactory', () => {
         PostRecordResumeMode.NEW,
       );
 
-      await addEvent(
-        originRecord.id,
-        PostEventType.FILE_POSTED,
-        account1,
-        {
-          fileId: 'file-1' as EntityId,
-        },
-      );
+      await addEvent(originRecord.id, PostEventType.FILE_POSTED, account1, {
+        fileId: 'file-1' as EntityId,
+      });
 
       const context = await factory.buildResumeContext(
         submissionId,
@@ -454,7 +489,7 @@ describe('PostRecordFactory', () => {
     it('should aggregate source URLs from FILE_POSTED events', async () => {
       const submissionId = await createSubmission();
       const account1 = await createAccount('account-1');
-      
+
       // Create origin NEW record
       const originRecord = await createPostRecordWithState(
         submissionId,
@@ -462,14 +497,9 @@ describe('PostRecordFactory', () => {
         PostRecordResumeMode.NEW,
       );
 
-      await addEvent(
-        originRecord.id,
-        PostEventType.FILE_POSTED,
-        account1,
-        {
-          sourceUrl: 'https://example.com/post1',
-        },
-      );
+      await addEvent(originRecord.id, PostEventType.FILE_POSTED, account1, {
+        sourceUrl: 'https://example.com/post1',
+      });
 
       const context = await factory.buildResumeContext(
         submissionId,
@@ -485,7 +515,7 @@ describe('PostRecordFactory', () => {
     it('should aggregate source URLs from MESSAGE_POSTED events', async () => {
       const submissionId = await createSubmission();
       const account1 = await createAccount('account-1');
-      
+
       // Create origin NEW record
       const originRecord = await createPostRecordWithState(
         submissionId,
@@ -493,14 +523,9 @@ describe('PostRecordFactory', () => {
         PostRecordResumeMode.NEW,
       );
 
-      await addEvent(
-        originRecord.id,
-        PostEventType.MESSAGE_POSTED,
-        account1,
-        {
-          sourceUrl: 'https://example.com/message1',
-        },
-      );
+      await addEvent(originRecord.id, PostEventType.MESSAGE_POSTED, account1, {
+        sourceUrl: 'https://example.com/message1',
+      });
 
       const context = await factory.buildResumeContext(
         submissionId,
@@ -884,8 +909,16 @@ describe('PostRecordFactory', () => {
       );
 
       // Add events that occurred before crash
-      await addEvent(runningRecord.id, PostEventType.POST_ATTEMPT_COMPLETED, account1);
-      await addEvent(runningRecord.id, PostEventType.POST_ATTEMPT_COMPLETED, account2);
+      await addEvent(
+        runningRecord.id,
+        PostEventType.POST_ATTEMPT_COMPLETED,
+        account1,
+      );
+      await addEvent(
+        runningRecord.id,
+        PostEventType.POST_ATTEMPT_COMPLETED,
+        account2,
+      );
       await addEvent(runningRecord.id, PostEventType.FILE_POSTED, account1, {
         fileId: 'crash-file-1' as EntityId,
         sourceUrl: 'https://example.com/crash-1',
@@ -930,7 +963,11 @@ describe('PostRecordFactory', () => {
         originRecord.id,
       );
 
-      await addEvent(failedRecord.id, PostEventType.POST_ATTEMPT_COMPLETED, account1);
+      await addEvent(
+        failedRecord.id,
+        PostEventType.POST_ATTEMPT_COMPLETED,
+        account1,
+      );
 
       // NEW mode with a FAILED record should return empty context
       const context = await factory.buildResumeContext(
@@ -963,7 +1000,11 @@ describe('PostRecordFactory', () => {
         originRecord.id,
       );
 
-      await addEvent(runningRecord.id, PostEventType.POST_ATTEMPT_COMPLETED, account1);
+      await addEvent(
+        runningRecord.id,
+        PostEventType.POST_ATTEMPT_COMPLETED,
+        account1,
+      );
       await addEvent(runningRecord.id, PostEventType.FILE_POSTED, account1, {
         fileId: 'continue-crash-file-1' as EntityId,
       });
@@ -995,7 +1036,11 @@ describe('PostRecordFactory', () => {
         PostRecordState.FAILED,
         PostRecordResumeMode.NEW,
       );
-      await addEvent(originRecord.id, PostEventType.POST_ATTEMPT_COMPLETED, account1);
+      await addEvent(
+        originRecord.id,
+        PostEventType.POST_ATTEMPT_COMPLETED,
+        account1,
+      );
       await addEvent(originRecord.id, PostEventType.FILE_POSTED, account1, {
         fileId: 'prior-file-1' as EntityId,
       });
@@ -1007,7 +1052,11 @@ describe('PostRecordFactory', () => {
         PostRecordResumeMode.CONTINUE,
         originRecord.id,
       );
-      await addEvent(runningRecord.id, PostEventType.POST_ATTEMPT_COMPLETED, account2);
+      await addEvent(
+        runningRecord.id,
+        PostEventType.POST_ATTEMPT_COMPLETED,
+        account2,
+      );
       await addEvent(runningRecord.id, PostEventType.FILE_POSTED, account2, {
         fileId: 'current-file-1' as EntityId,
       });
@@ -1025,8 +1074,16 @@ describe('PostRecordFactory', () => {
 
       // Should include posted files from both records
       expect(context.postedFilesByAccount.size).toBe(2);
-      expect(context.postedFilesByAccount.get(account1)?.has('prior-file-1' as EntityId)).toBe(true);
-      expect(context.postedFilesByAccount.get(account2)?.has('current-file-1' as EntityId)).toBe(true);
+      expect(
+        context.postedFilesByAccount
+          .get(account1)
+          ?.has('prior-file-1' as EntityId),
+      ).toBe(true);
+      expect(
+        context.postedFilesByAccount
+          .get(account2)
+          ?.has('current-file-1' as EntityId),
+      ).toBe(true);
     });
 
     it('should preserve source URLs from RUNNING record in crash recovery', async () => {

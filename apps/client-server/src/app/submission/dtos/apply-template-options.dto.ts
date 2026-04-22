@@ -2,11 +2,11 @@ import { ApiProperty } from '@nestjs/swagger';
 import { SubmissionId } from '@postybirb/types';
 import { Type } from 'class-transformer';
 import {
-    IsArray,
-    IsBoolean,
-    IsNotEmpty,
-    IsString,
-    ValidateNested,
+  IsArray,
+  IsBoolean,
+  IsNotEmpty,
+  IsString,
+  ValidateNested,
 } from 'class-validator';
 import { TemplateOptionDto } from './template-option.dto';
 

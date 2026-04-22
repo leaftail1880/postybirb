@@ -878,8 +878,7 @@ export class SubmissionService
     // Exclude templates and multi-submissions from ordering
     const allOfType = (await this.repository.findAll())
       .filter(
-        (s) =>
-          s.type === moving.type && !s.isTemplate && !s.isMultiSubmission,
+        (s) => s.type === moving.type && !s.isTemplate && !s.isMultiSubmission,
       )
       .sort((a, b) => a.order - b.order);
 

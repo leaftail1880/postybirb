@@ -6,7 +6,10 @@
 import { Trans } from '@lingui/react/macro';
 import { ActionIcon, Box, Group, Tooltip } from '@mantine/core';
 import { IconHelp } from '@tabler/icons-react';
-import { useActiveDrawer, useDrawerActions } from '../../../stores/ui/drawer-store';
+import {
+  useActiveDrawer,
+  useDrawerActions,
+} from '../../../stores/ui/drawer-store';
 import { useTourActions } from '../../../stores/ui/tour-store';
 import { SCHEDULE_TOUR_ID } from '../../onboarding-tour/tours/schedule-tour';
 import { SectionDrawer } from '../section-drawer';
@@ -31,7 +34,11 @@ export function ScheduleDrawer() {
         <Group gap="xs">
           <Trans>Schedule</Trans>
           <Tooltip label={<Trans>Schedule Tour</Trans>}>
-            <ActionIcon variant="subtle" size="xs" onClick={() => startTour(SCHEDULE_TOUR_ID)}>
+            <ActionIcon
+              variant="subtle"
+              size="xs"
+              onClick={() => startTour(SCHEDULE_TOUR_ID)}
+            >
               <IconHelp size={16} />
             </ActionIcon>
           </Tooltip>
@@ -46,12 +53,18 @@ export function ScheduleDrawer() {
         className="schedule-drawer-content"
       >
         {/* Unscheduled submissions list */}
-        <Box data-tour-id="schedule-submissions" className="schedule-drawer-sidebar">
+        <Box
+          data-tour-id="schedule-submissions"
+          className="schedule-drawer-sidebar"
+        >
           <SubmissionList />
         </Box>
 
         {/* Calendar view */}
-        <Box data-tour-id="schedule-calendar" className="schedule-drawer-calendar">
+        <Box
+          data-tour-id="schedule-calendar"
+          className="schedule-drawer-calendar"
+        >
           <ScheduleCalendar />
         </Box>
       </Group>

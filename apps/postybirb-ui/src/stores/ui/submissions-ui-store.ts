@@ -159,7 +159,11 @@ export const useSubmissionsUIStore = create<SubmissionsUIStore>()(
       storage: createJSONStorage(() => localStorage),
       // Don't persist search queries — they should reset between sessions
       partialize: (state) => {
-        const { fileSubmissionsSearchQuery, messageSubmissionsSearchQuery, ...rest } = state;
+        const {
+          fileSubmissionsSearchQuery,
+          messageSubmissionsSearchQuery,
+          ...rest
+        } = state;
         return rest;
       },
     },

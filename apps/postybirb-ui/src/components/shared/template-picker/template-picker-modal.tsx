@@ -214,7 +214,10 @@ export function TemplatePickerModal({
         const data = { ...opt.data };
 
         // Strip description if not overriding or if empty (check array length)
-        if (!overrideDescription || !data.description?.description?.content?.length) {
+        if (
+          !overrideDescription ||
+          !data.description?.description?.content?.length
+        ) {
           delete data.description;
         }
 
@@ -442,7 +445,14 @@ export function TemplatePickerModal({
       </Box>
 
       {/* Middle - Scrollable Content */}
-      <Box style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+      <Box
+        style={{
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: 0,
+        }}
+      >
         {selected.length > 0 && (
           <Box style={{ flexShrink: 0 }}>
             <Divider

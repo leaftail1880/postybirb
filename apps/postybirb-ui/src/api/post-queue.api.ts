@@ -1,4 +1,8 @@
-import { IPostQueueActionDto, PostQueueRecordDto, PostRecordResumeMode } from '@postybirb/types';
+import {
+  IPostQueueActionDto,
+  PostQueueRecordDto,
+  PostRecordResumeMode,
+} from '@postybirb/types';
 import { BaseApi } from './base.api';
 
 class PostQueueApi extends BaseApi<
@@ -17,7 +21,7 @@ class PostQueueApi extends BaseApi<
   dequeue(submissionIds: string[]) {
     return this.client.post('dequeue', { submissionIds });
   }
-  
+
   getAll() {
     return this.client.get<PostQueueRecordDto[]>();
   }

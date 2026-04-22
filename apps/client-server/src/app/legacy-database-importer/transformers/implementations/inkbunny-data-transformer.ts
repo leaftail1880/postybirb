@@ -18,9 +18,10 @@ interface LegacyInkbunnyAccountData {
  * - sid → sid
  * - folders: undefined (will be fetched on login)
  */
-export class InkbunnyDataTransformer
-  implements LegacyWebsiteDataTransformer<LegacyInkbunnyAccountData, InkbunnyAccountData>
-{
+export class InkbunnyDataTransformer implements LegacyWebsiteDataTransformer<
+  LegacyInkbunnyAccountData,
+  InkbunnyAccountData
+> {
   transform(legacyData: LegacyInkbunnyAccountData): InkbunnyAccountData | null {
     if (!legacyData) {
       return null;

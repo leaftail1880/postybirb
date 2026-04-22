@@ -5,15 +5,15 @@
 
 import { Trans } from '@lingui/react/macro';
 import {
-    Badge,
-    Box,
-    Checkbox,
-    Collapse,
-    Group,
-    Paper,
-    Stack,
-    Text,
-    UnstyledButton,
+  Badge,
+  Box,
+  Checkbox,
+  Collapse,
+  Group,
+  Paper,
+  Stack,
+  Text,
+  UnstyledButton,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import type { AccountId } from '@postybirb/types';
@@ -22,8 +22,8 @@ import { IconChevronDown, IconChevronRight } from '@tabler/icons-react';
 import { useCallback, useMemo } from 'react';
 import { useAccounts } from '../../../stores/entity/account-store';
 import {
-    useFileWebsites,
-    useMessageWebsites,
+  useFileWebsites,
+  useMessageWebsites,
 } from '../../../stores/entity/website-store';
 import type { AccountRecord, WebsiteRecord } from '../../../stores/records';
 import './account-picker.css';
@@ -88,11 +88,7 @@ function WebsiteAccountGroup({
                 {selectedCount}
               </Badge>
             )}
-            <Badge
-              size="xs"
-              variant="light"
-
-            >
+            <Badge size="xs" variant="light">
               {loggedInCount}/{accounts.length}
             </Badge>
           </Group>

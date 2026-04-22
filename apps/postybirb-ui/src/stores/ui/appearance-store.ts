@@ -118,7 +118,8 @@ export const useAppearanceStore = create<AppearanceStore>()(
       // Actions
       setColorScheme: (colorScheme) => set({ colorScheme }),
       setPrimaryColor: (primaryColor) => set({ primaryColor }),
-      setSubmissionViewMode: (submissionViewMode) => set({ submissionViewMode }),
+      setSubmissionViewMode: (submissionViewMode) =>
+        set({ submissionViewMode }),
       toggleSubmissionViewMode: () =>
         set((state) => ({
           submissionViewMode:

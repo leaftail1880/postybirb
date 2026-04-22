@@ -1,15 +1,15 @@
 import { relations } from 'drizzle-orm';
 import {
-    AccountSchema,
-    DirectoryWatcherSchema,
-    FileBufferSchema,
-    PostQueueRecordSchema,
-    PostRecordSchema,
-    SubmissionFileSchema,
-    SubmissionSchema,
-    UserSpecifiedWebsiteOptionsSchema,
-    WebsiteDataSchema,
-    WebsiteOptionsSchema,
+  AccountSchema,
+  DirectoryWatcherSchema,
+  FileBufferSchema,
+  PostQueueRecordSchema,
+  PostRecordSchema,
+  SubmissionFileSchema,
+  SubmissionSchema,
+  UserSpecifiedWebsiteOptionsSchema,
+  WebsiteDataSchema,
+  WebsiteOptionsSchema,
 } from '../schemas';
 
 export const AccountRelations = relations(AccountSchema, ({ one, many }) => ({

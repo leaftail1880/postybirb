@@ -10,4 +10,3 @@ export { FilePreview, ThumbnailPreview } from './file-preview';
 export { SubmissionFileCard } from './submission-file-card';
 export { SubmissionFileManager } from './submission-file-manager';
 export { useSubmissionAccounts } from './use-submission-accounts';
-

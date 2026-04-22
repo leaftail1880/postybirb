@@ -11,7 +11,9 @@
 
 .postybirb__reorderable-item {
   cursor: default;
-  transition: box-shadow 150ms ease, transform 150ms ease;
+  transition:
+    box-shadow 150ms ease,
+    transform 150ms ease;
   overflow: hidden;
   max-width: 100%;
 }

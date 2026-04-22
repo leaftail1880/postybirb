@@ -83,8 +83,10 @@ export function useHoldToConfirm({
   return { progress, isHolding, startHold, stopHold };
 }
 
-export interface HoldToConfirmButtonProps
-  extends Omit<ActionIconProps, 'onMouseDown' | 'onMouseUp' | 'onMouseLeave'> {
+export interface HoldToConfirmButtonProps extends Omit<
+  ActionIconProps,
+  'onMouseDown' | 'onMouseUp' | 'onMouseLeave'
+> {
   /** Callback when hold is completed */
   onConfirm: () => void;
   /** Duration in ms to hold before confirming (default: 1000) */
@@ -128,7 +130,7 @@ export const HoldToConfirmButton = forwardRef<
         startHold();
       }
     },
-    [startHold]
+    [startHold],
   );
 
   const handleKeyUp = useCallback(
@@ -139,7 +141,7 @@ export const HoldToConfirmButton = forwardRef<
         stopHold();
       }
     },
-    [stopHold]
+    [stopHold],
   );
 
   return (

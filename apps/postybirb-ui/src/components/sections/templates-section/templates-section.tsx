@@ -4,43 +4,46 @@
 
 import { Trans, useLingui } from '@lingui/react/macro';
 import {
-    ActionIcon,
-    Box,
-    Button,
-    Divider,
-    Group,
-    Loader,
-    Modal,
-    ScrollArea,
-    SegmentedControl,
-    Stack,
-    Text,
-    TextInput,
-    ThemeIcon,
-    Tooltip,
+  ActionIcon,
+  Box,
+  Button,
+  Divider,
+  Group,
+  Loader,
+  Modal,
+  ScrollArea,
+  SegmentedControl,
+  Stack,
+  Text,
+  TextInput,
+  ThemeIcon,
+  Tooltip,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { SubmissionType } from '@postybirb/types';
 import {
-    IconFile,
-    IconHelp,
-    IconMessage,
-    IconPlus,
-    IconTemplate,
+  IconFile,
+  IconHelp,
+  IconMessage,
+  IconPlus,
+  IconTemplate,
 } from '@tabler/icons-react';
 import { useCallback, useMemo, useState } from 'react';
 import submissionApi from '../../../api/submission.api';
 import {
-    useSubmissionsLoading,
-    useTemplateSubmissions,
+  useSubmissionsLoading,
+  useTemplateSubmissions,
 } from '../../../stores/entity/submission-store';
 import { useNavigationStore } from '../../../stores/ui/navigation-store';
 import { useTemplatesFilter } from '../../../stores/ui/templates-ui-store';
 import { useTourActions } from '../../../stores/ui/tour-store';
-import { isTemplatesViewState, type ViewState } from '../../../types/view-state';
 import {
-    showErrorNotification,
-    showSuccessNotification,
+  isTemplatesViewState,
+  type ViewState,
+} from '../../../types/view-state';
+import {
+  showErrorNotification,
+  showSuccessNotification,
 } from '../../../utils/notifications';
 import { EmptyState } from '../../empty-state';
 import { TEMPLATES_TOUR_ID } from '../../onboarding-tour/tours/templates-tour';
@@ -88,7 +91,7 @@ export function TemplatesSection({ viewState }: TemplatesSectionProps) {
         });
       }
     },
-    [viewState, setViewState]
+    [viewState, setViewState],
   );
 
   // Handle creating a new template
@@ -119,7 +122,7 @@ export function TemplatesSection({ viewState }: TemplatesSectionProps) {
         handleCreateTemplate();
       }
     },
-    [handleCreateTemplate]
+    [handleCreateTemplate],
   );
 
   // Filter templates by type and search query
@@ -138,7 +141,7 @@ export function TemplatesSection({ viewState }: TemplatesSectionProps) {
 
         return true;
       }),
-    [templates, tabType, searchQuery]
+    [templates, tabType, searchQuery],
   );
 
   return (
@@ -235,7 +238,11 @@ export function TemplatesSection({ viewState }: TemplatesSectionProps) {
             data-autofocus
           />
           <Group justify="flex-end">
-            <Button variant="default" onClick={closeModal} disabled={isCreating}>
+            <Button
+              variant="default"
+              onClick={closeModal}
+              disabled={isCreating}
+            >
               <Trans>Cancel</Trans>
             </Button>
             <Button

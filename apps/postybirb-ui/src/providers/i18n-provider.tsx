@@ -70,7 +70,9 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
       <Loader />
       <div>Loading translations...</div>
       {tooLongLoading && (
-        <div>Loading takes too much time, please check the console for errors.</div>
+        <div>
+          Loading takes too much time, please check the console for errors.
+        </div>
       )}
     </Group>
   );

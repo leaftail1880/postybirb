@@ -1,15 +1,15 @@
 import {
-    BadRequestException,
-    Injectable,
-    OnModuleInit,
-    Optional,
+  BadRequestException,
+  Injectable,
+  OnModuleInit,
+  Optional,
 } from '@nestjs/common';
 import { SETTINGS_UPDATES } from '@postybirb/socket-events';
 import { EntityId, SettingsConstants } from '@postybirb/types';
 import {
-    StartupOptions,
-    getStartupOptions,
-    setStartupOptions,
+  StartupOptions,
+  getStartupOptions,
+  setStartupOptions,
 } from '@postybirb/utils/electron';
 import { eq } from 'drizzle-orm';
 import { PostyBirbService } from '../common/service/postybirb-service';
@@ -52,7 +52,11 @@ export class SettingsService
 
           // Recursively merge missing fields
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const mergeObjects = (target: any, source: any, path = ''): boolean => {
+          const mergeObjects = (
+            target: any,
+            source: any,
+            path = '',
+          ): boolean => {
             let changed = false;
 
             Object.keys(source).forEach((key) => {
@@ -225,7 +229,8 @@ export class SettingsService
         if (result === true) {
           return {
             success: true,
-            message: 'Connection successful! Host is reachable and password is correct.',
+            message:
+              'Connection successful! Host is reachable and password is correct.',
           };
         }
       }
@@ -245,7 +250,8 @@ export class SettingsService
         case 500:
           return {
             success: false,
-            message: 'Host server error. The remote host may not be configured properly.',
+            message:
+              'Host server error. The remote host may not be configured properly.',
           };
         default:
           return {
@@ -259,7 +265,8 @@ export class SettingsService
       if (error instanceof TypeError && error.message.includes('fetch')) {
         return {
           success: false,
-          message: 'Network error. Please check the host URL and ensure the host is running.',
+          message:
+            'Network error. Please check the host URL and ensure the host is running.',
         };
       }
 

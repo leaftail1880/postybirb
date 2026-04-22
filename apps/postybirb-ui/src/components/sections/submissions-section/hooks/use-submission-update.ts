@@ -10,9 +10,9 @@ import { useSubmissionStore } from '../../../../stores/entity/submission-store';
 import { useNavigationStore } from '../../../../stores/ui/navigation-store';
 import { type ViewState } from '../../../../types/view-state';
 import {
-    showDuplicateErrorNotification,
-    showErrorNotification,
-    showUpdateErrorNotification,
+  showDuplicateErrorNotification,
+  showErrorNotification,
+  showUpdateErrorNotification,
 } from '../../../../utils/notifications';
 import { isSubmissionsViewState } from '../types';
 

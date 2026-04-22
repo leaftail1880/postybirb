@@ -173,13 +173,15 @@ export function CronPicker({ value, onChange }: CronPickerProps) {
 
   // Helper to emit new cron from builder with updated field
   const emitBuilderChange = useCallback(
-    (updates: Partial<{
-      frequency: Frequency;
-      selectedDays: string[];
-      dayOfMonth: string;
-      hour: number;
-      minute: number;
-    }>) => {
+    (
+      updates: Partial<{
+        frequency: Frequency;
+        selectedDays: string[];
+        dayOfMonth: string;
+        hour: number;
+        minute: number;
+      }>,
+    ) => {
       const newFrequency = updates.frequency ?? parsed.frequency;
       const newSelectedDays = updates.selectedDays ?? parsed.selectedDays;
       const newDayOfMonth = updates.dayOfMonth ?? parsed.dayOfMonth;

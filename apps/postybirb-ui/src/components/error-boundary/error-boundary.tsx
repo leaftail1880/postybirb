@@ -6,15 +6,15 @@
 /* eslint-disable lingui/no-unlocalized-strings */
 import { Trans } from '@lingui/react/macro';
 import {
-    Alert,
-    Box,
-    Button,
-    Code,
-    Container,
-    ScrollArea,
-    Stack,
-    Text,
-    Title,
+  Alert,
+  Box,
+  Button,
+  Code,
+  Container,
+  ScrollArea,
+  Stack,
+  Text,
+  Title,
 } from '@mantine/core';
 import { IconAlertTriangle, IconRefresh } from '@tabler/icons-react';
 import { Component, ReactNode } from 'react';
@@ -69,7 +69,12 @@ function CopyableErrorDetails({
           <Text size="xs" fw={500}>
             <Trans>Error</Trans>:
           </Text>
-          <CopyToClipboard value={errorDetails} variant="button" size="xs" color="gray" />
+          <CopyToClipboard
+            value={errorDetails}
+            variant="button"
+            size="xs"
+            color="gray"
+          />
         </Box>
 
         <ScrollArea.Autosize mah={120}>

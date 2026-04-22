@@ -111,9 +111,7 @@ function convertStyles(styles: Record<string, any>): TipTapMark[] {
  * - link → text nodes with link mark added
  * - custom inline shortcuts → { type, attrs }
  */
-function convertInlineContent(
-  inlineNode: BNInlineContent,
-): TipTapNode[] {
+function convertInlineContent(inlineNode: BNInlineContent): TipTapNode[] {
   if (inlineNode.type === 'text') {
     const bn = inlineNode as BNTextNode;
     const node: TipTapNode = { type: 'text', text: bn.text };
@@ -130,7 +128,11 @@ function convertInlineContent(
     const bn = inlineNode as BNLinkNode;
     const linkMark: TipTapMark = {
       type: 'link',
-      attrs: { href: bn.href, target: '_blank', rel: 'noopener noreferrer nofollow' },
+      attrs: {
+        href: bn.href,
+        target: '_blank',
+        rel: 'noopener noreferrer nofollow',
+      },
     };
     // Each text node inside the link gets the link mark added
     return (bn.content || []).flatMap((textNode) => {
@@ -167,7 +169,7 @@ function convertInlineContent(
  * Convert a single BlockNote block to a TipTap node.
  */
 function convertBlock(block: BNBlock): TipTapNode[] {
-  const {type} = block;
+  const { type } = block;
   const props = block.props || {};
 
   // Map BlockNote block types to TipTap node types
@@ -304,9 +306,7 @@ function convertBlock(block: BNBlock): TipTapNode[] {
         block.content.length > 0
       ) {
         node.content = block.content
-          .filter(
-            (c): c is BNTextNode => c.type === 'text' && 'text' in c,
-          )
+          .filter((c): c is BNTextNode => c.type === 'text' && 'text' in c)
           .map((c) => ({ type: 'text', text: c.text }));
       }
       return [node];

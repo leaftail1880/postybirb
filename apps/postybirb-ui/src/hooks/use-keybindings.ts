@@ -152,6 +152,6 @@ export function useKeybindings(): void {
       unsubscribe();
       window.removeEventListener('mouseup', handleMouseButton);
     };
-  // canGoBack/canGoForward read from refs — not needed as dependencies
+    // canGoBack/canGoForward read from refs — not needed as dependencies
   }, [setViewState, toggleDrawer, goBack, goForward]);
 }

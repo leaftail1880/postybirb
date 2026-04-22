@@ -156,7 +156,9 @@ export const sectionPanelConfigs: Record<SectionId, SectionPanelConfig> = {
 /**
  * Get section panel config for a given view state.
  */
-export function getSectionPanelConfig(viewState: ViewState): SectionPanelConfig {
+export function getSectionPanelConfig(
+  viewState: ViewState,
+): SectionPanelConfig {
   return sectionPanelConfigs[viewState.type];
 }
 
@@ -186,7 +188,7 @@ export function createHomeViewState(): HomeViewState {
  * Create a default accounts view state.
  */
 export function createAccountsViewState(
-  overrides?: Partial<AccountsParams>
+  overrides?: Partial<AccountsParams>,
 ): AccountsViewState {
   return {
     type: 'accounts',
@@ -202,7 +204,7 @@ export function createAccountsViewState(
  * Create a default file submissions view state.
  */
 export function createFileSubmissionsViewState(
-  overrides?: Partial<FileSubmissionsParams>
+  overrides?: Partial<FileSubmissionsParams>,
 ): FileSubmissionsViewState {
   return {
     type: 'file-submissions',
@@ -219,7 +221,7 @@ export function createFileSubmissionsViewState(
  * Create a default message submissions view state.
  */
 export function createMessageSubmissionsViewState(
-  overrides?: Partial<MessageSubmissionsParams>
+  overrides?: Partial<MessageSubmissionsParams>,
 ): MessageSubmissionsViewState {
   return {
     type: 'message-submissions',
@@ -236,7 +238,7 @@ export function createMessageSubmissionsViewState(
  * Create a default templates view state.
  */
 export function createTemplatesViewState(
-  overrides?: Partial<TemplatesParams>
+  overrides?: Partial<TemplatesParams>,
 ): TemplatesViewState {
   return {
     type: 'templates',
@@ -262,7 +264,7 @@ export function isHomeViewState(state: ViewState): state is HomeViewState {
  * Check if view state is accounts.
  */
 export function isAccountsViewState(
-  state: ViewState
+  state: ViewState,
 ): state is AccountsViewState {
   return state.type === 'accounts';
 }
@@ -271,7 +273,7 @@ export function isAccountsViewState(
  * Check if view state is file submissions.
  */
 export function isFileSubmissionsViewState(
-  state: ViewState
+  state: ViewState,
 ): state is FileSubmissionsViewState {
   return state.type === 'file-submissions';
 }
@@ -280,7 +282,7 @@ export function isFileSubmissionsViewState(
  * Check if view state is message submissions.
  */
 export function isMessageSubmissionsViewState(
-  state: ViewState
+  state: ViewState,
 ): state is MessageSubmissionsViewState {
   return state.type === 'message-submissions';
 }
@@ -289,7 +291,7 @@ export function isMessageSubmissionsViewState(
  * Check if view state is templates.
  */
 export function isTemplatesViewState(
-  state: ViewState
+  state: ViewState,
 ): state is TemplatesViewState {
   return state.type === 'templates';
 }
@@ -308,15 +310,15 @@ export function hasSectionPanel(state: ViewState): boolean {
 /**
  * Type-safe navigation helper object.
  * Provides convenient methods for creating view states with parameters.
- * 
+ *
  * @example
  * ```ts
  * // Navigate to home
  * setViewState(navigateTo.home());
- * 
+ *
  * // Navigate to accounts with selection
  * setViewState(navigateTo.accounts('account-123'));
- * 
+ *
  * // Navigate to file submissions with multiple selections
  * setViewState(navigateTo.fileSubmissions(['id1', 'id2'], 'multi'));
  * ```
