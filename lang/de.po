@@ -1702,7 +1702,7 @@ msgid "Gore"
 msgstr ""
 
 #: apps/postybirb-ui/src/components/language-picker/language-picker.tsx
-msgid "Hahahaah"
+msgid "Haha obvious change"
 msgstr ""
 
 #: libs/translations/src/lib/field-translations.ts
