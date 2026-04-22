@@ -1,6 +1,6 @@
 name: i18n & Formatting CI
 on:
-  pull-request:
+  pull_request: 
 
 permissions:
   contents: write
