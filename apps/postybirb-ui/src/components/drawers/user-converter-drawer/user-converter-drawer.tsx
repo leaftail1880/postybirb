@@ -7,20 +7,23 @@ import { t } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import { ActionIcon, Group, Tooltip } from '@mantine/core';
 import type {
-    ICreateUserConverterDto,
-    IUpdateUserConverterDto,
+  ICreateUserConverterDto,
+  IUpdateUserConverterDto,
 } from '@postybirb/types';
 import { IconHelp } from '@tabler/icons-react';
 import { useMemo } from 'react';
 import userConvertersApi from '../../../api/user-converters.api';
 import { useUserConverters } from '../../../stores/entity/user-converter-store';
 import type { UserConverterRecord } from '../../../stores/records';
-import { useActiveDrawer, useDrawerActions } from '../../../stores/ui/drawer-store';
+import {
+  useActiveDrawer,
+  useDrawerActions,
+} from '../../../stores/ui/drawer-store';
 import { useTourActions } from '../../../stores/ui/tour-store';
 import { USER_CONVERTERS_TOUR_ID } from '../../onboarding-tour/tours/user-converters-tour';
 import {
-    ConverterDrawer,
-    type ConverterDrawerConfig,
+  ConverterDrawer,
+  type ConverterDrawerConfig,
 } from '../converter-drawer';
 
 // Drawer identifier
@@ -56,7 +59,11 @@ function UserConverterDrawerContent({ onClose }: { onClose: () => void }) {
         <Group gap="xs">
           <Trans>User Converters</Trans>
           <Tooltip label={<Trans>User Converters Tour</Trans>}>
-            <ActionIcon variant="subtle" size="xs" onClick={() => startTour(USER_CONVERTERS_TOUR_ID)}>
+            <ActionIcon
+              variant="subtle"
+              size="xs"
+              onClick={() => startTour(USER_CONVERTERS_TOUR_ID)}
+            >
               <IconHelp size={16} />
             </ActionIcon>
           </Tooltip>
@@ -72,16 +79,16 @@ function UserConverterDrawerContent({ onClose }: { onClose: () => void }) {
       },
       createUpdateDto: (
         username: string,
-        convertTo: Record<string, string>
+        convertTo: Record<string, string>,
       ): IUpdateUserConverterDto => ({ username, convertTo }),
       createCreateDto: (
         username: string,
-        convertTo: Record<string, string>
+        convertTo: Record<string, string>,
       ): ICreateUserConverterDto => ({ username, convertTo }),
       entityName: t`user converter`,
       duplicateError: t`A user converter with this username already exists`,
     }),
-    [startTour]
+    [startTour],
   );
 
   return (

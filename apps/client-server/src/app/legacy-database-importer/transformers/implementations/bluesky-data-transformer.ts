@@ -17,9 +17,10 @@ interface LegacyBlueskyAccountData {
  * - username → username
  * - password → password
  */
-export class BlueskyDataTransformer
-  implements LegacyWebsiteDataTransformer<LegacyBlueskyAccountData, BlueskyAccountData>
-{
+export class BlueskyDataTransformer implements LegacyWebsiteDataTransformer<
+  LegacyBlueskyAccountData,
+  BlueskyAccountData
+> {
   transform(legacyData: LegacyBlueskyAccountData): BlueskyAccountData | null {
     if (!legacyData) {
       return null;

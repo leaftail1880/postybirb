@@ -4,13 +4,13 @@
 
 import { SubmissionType } from '@postybirb/types';
 import type {
-    FileSubmissionsViewState,
-    MessageSubmissionsViewState,
-    ViewState,
+  FileSubmissionsViewState,
+  MessageSubmissionsViewState,
+  ViewState,
 } from '../../../types/view-state';
 import {
-    isFileSubmissionsViewState,
-    isMessageSubmissionsViewState,
+  isFileSubmissionsViewState,
+  isMessageSubmissionsViewState,
 } from '../../../types/view-state';
 
 /**
@@ -42,7 +42,7 @@ export type SubmissionsViewState =
  * Use this to narrow ViewState to SubmissionsViewState.
  */
 export function isSubmissionsViewState(
-  viewState: ViewState
+  viewState: ViewState,
 ): viewState is SubmissionsViewState {
   return (
     isFileSubmissionsViewState(viewState) ||

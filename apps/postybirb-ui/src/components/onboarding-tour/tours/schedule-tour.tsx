@@ -22,9 +22,9 @@ export function useScheduleTourSteps(): Step[] {
       content: (
         <Text size="sm" c="dimmed">
           <Trans>
-            The schedule view lets you plan when your submissions will be posted.
-            Drag submissions onto the calendar to schedule them, or click
-            existing events to manage them.
+            The schedule view lets you plan when your submissions will be
+            posted. Drag submissions onto the calendar to schedule them, or
+            click existing events to manage them.
           </Trans>
         </Text>
       ),

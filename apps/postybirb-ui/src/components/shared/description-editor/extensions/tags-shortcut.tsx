@@ -25,7 +25,11 @@ function TagsShortcutView({
   );
 
   return (
-    <NodeViewWrapper as="span" className="system-shortcut-container" style={{ verticalAlign: 'text-bottom' }}>
+    <NodeViewWrapper
+      as="span"
+      className="system-shortcut-container"
+      style={{ verticalAlign: 'text-bottom' }}
+    >
       <Badge
         variant="light"
         radius="xl"
@@ -35,9 +39,14 @@ function TagsShortcutView({
         contentEditable={false}
         styles={{ label: { display: 'flex', alignItems: 'center', gap: 4 } }}
       >
-        <span style={{ fontWeight: 600 }}><Trans>Tags</Trans></span>
+        <span style={{ fontWeight: 600 }}>
+          <Trans>Tags</Trans>
+        </span>
         <IconArrowRight size={12} style={{ opacity: 0.5 }} />
-        <WebsiteOnlySelector only={node.attrs.only} onOnlyChange={handleOnlyChange} />
+        <WebsiteOnlySelector
+          only={node.attrs.only}
+          onOnlyChange={handleOnlyChange}
+        />
       </Badge>
     </NodeViewWrapper>
   );
@@ -64,7 +73,10 @@ export const TagsShortcutExtension = Node.create({
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['span', mergeAttributes(HTMLAttributes, { 'data-type': 'tagsShortcut' })];
+    return [
+      'span',
+      mergeAttributes(HTMLAttributes, { 'data-type': 'tagsShortcut' }),
+    ];
   },
 
   addNodeView() {
@@ -77,7 +89,8 @@ export const TagsShortcutExtension = Node.create({
       insertTagsShortcut:
         (attrs?: { only?: string }) =>
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ({ commands }: { commands: any }) => commands.insertContent([
+        ({ commands }: { commands: any }) =>
+          commands.insertContent([
             { type: this.name, attrs: { only: attrs?.only ?? '' } },
             { type: 'text', text: ' ' },
           ]),

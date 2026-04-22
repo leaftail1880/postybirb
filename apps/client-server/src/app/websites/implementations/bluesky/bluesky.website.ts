@@ -29,7 +29,10 @@ import {
   SimpleValidationResult,
   SubmissionRating,
 } from '@postybirb/types';
-import { calculateImageResize, getFileTypeFromMimeType } from '@postybirb/utils/file-type';
+import {
+  calculateImageResize,
+  getFileTypeFromMimeType,
+} from '@postybirb/utils/file-type';
 import { v4 } from 'uuid';
 import { BaseConverter } from '../../../post-parsers/models/description-node/converters/base-converter';
 import { PlainTextConverter } from '../../../post-parsers/models/description-node/converters/plaintext-converter';

@@ -4,9 +4,5 @@
  */
 
 export { AccountsContent, AccountsSection } from './accounts-section';
-export {
-    SubmissionsContent,
-    SubmissionsSection
-} from './submissions-section';
+export { SubmissionsContent, SubmissionsSection } from './submissions-section';
 export { TemplatesContent, TemplatesSection } from './templates-section';
-

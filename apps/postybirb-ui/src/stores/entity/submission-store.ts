@@ -3,7 +3,12 @@
  */
 
 import { SUBMISSION_UPDATES } from '@postybirb/socket-events';
-import type { ISubmissionDto, SubmissionId, SubmissionType, ValidationResult } from '@postybirb/types';
+import type {
+  ISubmissionDto,
+  SubmissionId,
+  SubmissionType,
+  ValidationResult,
+} from '@postybirb/types';
 import { useShallow } from 'zustand/react/shallow';
 import submissionApi from '../../api/submission.api';
 import { createEntityStore, type EntityStore } from '../create-entity-store';
@@ -49,19 +54,30 @@ function maxUpdatedAt(items: { updatedAt: string }[]): string {
  * - PostQueueRecord presence / id
  * - Validation fingerprint (JSON of errors/warnings arrays, excluding account)
  */
-function submissionHasChanged(existing: SubmissionRecord, dto: ISubmissionDto): boolean {
+function submissionHasChanged(
+  existing: SubmissionRecord,
+  dto: ISubmissionDto,
+): boolean {
   // 1. Root entity changed
   if (dto.updatedAt !== existing.updatedAt.toISOString()) return true;
 
   // 2. Files changed
   const dtoFiles = dto.files ?? [];
   if (dtoFiles.length !== existing.files.length) return true;
-  if (dtoFiles.length > 0 && maxUpdatedAt(dtoFiles) !== maxUpdatedAt(existing.files)) return true;
+  if (
+    dtoFiles.length > 0 &&
+    maxUpdatedAt(dtoFiles) !== maxUpdatedAt(existing.files)
+  )
+    return true;
 
   // 3. Options changed
   const dtoOptions = dto.options ?? [];
   if (dtoOptions.length !== existing.options.length) return true;
-  if (dtoOptions.length > 0 && maxUpdatedAt(dtoOptions) !== maxUpdatedAt(existing.options)) return true;
+  if (
+    dtoOptions.length > 0 &&
+    maxUpdatedAt(dtoOptions) !== maxUpdatedAt(existing.options)
+  )
+    return true;
 
   // 4. Posts changed (count, timestamps, or state)
   const dtoPosts = dto.posts ?? [];
@@ -70,7 +86,8 @@ function submissionHasChanged(existing: SubmissionRecord, dto: ISubmissionDto): 
     if (maxUpdatedAt(dtoPosts) !== maxUpdatedAt(existing.posts)) return true;
     // Check if any post state changed (e.g. RUNNING → DONE)
     const dtoLatestState = dtoPosts[dtoPosts.length - 1]?.state;
-    const existingLatestState = existing.posts[existing.posts.length - 1]?.state;
+    const existingLatestState =
+      existing.posts[existing.posts.length - 1]?.state;
     if (dtoLatestState !== existingLatestState) return true;
   }
 
@@ -83,7 +100,10 @@ function submissionHasChanged(existing: SubmissionRecord, dto: ISubmissionDto): 
   const dtoValidations = dto.validations ?? [];
   if (dtoValidations.length !== existing.validations.length) return true;
   for (let i = 0; i < dtoValidations.length; i++) {
-    if (validationFingerprint(dtoValidations[i]) !== validationFingerprint(existing.validations[i])) {
+    if (
+      validationFingerprint(dtoValidations[i]) !==
+      validationFingerprint(existing.validations[i])
+    ) {
       return true;
     }
   }
@@ -102,16 +122,15 @@ const fetchSubmissions = async (): Promise<ISubmissionDto[]> => {
 /**
  * Submission store instance.
  */
-export const useSubmissionStore = createEntityStore<ISubmissionDto, SubmissionRecord>(
-  fetchSubmissions,
-  (dto) => new SubmissionRecord(dto),
-  {
-    // eslint-disable-next-line lingui/no-unlocalized-strings
-    storeName: 'SubmissionStore',
-    websocketEvent: SUBMISSION_UPDATES,
-    hasChanged: submissionHasChanged,
-  }
-);
+export const useSubmissionStore = createEntityStore<
+  ISubmissionDto,
+  SubmissionRecord
+>(fetchSubmissions, (dto) => new SubmissionRecord(dto), {
+  // eslint-disable-next-line lingui/no-unlocalized-strings
+  storeName: 'SubmissionStore',
+  websocketEvent: SUBMISSION_UPDATES,
+  hasChanged: submissionHasChanged,
+});
 
 /**
  * Type alias for the submission store.
@@ -130,14 +149,18 @@ export type SubmissionStore = SubmissionStoreState;
  * Uses useShallow for stable reference when items haven't changed.
  */
 export const useSubmissions = (): SubmissionRecord[] =>
-  useSubmissionStore(useShallow((state: SubmissionStoreState) => state.records));
+  useSubmissionStore(
+    useShallow((state: SubmissionStoreState) => state.records),
+  );
 
 /**
  * Select submissions map for O(1) lookup.
  * Uses useShallow for stable reference when items haven't changed.
  */
 export const useSubmissionsMap = () =>
-  useSubmissionStore(useShallow((state: SubmissionStoreState) => state.recordsMap));
+  useSubmissionStore(
+    useShallow((state: SubmissionStoreState) => state.recordsMap),
+  );
 
 /**
  * Select submission loading state.
@@ -149,7 +172,7 @@ export const useSubmissionsLoading = () =>
       error: state.error,
       isLoading: state.loadingState === 'loading',
       isLoaded: state.loadingState === 'loaded',
-    }))
+    })),
   );
 
 /**
@@ -162,11 +185,13 @@ export const useSubmission = (id: SubmissionId) =>
  * Select submissions by type (FILE or MESSAGE).
  * Uses useShallow for stable reference when items haven't changed.
  */
-export const useSubmissionsByType = (type: SubmissionType): SubmissionRecord[] =>
+export const useSubmissionsByType = (
+  type: SubmissionType,
+): SubmissionRecord[] =>
   useSubmissionStore(
     useShallow((state: SubmissionStoreState) =>
-      state.records.filter((s) => s.type === type)
-    )
+      state.records.filter((s) => s.type === type),
+    ),
   );
 
 /**
@@ -176,8 +201,8 @@ export const useSubmissionsByType = (type: SubmissionType): SubmissionRecord[] =
 export const useRegularSubmissions = (): SubmissionRecord[] =>
   useSubmissionStore(
     useShallow((state: SubmissionStoreState) =>
-      state.records.filter((s) => !s.isTemplate && !s.isMultiSubmission)
-    )
+      state.records.filter((s) => !s.isTemplate && !s.isMultiSubmission),
+    ),
   );
 
 /**
@@ -187,8 +212,8 @@ export const useRegularSubmissions = (): SubmissionRecord[] =>
 export const useTemplateSubmissions = (): SubmissionRecord[] =>
   useSubmissionStore(
     useShallow((state: SubmissionStoreState) =>
-      state.records.filter((s) => s.isTemplate)
-    )
+      state.records.filter((s) => s.isTemplate),
+    ),
   );
 
 /**
@@ -198,8 +223,8 @@ export const useTemplateSubmissions = (): SubmissionRecord[] =>
 export const useScheduledSubmissions = (): SubmissionRecord[] =>
   useSubmissionStore(
     useShallow((state: SubmissionStoreState) =>
-      state.records.filter((s) => s.isScheduled && !s.isArchived)
-    )
+      state.records.filter((s) => s.isScheduled && !s.isArchived),
+    ),
   );
 
 /**
@@ -213,9 +238,9 @@ export const useSubmissionsWithSchedule = (): SubmissionRecord[] =>
         (s) =>
           !s.isArchived &&
           !s.isTemplate &&
-          (s.schedule.scheduledFor || s.schedule.cron)
-      )
-    )
+          (s.schedule.scheduledFor || s.schedule.cron),
+      ),
+    ),
   );
 
 /**
@@ -231,9 +256,9 @@ export const useUnscheduledSubmissions = (): SubmissionRecord[] =>
           !s.isTemplate &&
           !s.isMultiSubmission &&
           !s.schedule.scheduledFor &&
-          !s.schedule.cron
-      )
-    )
+          !s.schedule.cron,
+      ),
+    ),
   );
 
 /**
@@ -243,8 +268,8 @@ export const useUnscheduledSubmissions = (): SubmissionRecord[] =>
 export const useArchivedSubmissions = (): SubmissionRecord[] =>
   useSubmissionStore(
     useShallow((state: SubmissionStoreState) =>
-      state.records.filter((s) => s.isArchived)
-    )
+      state.records.filter((s) => s.isArchived),
+    ),
   );
 
 /**
@@ -254,8 +279,8 @@ export const useArchivedSubmissions = (): SubmissionRecord[] =>
 export const useQueuedSubmissions = (): SubmissionRecord[] =>
   useSubmissionStore(
     useShallow((state: SubmissionStoreState) =>
-      state.records.filter((s) => s.isQueued)
-    )
+      state.records.filter((s) => s.isQueued),
+    ),
   );
 
 /**
@@ -265,8 +290,8 @@ export const useQueuedSubmissions = (): SubmissionRecord[] =>
 export const useSubmissionsWithErrors = (): SubmissionRecord[] =>
   useSubmissionStore(
     useShallow((state: SubmissionStoreState) =>
-      state.records.filter((s) => s.hasErrors)
-    )
+      state.records.filter((s) => s.hasErrors),
+    ),
   );
 
 /**
@@ -280,5 +305,5 @@ export const useSubmissionActions = () =>
       setRecords: state.setRecords,
       getById: state.getById,
       clear: state.clear,
-    }))
+    })),
   );

@@ -1,8 +1,7 @@
 export {
-    AccountsProvider,
-    useAccountsContext,
-    useAccountsContextOptional,
-    type AccountsContextValue,
-    type AccountsProviderProps
+  AccountsProvider,
+  useAccountsContext,
+  useAccountsContextOptional,
+  type AccountsContextValue,
+  type AccountsProviderProps,
 } from './accounts-context';
-

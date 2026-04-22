@@ -30,4 +30,3 @@ export {
   showWarningNotification,
 } from './notifications';
 export { openUrl } from './open-url';
-

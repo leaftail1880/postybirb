@@ -5,31 +5,34 @@
 
 import { Trans } from '@lingui/react/macro';
 import {
-    ActionIcon,
-    Box,
-    Center,
-    Container,
-    Divider,
-    Group,
-    ScrollArea,
-    Stack,
-    Text,
-    Title,
+  ActionIcon,
+  Box,
+  Center,
+  Container,
+  Divider,
+  Group,
+  ScrollArea,
+  Stack,
+  Text,
+  Title,
 } from '@mantine/core';
 import type { SubmissionId } from '@postybirb/types';
 import {
-    IconInbox,
-    IconLayoutSidebarLeftCollapse,
-    IconLayoutSidebarLeftExpand,
+  IconInbox,
+  IconLayoutSidebarLeftCollapse,
+  IconLayoutSidebarLeftExpand,
 } from '@tabler/icons-react';
 import { useMemo } from 'react';
 import { useSubmissionsMap } from '../../../stores/entity/submission-store';
 import type { SubmissionRecord } from '../../../stores/records';
 import {
-    useSubNavVisible,
-    useToggleSectionPanel,
+  useSubNavVisible,
+  useToggleSectionPanel,
 } from '../../../stores/ui/submissions-ui-store';
-import { isTemplatesViewState, type ViewState } from '../../../types/view-state';
+import {
+  isTemplatesViewState,
+  type ViewState,
+} from '../../../types/view-state';
 import { SubmissionEditCard } from '../submissions-section/submission-edit-card';
 
 interface TemplatesContentProps {

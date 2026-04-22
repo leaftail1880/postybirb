@@ -1,10 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Insert } from '@postybirb/database';
-import {
-  AccountId,
-  EntityId,
-  PostEventType,
-} from '@postybirb/types';
+import { AccountId, EntityId, PostEventType } from '@postybirb/types';
 import { PostEvent } from '../../../drizzle/models';
 import { PostyBirbDatabase } from '../../../drizzle/postybirb-database/postybirb-database';
 

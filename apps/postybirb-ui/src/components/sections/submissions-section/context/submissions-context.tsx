@@ -5,9 +5,9 @@
  */
 
 import {
-    ISubmissionScheduleInfo,
-    IWebsiteFormFields,
-    SubmissionType,
+  ISubmissionScheduleInfo,
+  IWebsiteFormFields,
+  SubmissionType,
 } from '@postybirb/types';
 import { createContext, ReactNode, useContext, useMemo } from 'react';
 
@@ -28,7 +28,11 @@ export interface SubmissionsDataValue {
  */
 export interface SubmissionsActionsValue {
   /** Handle selection of a submission (supports shift+click for range, ctrl+click toggle, checkbox toggle) */
-  onSelect: (id: string, event: React.MouseEvent | React.KeyboardEvent, isCheckbox?: boolean) => void;
+  onSelect: (
+    id: string,
+    event: React.MouseEvent | React.KeyboardEvent,
+    isCheckbox?: boolean,
+  ) => void;
   /** Delete a submission */
   onDelete: (id: string) => void;
   /** Duplicate a submission */
@@ -44,17 +48,22 @@ export interface SubmissionsActionsValue {
   /** View submission history (optional - only available when drawer is configured) */
   onViewHistory?: (id: string) => void;
   /** Update submission's default option fields */
-  onDefaultOptionChange: (id: string, update: Partial<IWebsiteFormFields>) => void;
+  onDefaultOptionChange: (
+    id: string,
+    update: Partial<IWebsiteFormFields>,
+  ) => void;
   /** Update submission's schedule */
   onScheduleChange: (
     id: string,
     schedule: ISubmissionScheduleInfo,
-    isScheduled: boolean
+    isScheduled: boolean,
   ) => void;
 }
 
 const SubmissionsDataContext = createContext<SubmissionsDataValue | null>(null);
-const SubmissionsActionsContext = createContext<SubmissionsActionsValue | null>(null);
+const SubmissionsActionsContext = createContext<SubmissionsActionsValue | null>(
+  null,
+);
 
 /**
  * Hook to access submission data (selectedIds, submissionType, isDragEnabled).
@@ -66,7 +75,7 @@ export function useSubmissionsData(): SubmissionsDataValue {
   if (!context) {
     throw new Error(
       // eslint-disable-next-line lingui/no-unlocalized-strings
-      'useSubmissionsData must be used within a SubmissionsProvider'
+      'useSubmissionsData must be used within a SubmissionsProvider',
     );
   }
   return context;
@@ -82,7 +91,7 @@ export function useSubmissionsActions(): SubmissionsActionsValue {
   if (!context) {
     throw new Error(
       // eslint-disable-next-line lingui/no-unlocalized-strings
-      'useSubmissionsActions must be used within a SubmissionsProvider'
+      'useSubmissionsActions must be used within a SubmissionsProvider',
     );
   }
   return context;
@@ -97,7 +106,11 @@ export interface SubmissionsProviderProps {
   /** Whether drag-to-reorder is enabled */
   isDragEnabled: boolean;
   /** Selection handler */
-  onSelect: (id: string, event: React.MouseEvent | React.KeyboardEvent, isCheckbox?: boolean) => void;
+  onSelect: (
+    id: string,
+    event: React.MouseEvent | React.KeyboardEvent,
+    isCheckbox?: boolean,
+  ) => void;
   /** Delete handler */
   onDelete: (id: string) => void;
   /** Duplicate handler */
@@ -113,12 +126,15 @@ export interface SubmissionsProviderProps {
   /** View history handler (optional) */
   onViewHistory?: (id: string) => void;
   /** Default option change handler */
-  onDefaultOptionChange: (id: string, update: Partial<IWebsiteFormFields>) => void;
+  onDefaultOptionChange: (
+    id: string,
+    update: Partial<IWebsiteFormFields>,
+  ) => void;
   /** Schedule change handler */
   onScheduleChange: (
     id: string,
     schedule: ISubmissionScheduleInfo,
-    isScheduled: boolean
+    isScheduled: boolean,
   ) => void;
 }
 
@@ -148,7 +164,7 @@ export function SubmissionsProvider({
       selectedIds,
       isDragEnabled,
     }),
-    [submissionType, selectedIds, isDragEnabled]
+    [submissionType, selectedIds, isDragEnabled],
   );
 
   const actionsValue = useMemo<SubmissionsActionsValue>(
@@ -175,7 +191,7 @@ export function SubmissionsProvider({
       onViewHistory,
       onDefaultOptionChange,
       onScheduleChange,
-    ]
+    ],
   );
 
   return (

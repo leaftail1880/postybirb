@@ -4,27 +4,27 @@
 
 import { Trans } from '@lingui/react/macro';
 import {
-    ActionIcon,
-    Card,
-    Flex,
-    Group,
-    Image,
-    Text,
-    TextInput,
-    ThemeIcon,
-    Tooltip,
+  ActionIcon,
+  Card,
+  Flex,
+  Group,
+  Image,
+  Text,
+  TextInput,
+  ThemeIcon,
+  Tooltip,
 } from '@mantine/core';
 import { FileWithPath } from '@mantine/dropzone';
 import { FileType } from '@postybirb/types';
 import { getFileType } from '@postybirb/utils/file-type';
 import {
-    IconDeviceAudioTape,
-    IconPencil,
-    IconPhoto,
-    IconPhotoEdit,
-    IconTextCaption,
-    IconTrash,
-    IconVideo,
+  IconDeviceAudioTape,
+  IconPencil,
+  IconPhoto,
+  IconPhotoEdit,
+  IconTextCaption,
+  IconTrash,
+  IconVideo,
 } from '@tabler/icons-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import './file-submission-modal.css';

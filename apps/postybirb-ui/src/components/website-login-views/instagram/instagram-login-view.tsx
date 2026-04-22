@@ -14,10 +14,7 @@ import {
   TextInput,
   Title,
 } from '@mantine/core';
-import {
-  InstagramAccountData,
-  InstagramOAuthRoutes,
-} from '@postybirb/types';
+import { InstagramAccountData, InstagramOAuthRoutes } from '@postybirb/types';
 import {
   IconArrowLeft,
   IconCheck,
@@ -236,9 +233,7 @@ export default function InstagramLoginView(
               </Group>
               {tokenExpiry && (
                 <Text size="xs" c="dimmed">
-                  <Trans>
-                    Token expires: {formatExpiry(tokenExpiry)}
-                  </Trans>
+                  <Trans>Token expires: {formatExpiry(tokenExpiry)}</Trans>
                 </Text>
               )}
               <Button
@@ -383,10 +378,11 @@ export default function InstagramLoginView(
                         setIsGettingAuthUrl(true);
                         codeHandledRef.current = false;
                         websitesApi
-                          .performOAuthStep<
-                            InstagramOAuthRoutes,
-                            'getAuthUrl'
-                          >(id, 'getAuthUrl', {})
+                          .performOAuthStep<InstagramOAuthRoutes, 'getAuthUrl'>(
+                            id,
+                            'getAuthUrl',
+                            {},
+                          )
                           .then((res) => {
                             if (res.success && res.url) {
                               setAuthUrl(res.url);

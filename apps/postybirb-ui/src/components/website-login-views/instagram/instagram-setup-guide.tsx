@@ -1,23 +1,23 @@
 /* eslint-disable lingui/no-unlocalized-strings */
 import {
-    Accordion,
-    Badge,
-    Checkbox,
-    Code,
-    Divider,
-    Group,
-    Paper,
-    Progress,
-    Stack,
-    Text,
-    ThemeIcon,
-    Title,
+  Accordion,
+  Badge,
+  Checkbox,
+  Code,
+  Divider,
+  Group,
+  Paper,
+  Progress,
+  Stack,
+  Text,
+  ThemeIcon,
+  Title,
 } from '@mantine/core';
 import {
-    IconCircleCheck,
-    IconKey,
-    IconSettings,
-    IconUserCheck,
+  IconCircleCheck,
+  IconKey,
+  IconSettings,
+  IconUserCheck,
 } from '@tabler/icons-react';
 import { useCallback, useMemo, useState } from 'react';
 import { ExternalLink } from '../../shared/external-link';

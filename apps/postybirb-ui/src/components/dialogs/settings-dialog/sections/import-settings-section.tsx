@@ -3,7 +3,15 @@
  */
 
 import { Trans } from '@lingui/react/macro';
-import { Alert, Box, Button, Checkbox, Stack, Text, Title } from '@mantine/core';
+import {
+  Alert,
+  Box,
+  Button,
+  Checkbox,
+  Stack,
+  Text,
+  Title,
+} from '@mantine/core';
 import { IconCheck, IconInfoCircle, IconX } from '@tabler/icons-react';
 import { useState } from 'react';
 import legacyImporterApi from '../../../../api/legacy-database-importer.api';

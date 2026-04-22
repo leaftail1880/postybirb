@@ -34,7 +34,10 @@ interface LanguagePickerProps {
 /**
  * Renders a language picker as a NavLink-style component with a popup menu.
  */
-export function LanguagePicker({ collapsed = false, kbd }: LanguagePickerProps) {
+export function LanguagePicker({
+  collapsed = false,
+  kbd,
+}: LanguagePickerProps) {
   const { t } = useLingui();
   const { language: locale, setLanguage: setLocale } = useLanguageActions();
   const [opened, { toggle, close }] = useDisclosure(false);
@@ -51,7 +54,7 @@ export function LanguagePicker({ collapsed = false, kbd }: LanguagePickerProps) 
     </Box>
   );
 
-  obviousTypeErrorForCi
+  obviousTypeErrorForCi;
 
   const navLinkContent = (
     <MantineNavLink
@@ -78,7 +81,9 @@ export function LanguagePicker({ collapsed = false, kbd }: LanguagePickerProps) 
           <Tooltip
             label={
               <Box className="postybirb__tooltip_content">
-                <span><Trans>Language</Trans></span>
+                <span>
+                  <Trans>Language</Trans>
+                </span>
                 {kbd && (
                   <Kbd size="xs" className="postybirb__kbd_aligned">
                     {formatKeybindingDisplay(kbd)}

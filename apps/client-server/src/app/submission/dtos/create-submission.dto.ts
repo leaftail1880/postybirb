@@ -1,18 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
-    ICreateSubmissionDefaultOptions,
-    ICreateSubmissionDto,
-    IFileMetadata,
-    SubmissionType,
+  ICreateSubmissionDefaultOptions,
+  ICreateSubmissionDto,
+  IFileMetadata,
+  SubmissionType,
 } from '@postybirb/types';
 import { Transform } from 'class-transformer';
 import {
-    IsArray,
-    IsBoolean,
-    IsEnum,
-    IsObject,
-    IsOptional,
-    IsString,
+  IsArray,
+  IsBoolean,
+  IsEnum,
+  IsObject,
+  IsOptional,
+  IsString,
 } from 'class-validator';
 
 /**
@@ -56,10 +56,14 @@ export class CreateSubmissionDto implements ICreateSubmissionDto {
   @Transform(({ value }) => value === 'true' || value === true)
   isMultiSubmission?: boolean;
 
-  @ApiProperty({ description: 'Default options to apply to all created submissions' })
+  @ApiProperty({
+    description: 'Default options to apply to all created submissions',
+  })
   @IsOptional()
   @IsObject()
-  @Transform(({ value }) => parseJsonField<ICreateSubmissionDefaultOptions>(value))
+  @Transform(({ value }) =>
+    parseJsonField<ICreateSubmissionDefaultOptions>(value),
+  )
   defaultOptions?: ICreateSubmissionDefaultOptions;
 
   @ApiProperty({ description: 'Per-file metadata for batch uploads' })

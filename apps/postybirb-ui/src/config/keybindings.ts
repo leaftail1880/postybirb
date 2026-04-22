@@ -53,4 +53,3 @@ export function toTinykeysFormat(keybinding: string): string {
  * Re-export formatKeybindingDisplay for convenience
  */
 export { formatKeybindingDisplay };
-

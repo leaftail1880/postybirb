@@ -16,9 +16,9 @@ export interface LegacyWebsiteDataTransformer<TLegacy = any, TModern = any> {
  * Base transformer that passes through data unchanged.
  * Useful for websites where the data structure is already compatible.
  */
-export class PassthroughTransformer<T = Record<string, unknown>>
-  implements LegacyWebsiteDataTransformer<T, T>
-{
+export class PassthroughTransformer<
+  T = Record<string, unknown>,
+> implements LegacyWebsiteDataTransformer<T, T> {
   transform(legacyData: T): T | null {
     if (!legacyData) {
       return null;

@@ -94,11 +94,7 @@ export function AppearanceSettingsSection() {
             const colorValue = theme.colors[color][6];
 
             return (
-              <Tooltip
-                key={color}
-                label={capitalize(color)}
-                withArrow
-              >
+              <Tooltip key={color} label={capitalize(color)} withArrow>
                 <Box
                   onClick={() => setPrimaryColor(color as MantinePrimaryColor)}
                   style={{

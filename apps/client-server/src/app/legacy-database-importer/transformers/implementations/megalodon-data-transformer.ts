@@ -24,10 +24,13 @@ interface LegacyMegalodonAccountData {
  * preserved from legacy. The token should still work, but users
  * may need to re-authenticate if the token expires.
  */
-export class MegalodonDataTransformer
-  implements LegacyWebsiteDataTransformer<LegacyMegalodonAccountData, MegalodonAccountData>
-{
-  transform(legacyData: LegacyMegalodonAccountData): MegalodonAccountData | null {
+export class MegalodonDataTransformer implements LegacyWebsiteDataTransformer<
+  LegacyMegalodonAccountData,
+  MegalodonAccountData
+> {
+  transform(
+    legacyData: LegacyMegalodonAccountData,
+  ): MegalodonAccountData | null {
     if (!legacyData) {
       return null;
     }

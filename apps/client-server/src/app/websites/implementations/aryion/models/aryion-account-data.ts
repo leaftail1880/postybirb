@@ -1,5 +1,5 @@
-import { SelectOption } from '@postybirb/form-builder'; 
+import { SelectOption } from '@postybirb/form-builder';
 
-export type AryionAccountData = { 
+export type AryionAccountData = {
   folders: SelectOption[];
-}
+};

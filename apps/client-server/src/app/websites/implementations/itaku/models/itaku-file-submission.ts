@@ -1,16 +1,16 @@
 import {
-    BooleanField,
-    DescriptionField,
-    RatingField,
-    SelectField,
-    TagField,
-    TextField,
+  BooleanField,
+  DescriptionField,
+  RatingField,
+  SelectField,
+  TagField,
+  TextField,
 } from '@postybirb/form-builder';
 import {
-    DescriptionType,
-    DescriptionValue,
-    SubmissionRating,
-    TagValue,
+  DescriptionType,
+  DescriptionValue,
+  SubmissionRating,
+  TagValue,
 } from '@postybirb/types';
 import { BaseWebsiteOptions } from '../../../models/base-website-options';
 import { ItakuAccountData } from './itaku-account-data';

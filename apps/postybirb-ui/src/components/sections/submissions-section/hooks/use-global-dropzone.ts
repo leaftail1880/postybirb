@@ -40,7 +40,7 @@ export function useGlobalDropzone({
   // Check if the drag event contains files
   const hasFiles = useCallback((event: DragEvent): boolean => {
     if (!event.dataTransfer) return false;
-    
+
     // Check types for files
     const { types } = event.dataTransfer;
     return types.includes('Files') || types.includes('application/x-moz-file');
@@ -50,86 +50,86 @@ export function useGlobalDropzone({
   const isWithinTarget = useCallback(
     (event: DragEvent): boolean => {
       if (!targetElementId) return true; // If no target specified, allow anywhere
-      
+
       const targetElement = document.getElementById(targetElementId);
       if (!targetElement) return false;
-      
+
       const eventTarget = event.target as Node;
       return targetElement.contains(eventTarget);
     },
-    [targetElementId]
+    [targetElementId],
   );
 
   // Handle drag enter
   const handleDragEnter = useCallback(
     (event: DragEvent) => {
       if (!enabled || isOpen) return;
-      
+
       event.preventDefault();
-      
+
       if (hasFiles(event) && isWithinTarget(event)) {
         setDragCounter((c) => c + 1);
         setIsDraggingOver(true);
-        
+
         // Open the modal when files are dragged in
         onOpen();
       }
     },
-    [enabled, isOpen, hasFiles, isWithinTarget, onOpen]
+    [enabled, isOpen, hasFiles, isWithinTarget, onOpen],
   );
 
   // Handle drag leave
   const handleDragLeave = useCallback(
     (event: DragEvent) => {
       if (!enabled) return;
-      
+
       event.preventDefault();
-      
+
       // Check if drag is leaving the window (relatedTarget is null when leaving window)
       const isLeavingWindow = event.relatedTarget === null;
-      
+
       setDragCounter((c) => {
         const newCount = c - 1;
         if (newCount <= 0) {
           setIsDraggingOver(false);
-          
+
           // Close modal if drag leaves the window entirely
           if (isLeavingWindow && isOpen && onClose) {
             onClose();
           }
-          
+
           return 0;
         }
         return newCount;
       });
     },
-    [enabled, isOpen, onClose]
+    [enabled, isOpen, onClose],
   );
 
   // Handle drag over (required to allow drop)
   const handleDragOver = useCallback(
     (event: DragEvent) => {
       if (!enabled) return;
-      
+
       event.preventDefault();
       if (event.dataTransfer) {
         // eslint-disable-next-line no-param-reassign
         event.dataTransfer.dropEffect = 'copy';
       }
     },
-    [enabled]
+    [enabled],
   );
 
   // Handle drop - reset state (the modal's dropzone handles the actual files)
   const handleDrop = useCallback(
     (event: DragEvent) => {
       if (!enabled) return;
-      
+
       // Don't prevent default here - let the modal's dropzone handle it
       setDragCounter(0);
       setIsDraggingOver(false);
     },
-    [enabled]
+    [enabled],
   );
 
   // Add global event listeners

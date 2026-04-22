@@ -71,7 +71,7 @@ export function SubmissionsSection({
   // Get selected submission records for bulk actions
   const selectedSubmissions = useMemo(
     () => orderedSubmissions.filter((s) => selectedIds.includes(s.id)),
-    [orderedSubmissions, selectedIds]
+    [orderedSubmissions, selectedIds],
   );
 
   // Action handlers

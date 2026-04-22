@@ -127,7 +127,8 @@ describe('LegacyWebsiteDataConverter', () => {
   it('should import e621 WebsiteData with API key', async () => {
     await runConverters();
 
-    const websiteData = await websiteDataRepository.findById('e621-test-id-007');
+    const websiteData =
+      await websiteDataRepository.findById('e621-test-id-007');
     expect(websiteData).toBeDefined();
     expect(websiteData!.data).toEqual({
       username: 'e621_user',
@@ -138,9 +139,8 @@ describe('LegacyWebsiteDataConverter', () => {
   it('should import Custom webhook with fixed typo', async () => {
     await runConverters();
 
-    const websiteData = await websiteDataRepository.findById(
-      'custom-test-id-009',
-    );
+    const websiteData =
+      await websiteDataRepository.findById('custom-test-id-009');
     expect(websiteData).toBeDefined();
     // Verify typo fix: thumbnaiField -> thumbnailField
     expect(websiteData!.data).toMatchObject({

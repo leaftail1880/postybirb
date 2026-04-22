@@ -5,16 +5,19 @@
 
 import { Trans, useLingui } from '@lingui/react/macro';
 import {
-    ActionIcon,
-    Box,
-    Group,
-    SegmentedControl,
-    Stack,
-    Text,
-    Tooltip,
+  ActionIcon,
+  Box,
+  Group,
+  SegmentedControl,
+  Stack,
+  Text,
+  Tooltip,
 } from '@mantine/core';
 import { IconHelp } from '@tabler/icons-react';
-import { AccountLoginFilter, useAccountsFilter } from '../../../stores/ui/accounts-ui-store';
+import {
+  AccountLoginFilter,
+  useAccountsFilter,
+} from '../../../stores/ui/accounts-ui-store';
 import { useTourActions } from '../../../stores/ui/tour-store';
 import { ACCOUNTS_TOUR_ID } from '../../onboarding-tour/tours/accounts-tour';
 import { SearchInput } from '../../shared';

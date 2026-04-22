@@ -1,13 +1,13 @@
 import { Trans } from '@lingui/react/macro';
 import {
-    Alert,
-    Button,
-    Paper,
-    Stack,
-    Stepper,
-    Text,
-    TextInput,
-    Title,
+  Alert,
+  Button,
+  Paper,
+  Stack,
+  Stepper,
+  Text,
+  TextInput,
+  Title,
 } from '@mantine/core';
 import { MisskeyAccountData, MisskeyOAuthRoutes } from '@postybirb/types';
 import { IconCheck, IconExternalLink, IconServer } from '@tabler/icons-react';
@@ -78,8 +78,9 @@ export default function MisskeyLoginView(
                   <Text size="sm">
                     <Trans>
                       Enter the URL of your Misskey instance (e.g.,
-                      &quot;misskey.io&quot; or &quot;sharkey.example.com&quot;).
-                      Works with Misskey and compatible forks.
+                      &quot;misskey.io&quot; or
+                      &quot;sharkey.example.com&quot;). Works with Misskey and
+                      compatible forks.
                     </Trans>
                   </Text>
                 </Alert>
@@ -101,10 +102,11 @@ export default function MisskeyLoginView(
                       .replace(/^https?:\/\//, '')
                       .replace(/\/$/, '');
                     websitesApi
-                      .performOAuthStep<
-                        MisskeyOAuthRoutes,
-                        'generateAuthUrl'
-                      >(id, 'generateAuthUrl', { instanceUrl: cleanedUrl })
+                      .performOAuthStep<MisskeyOAuthRoutes, 'generateAuthUrl'>(
+                        id,
+                        'generateAuthUrl',
+                        { instanceUrl: cleanedUrl },
+                      )
                       .then((res) => {
                         if (res.success && res.authUrl) {
                           setAuthUrl(res.authUrl);
@@ -132,9 +134,7 @@ export default function MisskeyLoginView(
 
           <Stepper.Step
             label={<Trans>Authorize</Trans>}
-            description={
-              <Trans>Authorize PostyBirb on your instance</Trans>
-            }
+            description={<Trans>Authorize PostyBirb on your instance</Trans>}
             icon={<IconExternalLink size={16} />}
           >
             <Paper p="md" withBorder>

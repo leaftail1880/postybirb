@@ -29,7 +29,7 @@ export function getDefaultTitle(filename: string): string {
  */
 export async function generateThumbnail(
   file: Blob,
-  maxSize = 100
+  maxSize = 100,
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     const img = new window.Image();
@@ -74,7 +74,7 @@ export async function generateThumbnail(
           }
         },
         'image/jpeg',
-        0.7 // 70% quality is plenty for thumbnails
+        0.7, // 70% quality is plenty for thumbnails
       );
     };
 

@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
 import * as rtf from '@iarna/rtf-to-html';
 import {
-    BadRequestException,
-    Injectable,
-    NotFoundException,
+  BadRequestException,
+  Injectable,
+  NotFoundException,
 } from '@nestjs/common';
 import { Logger } from '@postybirb/logger';
 import { EntityId, FileType } from '@postybirb/types';
@@ -17,8 +17,8 @@ import { promisify } from 'util';
 import { SubmissionFile } from '../../drizzle/models';
 import { PostyBirbDatabase } from '../../drizzle/postybirb-database/postybirb-database';
 import {
-    TransactionContext,
-    withTransactionContext,
+  TransactionContext,
+  withTransactionContext,
 } from '../../drizzle/transaction-context';
 import { SharpInstanceManager } from '../../image-processing/sharp-instance-manager';
 import { MulterFileInfo } from '../models/multer-file-info';
@@ -253,9 +253,7 @@ export class UpdateFileService {
       altText = buf.toString();
     }
 
-    return altText
-      ? Buffer.from(altText)
-      : null;
+    return altText ? Buffer.from(altText) : null;
   }
 
   private async updateImageFileProps(
@@ -264,10 +262,7 @@ export class UpdateFileService {
     file: MulterFileInfo,
     buf: Buffer,
   ) {
-    const { width, height } = await this.getImageDetails(
-      file,
-      buf,
-    );
+    const { width, height } = await this.getImageDetails(file, buf);
     await ctx
       .getDb()
       .update(this.fileRepository.schemaEntity)
@@ -312,10 +307,7 @@ export class UpdateFileService {
         width: thumbnailWidth,
         height: thumbnailHeight,
         mimeType: thumbnailMimeType,
-      } = await this.createFileService.generateThumbnail(
-        buf,
-        file.mimetype,
-      );
+      } = await this.createFileService.generateThumbnail(buf, file.mimetype);
 
       const fileNameWithoutExt = parse(file.filename).name;
       const thumbnailExt = thumbnailMimeType === 'image/jpeg' ? 'jpg' : 'png';
@@ -347,7 +339,8 @@ export class UpdateFileService {
    */
   private async getImageDetails(file: MulterFileInfo, buf: Buffer) {
     if (ImageUtil.isImage(file.mimetype, false)) {
-      const { height, width } = await this.sharpInstanceManager.getMetadata(buf);
+      const { height, width } =
+        await this.sharpInstanceManager.getMetadata(buf);
       return { buffer: buf, width, height };
     }
 

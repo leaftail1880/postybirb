@@ -4,10 +4,10 @@ import { Insert, Select } from '@postybirb/database';
 import { removeFile } from '@postybirb/fs';
 import { Logger } from '@postybirb/logger';
 import {
-    DefaultSubmissionFileMetadata,
-    FileSubmission,
-    FileType,
-    IFileBuffer,
+  DefaultSubmissionFileMetadata,
+  FileSubmission,
+  FileType,
+  IFileBuffer,
 } from '@postybirb/types';
 import { getFileType } from '@postybirb/utils/file-type';
 import { eq } from 'drizzle-orm';
@@ -19,14 +19,14 @@ import { promisify } from 'util';
 import { v4 as uuid } from 'uuid';
 
 import {
-    FileBuffer,
-    fromDatabaseRecord,
-    SubmissionFile,
+  FileBuffer,
+  fromDatabaseRecord,
+  SubmissionFile,
 } from '../../drizzle/models';
 import { PostyBirbDatabase } from '../../drizzle/postybirb-database/postybirb-database';
 import {
-    TransactionContext,
-    withTransactionContext,
+  TransactionContext,
+  withTransactionContext,
 } from '../../drizzle/transaction-context';
 import { SharpInstanceManager } from '../../image-processing/sharp-instance-manager';
 import { MulterFileInfo } from '../models/multer-file-info';
@@ -48,9 +48,7 @@ export class CreateFileService {
     'SubmissionFileSchema',
   );
 
-  constructor(
-    private readonly sharpInstanceManager: SharpInstanceManager,
-  ) {}
+  constructor(private readonly sharpInstanceManager: SharpInstanceManager) {}
 
   /**
    * Creates file entity and stores it.
@@ -245,12 +243,7 @@ export class CreateFileService {
     buf: Buffer,
   ): Promise<SubmissionFile> {
     const meta = await this.sharpInstanceManager.getMetadata(buf);
-    const thumbnail = await this.createFileThumbnail(
-      ctx,
-      entity,
-      file,
-      buf,
-    );
+    const thumbnail = await this.createFileThumbnail(ctx, entity, file, buf);
     const update: Select<typeof this.fileRepository.schemaEntity> = {
       width: meta.width ?? 0,
       height: meta.height ?? 0,
@@ -297,10 +290,7 @@ export class CreateFileService {
       height,
       width,
       mimeType: thumbnailMimeType,
-    } = await this.generateThumbnail(
-      imageBuffer,
-      file.mimetype,
-    );
+    } = await this.generateThumbnail(imageBuffer, file.mimetype);
 
     // Remove existing extension and add the appropriate thumbnail extension
     const fileNameWithoutExt = parse(fileEntity.fileName).name;

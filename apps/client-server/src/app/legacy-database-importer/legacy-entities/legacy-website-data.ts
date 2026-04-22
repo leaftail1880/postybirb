@@ -2,7 +2,10 @@ import { Logger } from '@postybirb/logger';
 import { IWebsiteData } from '@postybirb/types';
 import { WebsiteDataTransformerRegistry } from '../transformers';
 import { WebsiteNameMapper } from '../utils/website-name-mapper';
-import { LegacyConverterEntity, MinimalEntity } from './legacy-converter-entity';
+import {
+  LegacyConverterEntity,
+  MinimalEntity,
+} from './legacy-converter-entity';
 
 const logger = Logger('LegacyWebsiteData');
 

@@ -189,7 +189,9 @@ export class PostQueueService
     if (orphanedRecords.length > 0) {
       this.logger
         .withMetadata({ count: orphanedRecords.length })
-        .warn('Found orphaned PostRecords (PENDING/RUNNING with no queue record), marking as FAILED');
+        .warn(
+          'Found orphaned PostRecords (PENDING/RUNNING with no queue record), marking as FAILED',
+        );
 
       for (const record of orphanedRecords) {
         this.logger

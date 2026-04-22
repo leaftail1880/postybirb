@@ -3,9 +3,9 @@
  */
 
 import type {
-    DirectoryWatcherDto,
-    DirectoryWatcherImportAction,
-    SubmissionId,
+  DirectoryWatcherDto,
+  DirectoryWatcherImportAction,
+  SubmissionId,
 } from '@postybirb/types';
 import { BaseRecord } from './base-record';
 

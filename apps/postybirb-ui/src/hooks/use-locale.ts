@@ -8,9 +8,9 @@ import { useLingui } from '@lingui/react';
 import moment from 'moment/min/moment-with-locales';
 import { useEffect, useMemo } from 'react';
 import {
-    calendarLanguageMap,
-    cronstrueLocaleMap,
-    dateLocaleMap,
+  calendarLanguageMap,
+  cronstrueLocaleMap,
+  dateLocaleMap,
 } from '../i18n/languages';
 
 /**
@@ -30,17 +30,17 @@ export interface UseLocaleResult {
   /** Format a date/time for display using locale-aware formatting */
   formatDateTime: (
     date: Date | string,
-    options?: Intl.DateTimeFormatOptions
+    options?: Intl.DateTimeFormatOptions,
   ) => string;
   /** Format a date only (no time) for display */
   formatDate: (
     date: Date | string,
-    options?: Intl.DateTimeFormatOptions
+    options?: Intl.DateTimeFormatOptions,
   ) => string;
   /** Format a time only (no date) for display */
   formatTime: (
     date: Date | string,
-    options?: Intl.DateTimeFormatOptions
+    options?: Intl.DateTimeFormatOptions,
   ) => string;
 }
 
@@ -98,7 +98,7 @@ export function useLocale(): UseLocaleResult {
 
     const formatDateTime = (
       date: Date | string,
-      options: Intl.DateTimeFormatOptions = DEFAULT_DATETIME_OPTIONS
+      options: Intl.DateTimeFormatOptions = DEFAULT_DATETIME_OPTIONS,
     ): string => {
       const d = typeof date === 'string' ? new Date(date) : date;
       return d.toLocaleString(locale, options);
@@ -106,7 +106,7 @@ export function useLocale(): UseLocaleResult {
 
     const formatDate = (
       date: Date | string,
-      options: Intl.DateTimeFormatOptions = DEFAULT_DATE_OPTIONS
+      options: Intl.DateTimeFormatOptions = DEFAULT_DATE_OPTIONS,
     ): string => {
       const d = typeof date === 'string' ? new Date(date) : date;
       return d.toLocaleDateString(locale, options);
@@ -114,7 +114,7 @@ export function useLocale(): UseLocaleResult {
 
     const formatTime = (
       date: Date | string,
-      options: Intl.DateTimeFormatOptions = DEFAULT_TIME_OPTIONS
+      options: Intl.DateTimeFormatOptions = DEFAULT_TIME_OPTIONS,
     ): string => {
       const d = typeof date === 'string' ? new Date(date) : date;
       return d.toLocaleTimeString(locale, options);

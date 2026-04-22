@@ -3,22 +3,26 @@
  */
 
 import {
-    SelectOption,
-    SelectOptionGroup,
-    SelectOptionSingle,
+  SelectOption,
+  SelectOptionGroup,
+  SelectOptionSingle,
 } from '@postybirb/form-builder';
 
 /**
  * Type guard: checks if option is a group with items
  */
-export function isOptionGroup(option: SelectOption): option is SelectOptionGroup {
+export function isOptionGroup(
+  option: SelectOption,
+): option is SelectOptionGroup {
   return 'items' in option;
 }
 
 /**
  * Type guard: checks if option is a single selectable option
  */
-export function isOptionSingle(option: SelectOption): option is SelectOptionSingle {
+export function isOptionSingle(
+  option: SelectOption,
+): option is SelectOptionSingle {
   return 'value' in option && !('items' in option);
 }
 
@@ -148,7 +152,9 @@ export function filterOptions(
       // Check if group label matches
       const groupMatches =
         option.label.toLowerCase().includes(query) ||
-        query.split(' ').every((word) => option.label.toLowerCase().includes(word));
+        query
+          .split(' ')
+          .every((word) => option.label.toLowerCase().includes(word));
 
       if (groupMatches) {
         // Include group with all children if group label matches
@@ -169,7 +175,9 @@ export function filterOptions(
     // Single option: fuzzy match
     const optionMatches =
       option.label.toLowerCase().includes(query) ||
-      query.split(' ').every((word) => option.label.toLowerCase().includes(word)) ||
+      query
+        .split(' ')
+        .every((word) => option.label.toLowerCase().includes(word)) ||
       option.label
         .toLowerCase()
         .split(' ')
@@ -178,7 +186,9 @@ export function filterOptions(
     return optionMatches ? option : null;
   };
 
-  return options.map((option) => filterOption(option)).filter(Boolean) as SelectOption[];
+  return options
+    .map((option) => filterOption(option))
+    .filter(Boolean) as SelectOption[];
 }
 
 /**

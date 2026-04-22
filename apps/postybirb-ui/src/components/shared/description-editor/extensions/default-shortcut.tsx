@@ -25,7 +25,11 @@ function DefaultShortcutView({
   );
 
   return (
-    <NodeViewWrapper as="div" className="default-shortcut-container" style={{ padding: '4px 0' }}>
+    <NodeViewWrapper
+      as="div"
+      className="default-shortcut-container"
+      style={{ padding: '4px 0' }}
+    >
       <Badge
         variant="light"
         radius="xl"
@@ -35,9 +39,14 @@ function DefaultShortcutView({
         contentEditable={false}
         styles={{ label: { display: 'flex', alignItems: 'center', gap: 4 } }}
       >
-        <span style={{ fontWeight: 600 }}><Trans>Default</Trans></span>
+        <span style={{ fontWeight: 600 }}>
+          <Trans>Default</Trans>
+        </span>
         <IconArrowRight size={12} style={{ opacity: 0.5 }} />
-        <WebsiteOnlySelector only={node.attrs.only} onOnlyChange={handleOnlyChange} />
+        <WebsiteOnlySelector
+          only={node.attrs.only}
+          onOnlyChange={handleOnlyChange}
+        />
       </Badge>
     </NodeViewWrapper>
   );
@@ -64,7 +73,11 @@ export const DefaultShortcutExtension = Node.create({
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['div', mergeAttributes(HTMLAttributes, { 'data-type': 'defaultShortcut' }), 0];
+    return [
+      'div',
+      mergeAttributes(HTMLAttributes, { 'data-type': 'defaultShortcut' }),
+      0,
+    ];
   },
 
   addNodeView() {
@@ -77,7 +90,8 @@ export const DefaultShortcutExtension = Node.create({
       setDefaultShortcut:
         (attrs?: { only?: string }) =>
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ({ commands }: { commands: any }) => commands.insertContent({
+        ({ commands }: { commands: any }) =>
+          commands.insertContent({
             type: this.name,
             attrs: { only: attrs?.only ?? '' },
           }),

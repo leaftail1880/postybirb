@@ -58,29 +58,49 @@ interface WebsiteFormGroupProps {
 /**
  * Get the icon for an individual account post status.
  */
-function AccountStatusIcon({ status, errors }: { status: AccountPostStatus; errors: string[] }) {
+function AccountStatusIcon({
+  status,
+  errors,
+}: {
+  status: AccountPostStatus;
+  errors: string[];
+}) {
   switch (status) {
     case 'success':
       return (
         <Tooltip label={<Trans>Posted successfully</Trans>} withArrow>
-          <IconCheck size={14} color="var(--mantine-color-green-6)" style={{ flexShrink: 0 }} />
+          <IconCheck
+            size={14}
+            color="var(--mantine-color-green-6)"
+            style={{ flexShrink: 0 }}
+          />
         </Tooltip>
       );
     case 'failed':
       return (
         <Tooltip
-          label={errors.length > 0 ? errors.join(' | ') : <Trans>Post failed</Trans>}
+          label={
+            errors.length > 0 ? errors.join(' | ') : <Trans>Post failed</Trans>
+          }
           multiline
           w={300}
           withArrow
         >
-          <IconX size={14} color="var(--mantine-color-red-6)" style={{ flexShrink: 0 }} />
+          <IconX
+            size={14}
+            color="var(--mantine-color-red-6)"
+            style={{ flexShrink: 0 }}
+          />
         </Tooltip>
       );
     case 'running':
       return (
         <Tooltip label={<Trans>Posting in progress</Trans>} withArrow>
-          <IconLoader size={14} color="var(--mantine-color-blue-6)" style={{ flexShrink: 0 }} />
+          <IconLoader
+            size={14}
+            color="var(--mantine-color-blue-6)"
+            style={{ flexShrink: 0 }}
+          />
         </Tooltip>
       );
     default:
@@ -91,7 +111,10 @@ function AccountStatusIcon({ status, errors }: { status: AccountPostStatus; erro
 /**
  * Compute the aggregate status icon for a website group.
  */
-function GroupStatusIcon({ options, accountStatusMap }: {
+function GroupStatusIcon({
+  options,
+  accountStatusMap,
+}: {
   options: WebsiteFormGroupProps['options'];
   accountStatusMap: Map<EntityId, AccountPostStatusEntry>;
 }) {
@@ -108,7 +131,11 @@ function GroupStatusIcon({ options, accountStatusMap }: {
   if (allSuccess) {
     return (
       <Tooltip label={<Trans>All posted successfully</Trans>} withArrow>
-        <IconCheck size={14} color="var(--mantine-color-green-6)" style={{ flexShrink: 0 }} />
+        <IconCheck
+          size={14}
+          color="var(--mantine-color-green-6)"
+          style={{ flexShrink: 0 }}
+        />
       </Tooltip>
     );
   }
@@ -119,12 +146,22 @@ function GroupStatusIcon({ options, accountStatusMap }: {
       .flatMap((s) => s.errors);
     return (
       <Tooltip
-        label={failedErrors.length > 0 ? failedErrors.join(' | ') : <Trans>Some posts failed</Trans>}
+        label={
+          failedErrors.length > 0 ? (
+            failedErrors.join(' | ')
+          ) : (
+            <Trans>Some posts failed</Trans>
+          )
+        }
         multiline
         w={300}
         withArrow
       >
-        <IconX size={14} color="var(--mantine-color-red-6)" style={{ flexShrink: 0 }} />
+        <IconX
+          size={14}
+          color="var(--mantine-color-red-6)"
+          style={{ flexShrink: 0 }}
+        />
       </Tooltip>
     );
   }
@@ -132,7 +169,11 @@ function GroupStatusIcon({ options, accountStatusMap }: {
   if (hasAnyRunning) {
     return (
       <Tooltip label={<Trans>Posting in progress</Trans>} withArrow>
-        <IconLoader size={14} color="var(--mantine-color-blue-6)" style={{ flexShrink: 0 }} />
+        <IconLoader
+          size={14}
+          color="var(--mantine-color-blue-6)"
+          style={{ flexShrink: 0 }}
+        />
       </Tooltip>
     );
   }
@@ -144,7 +185,11 @@ function GroupStatusIcon({ options, accountStatusMap }: {
  * A single website group with collapsible form sections.
  * Collapsed by default. Shows error/warning counts in header.
  */
-function WebsiteFormGroup({ website, options, accountStatusMap }: WebsiteFormGroupProps) {
+function WebsiteFormGroup({
+  website,
+  options,
+  accountStatusMap,
+}: WebsiteFormGroupProps) {
   const { submission } = useSubmissionEditCardContext();
   const [expanded, { toggle }] = useDisclosure(false);
 
@@ -182,7 +227,10 @@ function WebsiteFormGroup({ website, options, accountStatusMap }: WebsiteFormGro
             {website.displayName}
           </Text>
           <Group gap={4}>
-            <GroupStatusIcon options={options} accountStatusMap={accountStatusMap} />
+            <GroupStatusIcon
+              options={options}
+              accountStatusMap={accountStatusMap}
+            />
             {errorCount > 0 && (
               <Badge size="xs" variant="light" color="red">
                 {errorCount} {errorCount === 1 ? 'error' : 'errors'}

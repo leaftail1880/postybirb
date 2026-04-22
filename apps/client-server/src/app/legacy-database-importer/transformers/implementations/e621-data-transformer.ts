@@ -17,9 +17,10 @@ interface LegacyE621AccountData {
  * - username → username
  * - key → key
  */
-export class E621DataTransformer
-  implements LegacyWebsiteDataTransformer<LegacyE621AccountData, E621AccountData>
-{
+export class E621DataTransformer implements LegacyWebsiteDataTransformer<
+  LegacyE621AccountData,
+  E621AccountData
+> {
   transform(legacyData: LegacyE621AccountData): E621AccountData | null {
     if (!legacyData) {
       return null;

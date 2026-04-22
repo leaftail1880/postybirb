@@ -6,7 +6,10 @@
 import { Trans } from '@lingui/react/macro';
 import { Badge, Box, Group, SegmentedControl, Text } from '@mantine/core';
 import { IconChevronDown, IconChevronRight } from '@tabler/icons-react';
-import { useSubmissionEditCardContext, type SubmissionEditCardViewMode } from '../context';
+import {
+  useSubmissionEditCardContext,
+  type SubmissionEditCardViewMode,
+} from '../context';
 
 export interface SubmissionEditCardHeaderProps {
   /** Whether the card is expanded (controls chevron direction) */
@@ -47,7 +50,9 @@ export function SubmissionEditCardHeader({
             <SegmentedControl
               size="xs"
               value={viewMode}
-              onChange={(value) => setViewMode(value as SubmissionEditCardViewMode)}
+              onChange={(value) =>
+                setViewMode(value as SubmissionEditCardViewMode)
+              }
               data={[
                 { label: <Trans>Edit</Trans>, value: 'edit' },
                 { label: <Trans>History</Trans>, value: 'history' },

@@ -6,9 +6,7 @@ import {
 } from '@postybirb/types';
 import { IsObject, IsString } from 'class-validator';
 
-export class SetWebsiteDataRequestDto
-  implements ISetWebsiteDataRequestDto<DynamicObject>
-{
+export class SetWebsiteDataRequestDto implements ISetWebsiteDataRequestDto<DynamicObject> {
   @ApiProperty()
   @IsString()
   id: AccountId;

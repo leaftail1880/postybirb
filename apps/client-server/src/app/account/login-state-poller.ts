@@ -79,7 +79,9 @@ export class LoginStatePoller {
         this.onStateChange();
       }
     } catch (e) {
-      this.logger.withError(e).error('Error during single instance login state check');
+      this.logger
+        .withError(e)
+        .error('Error during single instance login state check');
     }
   }
 

@@ -33,11 +33,7 @@ All entity data is managed through Zustand stores located in `stores/`. The stor
 
 ```typescript
 // Example usage
-const useAccountStore = createEntityStore<AccountDto, AccountRecord>(
-  fetchAccounts,
-  (dto) => new AccountRecord(dto),
-  { storeName: 'AccountStore', websocketEvent: ACCOUNT_UPDATES }
-);
+const useAccountStore = createEntityStore<AccountDto, AccountRecord>(fetchAccounts, (dto) => new AccountRecord(dto), { storeName: 'AccountStore', websocketEvent: ACCOUNT_UPDATES });
 ```
 
 **Key stores:**
@@ -60,9 +56,9 @@ DTOs from the API are wrapped in Record classes (`stores/records/`) that provide
 ```typescript
 // Example
 const account = useAccount(id);
-account.isLoggedIn;        // Computed property
-account.displayName;       // Fallback logic built-in
-account.toDto();           // Convert back to DTO
+account.isLoggedIn; // Computed property
+account.displayName; // Fallback logic built-in
+account.toDto(); // Convert back to DTO
 ```
 
 ### Store Initialization
@@ -186,7 +182,7 @@ Global keybindings are defined in `config/keybindings.ts` and activated via `use
 
    ```typescript
    // Good - only re-renders when this specific value changes
-   const isLoggedIn = useAccountStore((state) => state.records.find(r => r.id === id)?.isLoggedIn);
+   const isLoggedIn = useAccountStore((state) => state.records.find((r) => r.id === id)?.isLoggedIn);
 
    // Avoid - re-renders on any store change
    const store = useAccountStore();

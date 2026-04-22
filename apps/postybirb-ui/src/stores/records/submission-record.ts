@@ -14,7 +14,7 @@ import {
   type SubmissionId,
   type SubmissionType,
   type ValidationResult,
-  type WebsiteOptionsDto
+  type WebsiteOptionsDto,
 } from '@postybirb/types';
 import { BaseRecord } from './base-record';
 
@@ -59,19 +59,24 @@ export class SubmissionRecord extends BaseRecord {
     this.order = dto.order;
 
     // Pre-compute expensive derived values
-    this.cachedPrimaryFile = this.files.length > 0
-      ? [...this.files].sort((a, b) => a.order - b.order)[0]
-      : undefined;
-    this.cachedSortedPosts = this.posts.length > 0
-      ? [...this.posts].sort(
-          (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-        )
-      : [];
-    this.cachedSortedPostsDescending = this.posts.length > 0
-      ? [...this.posts].sort(
-          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        )
-      : [];
+    this.cachedPrimaryFile =
+      this.files.length > 0
+        ? [...this.files].sort((a, b) => a.order - b.order)[0]
+        : undefined;
+    this.cachedSortedPosts =
+      this.posts.length > 0
+        ? [...this.posts].sort(
+            (a, b) =>
+              new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+          )
+        : [];
+    this.cachedSortedPostsDescending =
+      this.posts.length > 0
+        ? [...this.posts].sort(
+            (a, b) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+          )
+        : [];
     this.cachedLastModified = this.computeLastModified();
   }
 
@@ -235,7 +240,9 @@ export class SubmissionRecord extends BaseRecord {
    */
   get latestCompletedPost(): PostRecordDto | undefined {
     const completed = this.sortedPosts.filter(
-      (post) => post.state === PostRecordState.DONE || post.state === PostRecordState.FAILED
+      (post) =>
+        post.state === PostRecordState.DONE ||
+        post.state === PostRecordState.FAILED,
     );
     return completed[completed.length - 1];
   }
@@ -250,9 +257,13 @@ export class SubmissionRecord extends BaseRecord {
     failedAttempts: number;
     runningAttempts: number;
   } {
-    const successful = this.posts.filter((p) => p.state === PostRecordState.DONE);
+    const successful = this.posts.filter(
+      (p) => p.state === PostRecordState.DONE,
+    );
     const failed = this.posts.filter((p) => p.state === PostRecordState.FAILED);
-    const running = this.posts.filter((p) => p.state === PostRecordState.RUNNING);
+    const running = this.posts.filter(
+      (p) => p.state === PostRecordState.RUNNING,
+    );
 
     return {
       totalAttempts: this.posts.length,

@@ -42,7 +42,10 @@ export function NotificationsSettingsSection() {
             label={<Trans>Enable desktop notifications</Trans>}
             checked={settings.desktopNotifications?.enabled ?? false}
             onChange={(event) => {
-              updateDesktopNotifications('enabled', event.currentTarget.checked);
+              updateDesktopNotifications(
+                'enabled',
+                event.currentTarget.checked,
+              );
             }}
           />
 
@@ -50,7 +53,9 @@ export function NotificationsSettingsSection() {
             <Stack gap="sm" ml="md">
               <Switch
                 label={<Trans>Post Success</Trans>}
-                checked={settings.desktopNotifications?.showOnPostSuccess ?? false}
+                checked={
+                  settings.desktopNotifications?.showOnPostSuccess ?? false
+                }
                 onChange={(event) => {
                   updateDesktopNotifications(
                     'showOnPostSuccess',
@@ -71,8 +76,8 @@ export function NotificationsSettingsSection() {
               <Switch
                 label={<Trans>File Watcher Success</Trans>}
                 checked={
-                  settings.desktopNotifications?.showOnDirectoryWatcherSuccess ??
-                  false
+                  settings.desktopNotifications
+                    ?.showOnDirectoryWatcherSuccess ?? false
                 }
                 onChange={(event) => {
                   updateDesktopNotifications(

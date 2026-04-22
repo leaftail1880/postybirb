@@ -5,21 +5,21 @@
 
 import { Trans, useLingui } from '@lingui/react/macro';
 import {
-    ActionIcon,
-    Box,
-    Group,
-    Paper,
-    SimpleGrid,
-    Stack,
-    Text,
-    ThemeIcon,
-    Tooltip,
-    UnstyledButton,
+  ActionIcon,
+  Box,
+  Group,
+  Paper,
+  SimpleGrid,
+  Stack,
+  Text,
+  ThemeIcon,
+  Tooltip,
+  UnstyledButton,
 } from '@mantine/core';
 import {
-    IconCalendarEvent,
-    IconChevronLeft,
-    IconChevronRight,
+  IconCalendarEvent,
+  IconChevronLeft,
+  IconChevronRight,
 } from '@tabler/icons-react';
 import { useCallback, useMemo, useState } from 'react';
 import { useLocale } from '../../../hooks';
@@ -147,7 +147,13 @@ export function ScheduleCalendarPanel() {
   };
 
   return (
-    <Paper withBorder p="md" radius="md" h="100%" data-tour-id="home-schedule-calendar">
+    <Paper
+      withBorder
+      p="md"
+      radius="md"
+      h="100%"
+      data-tour-id="home-schedule-calendar"
+    >
       <Stack gap="sm" h="100%">
         {/* Header */}
         <Group justify="space-between">

@@ -9,11 +9,10 @@ import { IconSearch, IconX } from '@tabler/icons-react';
 
 type SearchInputSize = 'xs' | 'sm' | 'md';
 
-interface SearchInputProps
-  extends Omit<
-    TextInputProps,
-    'leftSection' | 'rightSection' | 'onChange' | 'placeholder'
-  > {
+interface SearchInputProps extends Omit<
+  TextInputProps,
+  'leftSection' | 'rightSection' | 'onChange' | 'placeholder'
+> {
   /** Current search value */
   value: string;
   /** Callback when search value changes */

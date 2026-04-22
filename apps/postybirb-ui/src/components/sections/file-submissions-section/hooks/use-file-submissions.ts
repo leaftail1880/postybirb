@@ -16,7 +16,9 @@ interface UseFileSubmissionsResult {
   /** Ordered submissions (for optimistic reordering) */
   orderedSubmissions: SubmissionRecord[];
   /** Update ordered submissions */
-  setOrderedSubmissions: React.Dispatch<React.SetStateAction<SubmissionRecord[]>>;
+  setOrderedSubmissions: React.Dispatch<
+    React.SetStateAction<SubmissionRecord[]>
+  >;
   /** Current filter value */
   filter: string;
   /** Current search query */
@@ -35,7 +37,7 @@ export function useFileSubmissions(): UseFileSubmissionsResult {
   // Filter submissions based on search query and filter
   const filteredSubmissions = useMemo(() => {
     let result = allSubmissions.filter(
-      (s) => !s.isTemplate && !s.isMultiSubmission && !s.isArchived
+      (s) => !s.isTemplate && !s.isMultiSubmission && !s.isArchived,
     );
 
     // Sort by order

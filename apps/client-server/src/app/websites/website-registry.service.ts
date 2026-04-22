@@ -134,8 +134,7 @@ export class WebsiteRegistryService {
     if (timeoutMs) {
       const timeout = new Promise<void>((_, reject) => {
         setTimeout(
-          () =>
-            reject(new Error('Website registry initialization timed out')),
+          () => reject(new Error('Website registry initialization timed out')),
           timeoutMs,
         );
       });

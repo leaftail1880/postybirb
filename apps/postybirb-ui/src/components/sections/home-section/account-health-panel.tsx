@@ -5,20 +5,20 @@
 
 import { Trans } from '@lingui/react/macro';
 import {
-    Badge,
-    Box,
-    Group,
-    Paper,
-    Progress,
-    Stack,
-    Text,
-    ThemeIcon,
-    UnstyledButton,
+  Badge,
+  Box,
+  Group,
+  Paper,
+  Progress,
+  Stack,
+  Text,
+  ThemeIcon,
+  UnstyledButton,
 } from '@mantine/core';
 import {
-    IconAlertCircle,
-    IconCircleCheck,
-    IconUsers,
+  IconAlertCircle,
+  IconCircleCheck,
+  IconUsers,
 } from '@tabler/icons-react';
 import { useAccounts } from '../../../stores/entity/account-store';
 import { useViewStateActions } from '../../../stores/ui/navigation-store';
@@ -47,7 +47,13 @@ export function AccountHealthPanel() {
   const hasIssues = loggedOutAccounts > 0;
 
   return (
-    <Paper withBorder p="md" radius="md" h="100%" data-tour-id="home-account-health">
+    <Paper
+      withBorder
+      p="md"
+      radius="md"
+      h="100%"
+      data-tour-id="home-account-health"
+    >
       <Stack gap="sm" h="100%">
         <Group justify="space-between">
           <Group gap="xs">

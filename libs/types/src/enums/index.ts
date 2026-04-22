@@ -7,4 +7,3 @@ export * from './post-record-state.enum';
 export * from './schedule-type.enum';
 export * from './submission-rating.enum';
 export * from './submission-type.enum';
-

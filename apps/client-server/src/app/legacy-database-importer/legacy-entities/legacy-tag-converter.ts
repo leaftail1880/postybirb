@@ -1,17 +1,15 @@
 import { ITagConverter } from '@postybirb/types';
 import { WebsiteNameMapper } from '../utils/website-name-mapper';
 import {
-    LegacyConverterEntity,
-    MinimalEntity,
+  LegacyConverterEntity,
+  MinimalEntity,
 } from './legacy-converter-entity';
 
 /**
  * Legacy tag converter entity from PostyBirb Plus
  * Converts a tag to website-specific tags
  */
-export class LegacyTagConverter
-  implements LegacyConverterEntity<ITagConverter>
-{
+export class LegacyTagConverter implements LegacyConverterEntity<ITagConverter> {
   _id: string;
 
   created: number;

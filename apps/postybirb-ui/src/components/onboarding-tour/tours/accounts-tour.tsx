@@ -80,8 +80,9 @@ export function useAccountsTourSteps(): Step[] {
       content: (
         <Text size="sm" c="dimmed">
           <Trans>
-            Each website has its own card. Click the header to expand or collapse
-            it. The badge shows how many accounts are logged in out of the total.
+            Each website has its own card. Click the header to expand or
+            collapse it. The badge shows how many accounts are logged in out of
+            the total.
           </Trans>
         </Text>
       ),

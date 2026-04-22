@@ -80,11 +80,16 @@ class SubmissionsApi extends BaseApi<
   /**
    * Create file submission(s) with optional metadata and default options.
    */
-  createFileSubmission(options: CreateFileSubmissionOptions): ReturnType<typeof this.client.post>;
+  createFileSubmission(
+    options: CreateFileSubmissionOptions,
+  ): ReturnType<typeof this.client.post>;
   /**
    * @deprecated Use the options object overload instead.
    */
-  createFileSubmission(type: SubmissionType, files: File[]): ReturnType<typeof this.client.post>;
+  createFileSubmission(
+    type: SubmissionType,
+    files: File[],
+  ): ReturnType<typeof this.client.post>;
   createFileSubmission(
     typeOrOptions: SubmissionType | CreateFileSubmissionOptions,
     filesArg?: File[],
@@ -116,7 +121,11 @@ class SubmissionsApi extends BaseApi<
     return this.client.post('', formData);
   }
 
-  reorder(id: SubmissionId, targetId: SubmissionId, position: 'before' | 'after') {
+  reorder(
+    id: SubmissionId,
+    targetId: SubmissionId,
+    position: 'before' | 'after',
+  ) {
     return this.client.patch('reorder', { id, targetId, position });
   }
 

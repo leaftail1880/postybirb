@@ -175,7 +175,7 @@ export const useWebsitesLoading = () =>
       error: state.error,
       isLoading: state.loadingState === 'loading',
       isLoaded: state.loadingState === 'loaded',
-    }))
+    })),
   );
 
 /**
@@ -191,8 +191,8 @@ export const useWebsite = (id: WebsiteId): WebsiteRecord | undefined =>
 export const useFileWebsites = (): WebsiteRecord[] =>
   useWebsiteStore(
     useShallow((state: WebsiteStore) =>
-      state.websites.filter((website) => website.supportsFile)
-    )
+      state.websites.filter((website) => website.supportsFile),
+    ),
   );
 
 /**
@@ -202,8 +202,8 @@ export const useFileWebsites = (): WebsiteRecord[] =>
 export const useMessageWebsites = (): WebsiteRecord[] =>
   useWebsiteStore(
     useShallow((state: WebsiteStore) =>
-      state.websites.filter((website) => website.supportsMessage)
-    )
+      state.websites.filter((website) => website.supportsMessage),
+    ),
   );
 
 /**
@@ -217,5 +217,5 @@ export const useWebsiteActions = () =>
       setWebsites: state.setWebsites,
       getById: state.getById,
       clear: state.clear,
-    }))
+    })),
   );

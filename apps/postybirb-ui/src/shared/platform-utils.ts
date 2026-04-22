@@ -46,7 +46,5 @@ export function formatKeybindingDisplay(keybinding: string): string {
       .replace(/Alt\+/g, '⌥')
       .replace(/Shift\+/g, '⇧');
   }
-  return keybinding
-    .replace(/Control\+/g, 'Ctrl+')
-    .replace(/Meta\+/g, 'Win+');
+  return keybinding.replace(/Control\+/g, 'Ctrl+').replace(/Meta\+/g, 'Win+');
 }

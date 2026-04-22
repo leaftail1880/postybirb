@@ -44,8 +44,14 @@ export const Indent = Extension.create<IndentOptions>({
           indent: {
             default: 0,
             parseHTML: (element) => {
-              const level = parseInt(element.getAttribute('data-indent') || '0', 10);
-              return Math.min(Math.max(level, this.options.minLevel), this.options.maxLevel);
+              const level = parseInt(
+                element.getAttribute('data-indent') || '0',
+                10,
+              );
+              return Math.min(
+                Math.max(level, this.options.minLevel),
+                this.options.maxLevel,
+              );
             },
             renderHTML: (attributes) => {
               if (!attributes.indent || attributes.indent <= 0) {
@@ -73,7 +79,10 @@ export const Indent = Extension.create<IndentOptions>({
           state.doc.nodesBetween(selection.from, selection.to, (node, pos) => {
             if (this.options.types.includes(node.type.name)) {
               const currentLevel = (node.attrs.indent as number) || 0;
-              const newLevel = Math.min(currentLevel + 1, this.options.maxLevel);
+              const newLevel = Math.min(
+                currentLevel + 1,
+                this.options.maxLevel,
+              );
               if (newLevel !== currentLevel) {
                 tr.setNodeMarkup(pos, undefined, {
                   ...node.attrs,
@@ -99,7 +108,10 @@ export const Indent = Extension.create<IndentOptions>({
           state.doc.nodesBetween(selection.from, selection.to, (node, pos) => {
             if (this.options.types.includes(node.type.name)) {
               const currentLevel = (node.attrs.indent as number) || 0;
-              const newLevel = Math.max(currentLevel - 1, this.options.minLevel);
+              const newLevel = Math.max(
+                currentLevel - 1,
+                this.options.minLevel,
+              );
               if (newLevel !== currentLevel) {
                 tr.setNodeMarkup(pos, undefined, {
                   ...node.attrs,

@@ -8,4 +8,3 @@ export * from './megalodon-account-data';
 export * from './misskey-account-data';
 export * from './telegram-account-data';
 export * from './twitter-account-data';
-

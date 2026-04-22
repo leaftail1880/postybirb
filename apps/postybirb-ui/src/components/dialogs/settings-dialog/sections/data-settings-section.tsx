@@ -8,8 +8,8 @@ import { Alert, Box, Button, Stack, Text, Title } from '@mantine/core';
 import { IconDownload, IconInfoCircle, IconX } from '@tabler/icons-react';
 import { useState } from 'react';
 import {
-    defaultTargetProvider,
-    getRemotePassword,
+  defaultTargetProvider,
+  getRemotePassword,
 } from '../../../../transports/http-client';
 
 export function DataSettingsSection() {

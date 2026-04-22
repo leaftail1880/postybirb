@@ -12,7 +12,7 @@
         "main": "apps/postybirb/src/main.ts",
         "tsConfig": "apps/postybirb/tsconfig.app.json",
         "assets": [
-          "apps/postybirb/src/assets", 
+          "apps/postybirb/src/assets",
           "apps/postybirb/src/migrations",
           "apps/postybirb/src/app/loader",
           {

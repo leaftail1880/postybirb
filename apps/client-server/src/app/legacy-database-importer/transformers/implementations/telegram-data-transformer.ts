@@ -24,9 +24,10 @@ interface LegacyTelegramAccountData {
  * a different session storage mechanism. Users will need to
  * re-authenticate after import.
  */
-export class TelegramDataTransformer
-  implements LegacyWebsiteDataTransformer<LegacyTelegramAccountData, TelegramAccountData>
-{
+export class TelegramDataTransformer implements LegacyWebsiteDataTransformer<
+  LegacyTelegramAccountData,
+  TelegramAccountData
+> {
   transform(legacyData: LegacyTelegramAccountData): TelegramAccountData | null {
     if (!legacyData) {
       return null;

@@ -6,21 +6,31 @@
 
 import { Trans } from '@lingui/react/macro';
 import {
-    Box,
-    Divider,
-    Image,
-    Kbd,
-    NavLink as MantineNavLink,
-    ScrollArea,
-    Text,
-    Title,
-    Tooltip,
+  Box,
+  Divider,
+  Image,
+  Kbd,
+  NavLink as MantineNavLink,
+  ScrollArea,
+  Text,
+  Title,
+  Tooltip,
 } from '@mantine/core';
-import { IconChevronLeft, IconChevronRight, IconHelp } from '@tabler/icons-react';
+import {
+  IconChevronLeft,
+  IconChevronRight,
+  IconHelp,
+} from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import { formatKeybindingDisplay } from '../../shared/platform-utils';
-import { useActiveDrawer, useDrawerActions } from '../../stores/ui/drawer-store';
-import { useViewState, useViewStateActions } from '../../stores/ui/navigation-store';
+import {
+  useActiveDrawer,
+  useDrawerActions,
+} from '../../stores/ui/drawer-store';
+import {
+  useViewState,
+  useViewStateActions,
+} from '../../stores/ui/navigation-store';
 import { useTourActions } from '../../stores/ui/tour-store';
 import '../../styles/layout.css';
 import type { NavigationItem, SideNavProps } from '../../types/navigation';
@@ -36,9 +46,7 @@ function TourButton({ collapsed }: { collapsed: boolean }) {
   const navLink = (
     <MantineNavLink
       leftSection={<IconHelp size={20} />}
-      label={collapsed ? undefined : (
-        <Trans>Take the Tour</Trans>
-      )}
+      label={collapsed ? undefined : <Trans>Take the Tour</Trans>}
       onClick={() => startTour(LAYOUT_TOUR_ID)}
     />
   );
@@ -156,7 +164,11 @@ function NavItemRenderer({
     );
   }
 
-  return <Box key={item.id} data-tour-id={item.id}>{navLinkContent}</Box>;
+  return (
+    <Box key={item.id} data-tour-id={item.id}>
+      {navLinkContent}
+    </Box>
+  );
 }
 
 /**

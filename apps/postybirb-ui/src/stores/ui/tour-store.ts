@@ -69,8 +69,7 @@ export const useTourStore = create<TourStore>()(
     (set) => ({
       ...initialState,
 
-      startTour: (tourId) =>
-        set({ activeTourId: tourId, tourStarted: true }),
+      startTour: (tourId) => set({ activeTourId: tourId, tourStarted: true }),
 
       completeTour: (tourId) =>
         set((state) => ({
@@ -86,8 +85,7 @@ export const useTourStore = create<TourStore>()(
           tourStarted: false,
         })),
 
-      endTour: () =>
-        set({ activeTourId: null, tourStarted: false }),
+      endTour: () => set({ activeTourId: null, tourStarted: false }),
 
       resetTour: (tourId) =>
         set((state) => {

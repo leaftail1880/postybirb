@@ -6,21 +6,21 @@
  */
 
 import {
-    closestCenter,
-    DndContext,
-    DragEndEvent,
-    DragOverlay,
-    DragStartEvent,
-    KeyboardSensor,
-    PointerSensor,
-    useSensor,
-    useSensors,
+  closestCenter,
+  DndContext,
+  DragEndEvent,
+  DragOverlay,
+  DragStartEvent,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
 } from '@dnd-kit/core';
 import {
-    arrayMove,
-    SortableContext,
-    sortableKeyboardCoordinates,
-    verticalListSortingStrategy,
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { Box, Loader, ScrollArea } from '@mantine/core';
 import { useVirtualizer } from '@tanstack/react-virtual';
@@ -59,8 +59,7 @@ export function SubmissionList({
   submissions,
   onReorder,
 }: SubmissionListProps) {
-  const { submissionType, selectedIds, isDragEnabled } =
-    useSubmissionsData();
+  const { submissionType, selectedIds, isDragEnabled } = useSubmissionsData();
   const isCompact = useIsCompactView();
 
   // Ref for the Mantine ScrollArea viewport - used for virtualization

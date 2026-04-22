@@ -3,7 +3,6 @@
  */
 
 export {
-    useAccountActions,
-    type BoundAccountActions
+  useAccountActions,
+  type BoundAccountActions,
 } from './use-account-actions';
-

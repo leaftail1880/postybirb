@@ -4,14 +4,14 @@
  */
 
 import {
-    ISubmissionScheduleInfo,
-    IWebsiteFormFields,
-    PostRecordResumeMode,
-    SubmissionType,
+  ISubmissionScheduleInfo,
+  IWebsiteFormFields,
+  PostRecordResumeMode,
+  SubmissionType,
 } from '@postybirb/types';
 import {
-    FileSubmissionUploadParams,
-    useSubmissionCreate,
+  FileSubmissionUploadParams,
+  useSubmissionCreate,
 } from './use-submission-create';
 import { useSubmissionDelete } from './use-submission-delete';
 import { useSubmissionPost } from './use-submission-post';

@@ -1,9 +1,9 @@
 import { Body, Controller, Param, Patch, Post } from '@nestjs/common';
 import {
-    ApiBadRequestResponse,
-    ApiNotFoundResponse,
-    ApiOkResponse,
-    ApiTags,
+  ApiBadRequestResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiTags,
 } from '@nestjs/swagger';
 import { EntityId } from '@postybirb/types';
 import { PostyBirbController } from '../common/controller/postybirb-controller';

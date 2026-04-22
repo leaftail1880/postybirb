@@ -2,7 +2,12 @@
  * AccountRecord - Concrete class for account data.
  */
 
-import type { AccountId, IAccountDto, ILoginState, IWebsiteInfo } from '@postybirb/types';
+import type {
+  AccountId,
+  IAccountDto,
+  ILoginState,
+  IWebsiteInfo,
+} from '@postybirb/types';
 import { BaseRecord } from './base-record';
 
 /**

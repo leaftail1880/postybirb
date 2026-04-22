@@ -4,7 +4,16 @@
  */
 
 import { Trans } from '@lingui/react/macro';
-import { Box, Group, Paper, Stack, Switch, Tabs, Text, Title } from '@mantine/core';
+import {
+  Box,
+  Group,
+  Paper,
+  Stack,
+  Switch,
+  Tabs,
+  Text,
+  Title,
+} from '@mantine/core';
 import { DateTimePicker, DateValue } from '@mantine/dates';
 import { ISubmissionScheduleInfo, ScheduleType } from '@postybirb/types';
 import { IconCalendar, IconCalendarOff, IconRepeat } from '@tabler/icons-react';
@@ -115,7 +124,10 @@ export function ScheduleForm({
     (date: DateValue) => {
       if (!date) return;
       // DateValue can be Date or string, convert to ISO string
-      const scheduledFor = date instanceof Date ? date.toISOString() : new Date(date).toISOString();
+      const scheduledFor =
+        date instanceof Date
+          ? date.toISOString()
+          : new Date(date).toISOString();
       const newSchedule: ISubmissionScheduleInfo = {
         ...internalSchedule,
         scheduledFor,
@@ -262,7 +274,9 @@ export function ScheduleForm({
               <Box
                 // CronPicker does not support a disabled prop, so we use
                 // pointer-events to prevent interaction when archived.
-                style={disabled ? { pointerEvents: 'none', opacity: 0.6 } : undefined}
+                style={
+                  disabled ? { pointerEvents: 'none', opacity: 0.6 } : undefined
+                }
               >
                 <CronPicker
                   value={internalSchedule.cron || DEFAULT_CRON}

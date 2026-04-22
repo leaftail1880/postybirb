@@ -10,8 +10,10 @@ import { SubmissionType } from '@postybirb/types';
 import { useMemo } from 'react';
 import { useTemplateSubmissions } from '../../../stores';
 
-interface TemplatePickerProps
-  extends Omit<SelectProps, 'data' | 'value' | 'onChange'> {
+interface TemplatePickerProps extends Omit<
+  SelectProps,
+  'data' | 'value' | 'onChange'
+> {
   /** Selected template ID */
   value?: string;
   /** Callback when template selection changes */

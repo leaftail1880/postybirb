@@ -1,13 +1,13 @@
 import {
-    ICreateWebsiteOptionsDto,
-    IDescriptionPreviewResult,
-    IPreviewDescriptionDto,
-    IUpdateSubmissionWebsiteOptionsDto,
-    IUpdateWebsiteOptionsDto,
-    IValidateWebsiteOptionsDto,
-    SubmissionId,
-    ValidationResult,
-    WebsiteOptionsDto,
+  ICreateWebsiteOptionsDto,
+  IDescriptionPreviewResult,
+  IPreviewDescriptionDto,
+  IUpdateSubmissionWebsiteOptionsDto,
+  IUpdateWebsiteOptionsDto,
+  IValidateWebsiteOptionsDto,
+  SubmissionId,
+  ValidationResult,
+  WebsiteOptionsDto,
 } from '@postybirb/types';
 import { BaseApi } from './base.api';
 

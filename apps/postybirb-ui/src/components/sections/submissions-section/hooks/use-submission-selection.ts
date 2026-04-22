@@ -22,7 +22,11 @@ interface UseSubmissionSelectionResult {
   /** Selection state for checkbox (none/partial/all) */
   selectionState: SelectionState;
   /** Handle selecting a submission (supports shift+click, ctrl+click, checkbox toggle, and keyboard) */
-  handleSelect: (id: string, event: React.MouseEvent | React.KeyboardEvent, isCheckbox?: boolean) => void;
+  handleSelect: (
+    id: string,
+    event: React.MouseEvent | React.KeyboardEvent,
+    isCheckbox?: boolean,
+  ) => void;
   /** Toggle select all/none */
   handleToggleSelectAll: () => void;
   /** Update selection programmatically */
@@ -92,7 +96,11 @@ export function useSubmissionSelection({
 
   // Handle selecting a submission — reads viewState and orderedSubmissions at call time
   const handleSelect = useCallback(
-    (id: string, event: React.MouseEvent | React.KeyboardEvent, isCheckbox = false) => {
+    (
+      id: string,
+      event: React.MouseEvent | React.KeyboardEvent,
+      isCheckbox = false,
+    ) => {
       const currentViewState = useNavigationStore.getState().viewState;
       if (!isSubmissionsViewState(currentViewState)) return;
 
@@ -136,7 +144,9 @@ export function useSubmissionSelection({
         // Toggle selection with Ctrl/Cmd click OR checkbox click
         // Checkbox clicks should always toggle, not replace selection
         if (currentSelectedIds.includes(id)) {
-          newSelectedIds = currentSelectedIds.filter((sid: string) => sid !== id);
+          newSelectedIds = currentSelectedIds.filter(
+            (sid: string) => sid !== id,
+          );
         } else {
           newSelectedIds = [...currentSelectedIds, id];
         }
@@ -161,7 +171,8 @@ export function useSubmissionSelection({
     const currentSelectedIds = currentViewState.params.selectedIds;
     const submissions = orderedSubmissionsRef.current;
     const isAllSelected =
-      currentSelectedIds.length === submissions.length && submissions.length > 0;
+      currentSelectedIds.length === submissions.length &&
+      submissions.length > 0;
 
     const newSelectedIds = isAllSelected
       ? [] // Deselect all

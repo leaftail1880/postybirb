@@ -34,7 +34,11 @@ function CustomShortcutView({
   );
 
   return (
-    <NodeViewWrapper as="span" className="custom-shortcut-container" style={{ verticalAlign: 'text-bottom' }}>
+    <NodeViewWrapper
+      as="span"
+      className="custom-shortcut-container"
+      style={{ verticalAlign: 'text-bottom' }}
+    >
       <Badge
         variant="light"
         radius="xl"
@@ -46,7 +50,10 @@ function CustomShortcutView({
       >
         <span style={{ fontWeight: 600 }}>{name}</span>
         <IconArrowRight size={12} style={{ opacity: 0.5 }} />
-        <WebsiteOnlySelector only={node.attrs.only} onOnlyChange={handleOnlyChange} />
+        <WebsiteOnlySelector
+          only={node.attrs.only}
+          onOnlyChange={handleOnlyChange}
+        />
       </Badge>
     </NodeViewWrapper>
   );
@@ -74,7 +81,10 @@ export const CustomShortcutExtension = Node.create({
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['span', mergeAttributes(HTMLAttributes, { 'data-type': 'customShortcut' })];
+    return [
+      'span',
+      mergeAttributes(HTMLAttributes, { 'data-type': 'customShortcut' }),
+    ];
   },
 
   addNodeView() {
@@ -87,8 +97,12 @@ export const CustomShortcutExtension = Node.create({
       insertCustomShortcut:
         (attrs: { id: string; only?: string }) =>
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ({ commands }: { commands: any }) => commands.insertContent([
-            { type: this.name, attrs: { id: attrs.id, only: attrs.only ?? '' } },
+        ({ commands }: { commands: any }) =>
+          commands.insertContent([
+            {
+              type: this.name,
+              attrs: { id: attrs.id, only: attrs.only ?? '' },
+            },
             { type: 'text', text: ' ' },
           ]),
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

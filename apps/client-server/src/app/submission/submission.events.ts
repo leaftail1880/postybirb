@@ -4,9 +4,9 @@ import { WebsocketEvent } from '../web-socket/models/web-socket-event';
 
 export type SubmissionEventTypes = SubmissionUpdateEvent;
 
-class SubmissionUpdateEvent
-  implements WebsocketEvent<ISubmissionDto<ISubmissionMetadata>[]>
-{
+class SubmissionUpdateEvent implements WebsocketEvent<
+  ISubmissionDto<ISubmissionMetadata>[]
+> {
   event: string = SUBMISSION_UPDATES;
 
   data: ISubmissionDto<ISubmissionMetadata>[];

@@ -15,6 +15,8 @@ export { SearchInput } from './search-input';
 export { SimpleTagInput } from './simple-tag-input';
 export type { SimpleTagInputProps } from './simple-tag-input';
 export { SubmissionPicker, SubmissionPickerModal } from './submission-picker';
-export type { SubmissionPickerProps, SubmissionPickerModalProps } from './submission-picker';
+export type {
+  SubmissionPickerProps,
+  SubmissionPickerModalProps,
+} from './submission-picker';
 export { TemplatePicker } from './template-picker/template-picker';
-

@@ -179,7 +179,7 @@ export function ScheduleCalendar() {
       .then(() => {
         showInfoNotification(
           selectedEvent.title,
-          <Trans>Submission unscheduled</Trans>
+          <Trans>Submission unscheduled</Trans>,
         );
       })
       .catch((error) => {
@@ -253,9 +253,7 @@ export function ScheduleCalendar() {
               <IconClock size={14} />
             </ThemeIcon>
             <Text size="sm" c="dimmed">
-              {selectedEvent?.start
-                ? formatDateTime(selectedEvent.start)
-                : ''}
+              {selectedEvent?.start ? formatDateTime(selectedEvent.start) : ''}
             </Text>
           </Group>
           {selectedEvent?.start && (

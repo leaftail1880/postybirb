@@ -249,9 +249,7 @@ export function MultiSchedulerModal({
             />
 
             <Text size="xs" c="dimmed">
-              <Trans>
-                Set the interval between each submission.
-              </Trans>
+              <Trans>Set the interval between each submission.</Trans>
             </Text>
 
             <Group grow>

@@ -6,23 +6,23 @@ import { Trans } from '@lingui/react/macro';
 import { ActionIcon, Group, Tooltip } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
-    IconArchiveOff,
-    IconCancel,
-    IconHelp,
-    IconHistory,
-    IconSend,
-    IconTrash,
+  IconArchiveOff,
+  IconCancel,
+  IconHelp,
+  IconHistory,
+  IconSend,
+  IconTrash,
 } from '@tabler/icons-react';
 import postManagerApi from '../../../../../api/post-manager.api';
 import postQueueApi from '../../../../../api/post-queue.api';
 import submissionApi from '../../../../../api/submission.api';
 import { useTourActions } from '../../../../../stores/ui/tour-store';
 import {
-    showDeletedNotification,
-    showDeleteErrorNotification,
-    showPostErrorNotification,
-    showRestoredNotification,
-    showRestoreErrorNotification,
+  showDeletedNotification,
+  showDeleteErrorNotification,
+  showPostErrorNotification,
+  showRestoredNotification,
+  showRestoreErrorNotification,
 } from '../../../../../utils/notifications';
 import { HoldToConfirmButton } from '../../../../hold-to-confirm';
 import { SUBMISSION_EDIT_TOUR_ID } from '../../../../onboarding-tour/tours/submission-edit-tour';
@@ -193,7 +193,11 @@ export function SubmissionEditCardActions() {
   return (
     <Group gap={4} wrap="nowrap" onClick={(e) => e.stopPropagation()}>
       <Tooltip label={<Trans>Editor Tour</Trans>}>
-        <ActionIcon variant="subtle" size="sm" onClick={() => startTour(SUBMISSION_EDIT_TOUR_ID)}>
+        <ActionIcon
+          variant="subtle"
+          size="sm"
+          onClick={() => startTour(SUBMISSION_EDIT_TOUR_ID)}
+        >
           <IconHelp size={16} />
         </ActionIcon>
       </Tooltip>

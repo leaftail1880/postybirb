@@ -79,7 +79,12 @@ export class LogsService {
     header.write('0000000\0', 116, 8, 'utf-8');
 
     // File size in octal (124–135, 12 bytes)
-    header.write(`${fileSize.toString(8).padStart(11, '0')}\0`, 124, 12, 'utf-8');
+    header.write(
+      `${fileSize.toString(8).padStart(11, '0')}\0`,
+      124,
+      12,
+      'utf-8',
+    );
 
     // Modification time in octal (136–147, 12 bytes)
     const mtime = Math.floor(Date.now() / 1000);
@@ -101,7 +106,12 @@ export class LogsService {
       checksum += header[i];
     }
     // Write checksum in octal, null-terminated, space-padded
-    header.write(`${checksum.toString(8).padStart(6, '0')}\0 `, 148, 8, 'utf-8');
+    header.write(
+      `${checksum.toString(8).padStart(6, '0')}\0 `,
+      148,
+      8,
+      'utf-8',
+    );
 
     return header;
   }

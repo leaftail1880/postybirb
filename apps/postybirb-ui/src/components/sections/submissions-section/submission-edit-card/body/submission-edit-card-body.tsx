@@ -41,7 +41,8 @@ export function SubmissionEditCardBody() {
     !submission.isTemplate;
 
   // Don't show schedule form for templates or multi-submissions
-  const showScheduleForm = !submission.isTemplate && !submission.isMultiSubmission;
+  const showScheduleForm =
+    !submission.isTemplate && !submission.isMultiSubmission;
 
   return (
     <Stack gap="md" p="md">

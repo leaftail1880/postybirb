@@ -1,1 +1,4 @@
-export { ConfirmActionModal, type ConfirmActionModalProps } from './confirm-action-modal';
+export {
+  ConfirmActionModal,
+  type ConfirmActionModalProps,
+} from './confirm-action-modal';

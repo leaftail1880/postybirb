@@ -51,7 +51,7 @@ export function WebsiteOnlySelector({
 
   // Local state for selected website IDs
   const [selectedWebsiteIds, setSelectedWebsiteIds] = useState<string[]>(() =>
-    only ? only.split(',').filter(Boolean) : []
+    only ? only.split(',').filter(Boolean) : [],
   );
 
   // Sync local website selection state when props change
@@ -63,14 +63,14 @@ export function WebsiteOnlySelector({
   // Available website options
   const websiteOptions = useMemo(
     () => websites.map((w) => ({ value: w.id, label: w.displayName })),
-    [websites]
+    [websites],
   );
 
   // Filtered website options based on search
   const filteredWebsiteOptions = useMemo(() => {
     if (!debouncedSearchTerm) return websiteOptions;
     return websiteOptions.filter((option) =>
-      option.label.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+      option.label.toLowerCase().includes(debouncedSearchTerm.toLowerCase()),
     );
   }, [websiteOptions, debouncedSearchTerm]);
 
@@ -83,7 +83,7 @@ export function WebsiteOnlySelector({
       setSelectedWebsiteIds(newIds);
       onOnlyChange(newOnlyValue);
     },
-    [onOnlyChange]
+    [onOnlyChange],
   );
 
   // Handle individual website toggle
@@ -94,7 +94,7 @@ export function WebsiteOnlySelector({
         : [...selectedWebsiteIds, websiteId];
       updateWebsiteSelection(newSelected.join(','));
     },
-    [selectedWebsiteIds, updateWebsiteSelection]
+    [selectedWebsiteIds, updateWebsiteSelection],
   );
 
   // Handle select all / deselect all

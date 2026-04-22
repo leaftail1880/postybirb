@@ -5,36 +5,36 @@
 
 import { Trans } from '@lingui/react/macro';
 import {
-    Accordion,
-    ActionIcon,
-    Badge,
-    Button,
-    Card,
-    Divider,
-    Group,
-    Stack,
-    Table,
-    Text,
-    Textarea,
-    Tooltip,
+  Accordion,
+  ActionIcon,
+  Badge,
+  Button,
+  Card,
+  Divider,
+  Group,
+  Stack,
+  Table,
+  Text,
+  Textarea,
+  Tooltip,
 } from '@mantine/core';
 import { EntityId, PostRecordDto, PostRecordState } from '@postybirb/types';
 import {
-    IconCheck,
-    IconDeviceFloppy,
-    IconExternalLink,
-    IconInfoCircle,
-    IconLoader,
-    IconX,
+  IconCheck,
+  IconDeviceFloppy,
+  IconExternalLink,
+  IconInfoCircle,
+  IconLoader,
+  IconX,
 } from '@tabler/icons-react';
 import { useLocale } from '../../../../hooks';
 import type { AccountRecord } from '../../../../stores/records';
 import { CopyToClipboard } from '../../../shared/copy-to-clipboard';
 import { ExternalLink } from '../../../shared/external-link';
 import {
-    exportPostRecordToFile,
-    extractWebsitePostsFromEvents,
-    formatDuration,
+  exportPostRecordToFile,
+  extractWebsitePostsFromEvents,
+  formatDuration,
 } from './history-utils';
 
 function getStateIcon(state: PostRecordState): React.ReactNode {

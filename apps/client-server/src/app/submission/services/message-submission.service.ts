@@ -4,9 +4,7 @@ import { CreateSubmissionDto } from '../dtos/create-submission.dto';
 import { ISubmissionService } from './submission-service.interface';
 
 @Injectable()
-export class MessageSubmissionService
-  implements ISubmissionService<MessageSubmission>
-{
+export class MessageSubmissionService implements ISubmissionService<MessageSubmission> {
   async populate(
     submission: MessageSubmission,
     createSubmissionDto: CreateSubmissionDto,

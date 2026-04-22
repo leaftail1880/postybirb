@@ -1,5 +1,5 @@
-import { SelectOption } from '@postybirb/form-builder'; 
+import { SelectOption } from '@postybirb/form-builder';
 
-export type DeviantArtAccountData = { 
+export type DeviantArtAccountData = {
   folders: SelectOption[];
-}
+};

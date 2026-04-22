@@ -594,9 +594,7 @@ export default class Patreon
     // Determine if any selected tier is a paid tier.
     // Free tiers ("Everyone", free rewards) have cost === 0.
     const folders = this.getWebsiteData()?.folders ?? [];
-    const selectedTierIds = new Set(
-      rulesSegment.map((rule) => rule.id),
-    );
+    const selectedTierIds = new Set(rulesSegment.map((rule) => rule.id));
     const hasPaidTier = folders.some(
       (folder) =>
         selectedTierIds.has(String(folder.value)) &&

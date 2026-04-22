@@ -1,10 +1,10 @@
 import {
-    ISubmission,
-    ISubmissionDto,
-    ISubmissionMetadata,
-    ISubmissionScheduleInfo,
-    ScheduleType,
-    SubmissionType,
+  ISubmission,
+  ISubmissionDto,
+  ISubmissionMetadata,
+  ISubmissionScheduleInfo,
+  ScheduleType,
+  SubmissionType,
 } from '@postybirb/types';
 import { instanceToPlain, Type } from 'class-transformer';
 import { DatabaseEntity } from './database-entity';

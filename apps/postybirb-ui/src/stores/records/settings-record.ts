@@ -3,12 +3,12 @@
  */
 
 import type {
-    DesktopNotificationSettings,
-    EntityId,
-    ISettingsOptions,
-    SettingsDto,
-    TagSearchProviderSettings,
-    WebsiteId,
+  DesktopNotificationSettings,
+  EntityId,
+  ISettingsOptions,
+  SettingsDto,
+  TagSearchProviderSettings,
+  WebsiteId,
 } from '@postybirb/types';
 import { BaseRecord } from './base-record';
 

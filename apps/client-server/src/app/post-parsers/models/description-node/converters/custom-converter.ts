@@ -25,31 +25,21 @@ export class CustomConverter extends BaseConverter {
     return '\n';
   }
 
-  convertBlockNode(
-    node: TipTapNode,
-    context: ConversionContext,
-  ): string {
+  convertBlockNode(node: TipTapNode, context: ConversionContext): string {
     return this.blockHandler(node, context);
   }
 
-  convertInlineNode(
-    node: TipTapNode,
-    context: ConversionContext,
-  ): string {
+  convertInlineNode(node: TipTapNode, context: ConversionContext): string {
     if (this.inlineHandler) {
       return this.inlineHandler(node, context);
     }
     return this.convertContent(node.content, context);
   }
 
-  convertTextNode(
-    node: TipTapNode,
-    context: ConversionContext,
-  ): string {
+  convertTextNode(node: TipTapNode, context: ConversionContext): string {
     if (this.textHandler) {
       return this.textHandler(node, context);
     }
     return (node as any).text ?? '';
   }
 }
-

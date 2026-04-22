@@ -5,38 +5,38 @@
 
 import { Trans, useLingui } from '@lingui/react/macro';
 import {
-    ActionIcon,
-    Badge,
-    Box,
-    Button,
-    Collapse,
-    Group,
-    Paper,
-    Popover,
-    Stack,
-    Text,
-    TextInput,
-    Tooltip,
-    UnstyledButton,
+  ActionIcon,
+  Badge,
+  Box,
+  Button,
+  Collapse,
+  Group,
+  Paper,
+  Popover,
+  Stack,
+  Text,
+  TextInput,
+  Tooltip,
+  UnstyledButton,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
-    IconChevronDown,
-    IconChevronRight,
-    IconLogin,
-    IconPlus,
-    IconRefresh,
-    IconTrash,
-    IconUser,
+  IconChevronDown,
+  IconChevronRight,
+  IconLogin,
+  IconPlus,
+  IconRefresh,
+  IconTrash,
+  IconUser,
 } from '@tabler/icons-react';
 import { memo, useCallback, useState } from 'react';
 import accountApi from '../../../api/account.api';
 import type { AccountRecord } from '../../../stores/records';
 import type { WebsiteRecord } from '../../../stores/records/website-record';
 import {
-    showCreateErrorNotification,
-    showCreatedNotification,
-    showUpdateErrorNotification,
+  showCreateErrorNotification,
+  showCreatedNotification,
+  showUpdateErrorNotification,
 } from '../../../utils/notifications';
 import { HoldToConfirmButton } from '../../hold-to-confirm';
 import { useAccountsContext } from './context';
@@ -102,14 +102,17 @@ const AccountRow = memo(({ account }: { account: AccountRecord }) => {
     }
   }, [editName, account.id, account.name, account.groups]);
 
-  const handleNameKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      (e.target as HTMLInputElement).blur();
-    } else if (e.key === 'Escape') {
-      setEditName(account.name);
-      setIsEditingName(false);
-    }
-  }, [account.name]);
+  const handleNameKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        (e.target as HTMLInputElement).blur();
+      } else if (e.key === 'Escape') {
+        setEditName(account.name);
+        setIsEditingName(false);
+      }
+    },
+    [account.name],
+  );
 
   const handleNameClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
@@ -275,146 +278,159 @@ const AccountRow = memo(({ account }: { account: AccountRecord }) => {
  * Compact card for a website showing its accounts.
  * Memoized to prevent re-renders when sibling cards haven't changed.
  */
-export const WebsiteAccountCard = memo(({
-  website,
-  accounts,
-}: WebsiteAccountCardProps) => {
-  const { t } = useLingui();
-  const { onAccountCreated } = useAccountsContext();
-  // Default to collapsed if no accounts, expanded otherwise
-  const [expanded, { toggle }] = useDisclosure(accounts.length > 0);
-  const [addPopoverOpened, { open: openAddPopover, close: closeAddPopover }] =
-    useDisclosure(false);
-  const [newAccountName, setNewAccountName] = useState('');
-  const [isCreating, setIsCreating] = useState(false);
+export const WebsiteAccountCard = memo(
+  ({ website, accounts }: WebsiteAccountCardProps) => {
+    const { t } = useLingui();
+    const { onAccountCreated } = useAccountsContext();
+    // Default to collapsed if no accounts, expanded otherwise
+    const [expanded, { toggle }] = useDisclosure(accounts.length > 0);
+    const [addPopoverOpened, { open: openAddPopover, close: closeAddPopover }] =
+      useDisclosure(false);
+    const [newAccountName, setNewAccountName] = useState('');
+    const [isCreating, setIsCreating] = useState(false);
 
-  const loggedInCount = accounts.filter((a) => a.isLoggedIn).length;
-  const totalCount = accounts.length;
+    const loggedInCount = accounts.filter((a) => a.isLoggedIn).length;
+    const totalCount = accounts.length;
 
-  const handleCreateAccount = useCallback(async () => {
-    const trimmedName = newAccountName.trim();
-    if (!trimmedName || isCreating) return;
+    const handleCreateAccount = useCallback(async () => {
+      const trimmedName = newAccountName.trim();
+      if (!trimmedName || isCreating) return;
 
-    setIsCreating(true);
-    try {
-      const response = await accountApi.create({
-        name: trimmedName,
-        website: website.id,
-        groups: [],
-      });
-      showCreatedNotification(trimmedName);
-      setNewAccountName('');
-      closeAddPopover();
-      // Select the newly created account
-      onAccountCreated(response.body.id);
-    } catch {
-      showCreateErrorNotification(trimmedName);
-    } finally {
-      setIsCreating(false);
-    }
-  }, [newAccountName, isCreating, website.id, closeAddPopover, onAccountCreated]);
+      setIsCreating(true);
+      try {
+        const response = await accountApi.create({
+          name: trimmedName,
+          website: website.id,
+          groups: [],
+        });
+        showCreatedNotification(trimmedName);
+        setNewAccountName('');
+        closeAddPopover();
+        // Select the newly created account
+        onAccountCreated(response.body.id);
+      } catch {
+        showCreateErrorNotification(trimmedName);
+      } finally {
+        setIsCreating(false);
+      }
+    }, [
+      newAccountName,
+      isCreating,
+      website.id,
+      closeAddPopover,
+      onAccountCreated,
+    ]);
 
-  const handleAddKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      handleCreateAccount();
-    } else if (e.key === 'Escape') {
-      setNewAccountName('');
-      closeAddPopover();
-    }
-  }, [handleCreateAccount, closeAddPopover]);
+    const handleAddKeyDown = useCallback(
+      (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+          handleCreateAccount();
+        } else if (e.key === 'Escape') {
+          setNewAccountName('');
+          closeAddPopover();
+        }
+      },
+      [handleCreateAccount, closeAddPopover],
+    );
 
-  return (
-    <Paper withBorder radius="sm" p={0} data-tour-id="accounts-website-card">
-      {/* Website header */}
-      <UnstyledButton onClick={toggle} style={{ width: '100%' }}>
-        <Group gap="xs" px="sm" py="xs" wrap="nowrap">
-          {expanded ? (
-            <IconChevronDown size={14} style={{ flexShrink: 0 }} />
-          ) : (
-            <IconChevronRight size={14} style={{ flexShrink: 0 }} />
-          )}
+    return (
+      <Paper withBorder radius="sm" p={0} data-tour-id="accounts-website-card">
+        {/* Website header */}
+        <UnstyledButton onClick={toggle} style={{ width: '100%' }}>
+          <Group gap="xs" px="sm" py="xs" wrap="nowrap">
+            {expanded ? (
+              <IconChevronDown size={14} style={{ flexShrink: 0 }} />
+            ) : (
+              <IconChevronRight size={14} style={{ flexShrink: 0 }} />
+            )}
 
-          <Text size="sm" fw={500} style={{ flex: 1 }} truncate>
-            {website.displayName}
-          </Text>
+            <Text size="sm" fw={500} style={{ flex: 1 }} truncate>
+              {website.displayName}
+            </Text>
 
-          <Badge size="xs" variant="light">
-            {loggedInCount}/{totalCount}
-          </Badge>
-        </Group>
-      </UnstyledButton>
+            <Badge size="xs" variant="light">
+              {loggedInCount}/{totalCount}
+            </Badge>
+          </Group>
+        </UnstyledButton>
 
-      {/* Accounts list */}
-      <Collapse in={expanded}>
-        <Stack gap={2} pb="xs" px="xs">
-          {accounts.length === 0
-            ? null
-            : accounts.map((account) => (
-                <AccountRow key={account.id} account={account} />
-              ))}
+        {/* Accounts list */}
+        <Collapse in={expanded}>
+          <Stack gap={2} pb="xs" px="xs">
+            {accounts.length === 0
+              ? null
+              : accounts.map((account) => (
+                  <AccountRow key={account.id} account={account} />
+                ))}
 
-          {/* Add account button with popover form */}
-          <Popover
-            opened={addPopoverOpened}
-            onClose={closeAddPopover}
-            position="bottom-start"
-            withArrow
-            shadow="md"
-          >
-            <Popover.Target>
-              <UnstyledButton onClick={openAddPopover}>
-                <Group gap="xs" px="xs" py={4} data-tour-id="accounts-add-account">
-                  <IconPlus size={14} style={{ opacity: 0.5 }} />
-                  <Text size="xs" c="dimmed">
-                    <Trans>Add account</Trans>
+            {/* Add account button with popover form */}
+            <Popover
+              opened={addPopoverOpened}
+              onClose={closeAddPopover}
+              position="bottom-start"
+              withArrow
+              shadow="md"
+            >
+              <Popover.Target>
+                <UnstyledButton onClick={openAddPopover}>
+                  <Group
+                    gap="xs"
+                    px="xs"
+                    py={4}
+                    data-tour-id="accounts-add-account"
+                  >
+                    <IconPlus size={14} style={{ opacity: 0.5 }} />
+                    <Text size="xs" c="dimmed">
+                      <Trans>Add account</Trans>
+                    </Text>
+                  </Group>
+                </UnstyledButton>
+              </Popover.Target>
+              <Popover.Dropdown>
+                <Stack gap="xs">
+                  <Text size="xs" fw={500}>
+                    <Trans>New account</Trans>
                   </Text>
-                </Group>
-              </UnstyledButton>
-            </Popover.Target>
-            <Popover.Dropdown>
-              <Stack gap="xs">
-                <Text size="xs" fw={500}>
-                  <Trans>New account</Trans>
-                </Text>
-                <TextInput
-                  size="xs"
-                  placeholder={t`Account name`}
-                  value={newAccountName}
-                  onChange={(e) =>
-                    setNewAccountName(
-                      e.currentTarget.value.slice(0, MAX_ACCOUNT_NAME_LENGTH),
-                    )
-                  }
-                  onKeyDown={handleAddKeyDown}
-                  autoFocus
-                  disabled={isCreating}
-                />
-                <Group gap="xs" justify="flex-end">
-                  <Button
+                  <TextInput
                     size="xs"
-                    variant="default"
-                    onClick={() => {
-                      setNewAccountName('');
-                      closeAddPopover();
-                    }}
+                    placeholder={t`Account name`}
+                    value={newAccountName}
+                    onChange={(e) =>
+                      setNewAccountName(
+                        e.currentTarget.value.slice(0, MAX_ACCOUNT_NAME_LENGTH),
+                      )
+                    }
+                    onKeyDown={handleAddKeyDown}
+                    autoFocus
                     disabled={isCreating}
-                  >
-                    <Trans>Cancel</Trans>
-                  </Button>
-                  <Button
-                    size="xs"
-                    onClick={handleCreateAccount}
-                    disabled={!newAccountName.trim() || isCreating}
-                    loading={isCreating}
-                  >
-                    <Trans>Create</Trans>
-                  </Button>
-                </Group>
-              </Stack>
-            </Popover.Dropdown>
-          </Popover>
-        </Stack>
-      </Collapse>
-    </Paper>
-  );
-});
+                  />
+                  <Group gap="xs" justify="flex-end">
+                    <Button
+                      size="xs"
+                      variant="default"
+                      onClick={() => {
+                        setNewAccountName('');
+                        closeAddPopover();
+                      }}
+                      disabled={isCreating}
+                    >
+                      <Trans>Cancel</Trans>
+                    </Button>
+                    <Button
+                      size="xs"
+                      onClick={handleCreateAccount}
+                      disabled={!newAccountName.trim() || isCreating}
+                      loading={isCreating}
+                    >
+                      <Trans>Create</Trans>
+                    </Button>
+                  </Group>
+                </Stack>
+              </Popover.Dropdown>
+            </Popover>
+          </Stack>
+        </Collapse>
+      </Paper>
+    );
+  },
+);

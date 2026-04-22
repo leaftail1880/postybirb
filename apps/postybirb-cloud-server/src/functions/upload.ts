@@ -1,8 +1,8 @@
 import {
-    app,
-    HttpRequest,
-    HttpResponseInit,
-    InvocationContext,
+  app,
+  HttpRequest,
+  HttpResponseInit,
+  InvocationContext,
 } from '@azure/functions';
 import { BlobServiceClient } from '@azure/storage-blob';
 import { createHash } from 'crypto';

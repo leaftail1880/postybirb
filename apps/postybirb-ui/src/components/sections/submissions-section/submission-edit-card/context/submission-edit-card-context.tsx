@@ -4,12 +4,12 @@
  */
 
 import {
-    createContext,
-    useContext,
-    useMemo,
-    type Dispatch,
-    type ReactNode,
-    type SetStateAction,
+  createContext,
+  useContext,
+  useMemo,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
 } from 'react';
 import type { SubmissionRecord } from '../../../../../stores/records';
 
@@ -70,7 +70,14 @@ export function SubmissionEditCardProvider({
       viewMode,
       setViewMode,
     }),
-    [submission, isCollapsible, defaultExpanded, targetSubmissionIds, viewMode, setViewMode],
+    [
+      submission,
+      isCollapsible,
+      defaultExpanded,
+      targetSubmissionIds,
+      viewMode,
+      setViewMode,
+    ],
   );
 
   return (

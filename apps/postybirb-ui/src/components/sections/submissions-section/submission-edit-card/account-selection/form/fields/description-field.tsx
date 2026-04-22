@@ -8,9 +8,9 @@ import { Alert, Box, Checkbox } from '@mantine/core';
 import { useDebouncedCallback, useDisclosure } from '@mantine/hooks';
 import { DescriptionFieldType } from '@postybirb/form-builder';
 import {
-    DefaultDescription,
-    DefaultDescriptionValue,
-    DescriptionValue,
+  DefaultDescription,
+  DefaultDescriptionValue,
+  DescriptionValue,
 } from '@postybirb/types';
 import { IconAlertTriangle } from '@tabler/icons-react';
 import { useMemo } from 'react';

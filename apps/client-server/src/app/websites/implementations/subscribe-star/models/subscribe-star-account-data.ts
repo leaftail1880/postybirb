@@ -1,5 +1,5 @@
 import { SelectOption } from '@postybirb/form-builder';
 
-export type SubscribeStarAccountData = { 
+export type SubscribeStarAccountData = {
   tiers: SelectOption[];
-}
+};

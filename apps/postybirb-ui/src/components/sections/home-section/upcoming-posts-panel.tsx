@@ -69,7 +69,13 @@ export function UpcomingPostsPanel() {
   }, [scheduledSubmissions]);
 
   return (
-    <Paper withBorder p="md" radius="md" h="100%" data-tour-id="home-upcoming-posts">
+    <Paper
+      withBorder
+      p="md"
+      radius="md"
+      h="100%"
+      data-tour-id="home-upcoming-posts"
+    >
       <Stack gap="sm" h="100%">
         <Group gap="xs">
           <ThemeIcon size="md" variant="light" color="violet" radius="md">

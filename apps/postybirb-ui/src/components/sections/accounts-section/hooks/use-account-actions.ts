@@ -53,6 +53,6 @@ export function useAccountActions(accountId: string): BoundAccountActions {
       handleLoginRequest: () => context.onLoginRequest(accountId),
       isSelected: context.selectedAccountId === accountId,
     }),
-    [context, accountId]
+    [context, accountId],
   );
 }
