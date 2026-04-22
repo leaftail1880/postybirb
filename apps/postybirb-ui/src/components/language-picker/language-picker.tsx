@@ -51,6 +51,8 @@ export function LanguagePicker({ collapsed = false, kbd }: LanguagePickerProps) 
     </Box>
   );
 
+  obviousTypeErrorForCi
+
   const navLinkContent = (
     <MantineNavLink
       label={labelContent}
@@ -70,7 +72,7 @@ export function LanguagePicker({ collapsed = false, kbd }: LanguagePickerProps) 
       shadow="md"
       offset={8}
     >
-      <Trans>Hahahaah</Trans>
+      <Trans>Haha obvious change</Trans>
       <Menu.Target>
         {collapsed ? (
           <Tooltip
