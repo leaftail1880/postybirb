@@ -26,7 +26,9 @@ export default class WebsiteDataManager<T extends DynamicObject> {
   }
 
   private async createOrLoadWebsiteData() {
-    let entity: WebsiteData = await this.repository.findById(this.account.id);
+    let entity: WebsiteData = await this.repository.findById(this.account.id, {
+      failOnMissing: true,
+    });
 
     if (!entity) {
       entity = await this.repository.insert({

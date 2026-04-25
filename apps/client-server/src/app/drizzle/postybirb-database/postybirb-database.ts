@@ -14,6 +14,7 @@ import {
   DBQueryConfig,
   ExtractTablesWithRelations,
 } from 'drizzle-orm/relations';
+import { SetRequired } from 'type-fest';
 import { fromDatabaseRecord } from '../models';
 import { FindOptions } from './find-options.type';
 import {
@@ -23,8 +24,9 @@ import {
 
 type ExtractedRelations = ExtractTablesWithRelations<typeof Schemas>;
 
-type Relation<TSchemaKey extends SchemaKey> =
-  PostyBirbDatabaseType['_']['schema'][TSchemaKey];
+type Relation<TSchemaKey extends SchemaKey> = NonNullable<
+  PostyBirbDatabaseType['_']['schema']
+>[TSchemaKey];
 
 export type Action = 'delete' | 'insert' | 'update';
 
@@ -148,7 +150,7 @@ export class PostyBirbDatabase<
   ): Promise<TEntityClass | TEntityClass[]> {
     const insertQuery = this.db
       .insert(this.schemaEntity)
-      .values(value)
+      .values(value as Insert<TSchemaKey>)
       .returning();
     // After calling .returning(), the result is always an array of the selected fields
     const inserts = (await insertQuery) as Array<Select<TSchemaKey>>;
@@ -157,7 +159,9 @@ export class PostyBirbDatabase<
       'insert',
     );
     const result = await Promise.all(
-      inserts.map((insert) => this.findById(insert.id)),
+      inserts.map((insert) =>
+        this.findById(insert.id, { failOnMissing: true }),
+      ),
     );
     return Array.isArray(value) ? result : result[0];
   }
@@ -173,6 +177,27 @@ export class PostyBirbDatabase<
     return result;
   }
 
+  public async findById(
+    id: EntityId,
+    options: SetRequired<FindOptions, 'failOnMissing'>,
+    load?: DBQueryConfig<
+      'many',
+      true,
+      ExtractedRelations,
+      Relation<TSchemaKey>
+    >['with'],
+  ): Promise<TEntityClass>;
+
+  public async findById(
+    id: EntityId,
+    options?: FindOptions,
+    load?: DBQueryConfig<
+      'many',
+      true,
+      ExtractedRelations,
+      Relation<TSchemaKey>
+    >['with'],
+  ): Promise<TEntityClass | null>;
   public async findById(
     id: EntityId,
     options?: FindOptions,
@@ -216,9 +241,7 @@ export class PostyBirbDatabase<
     >,
   ): Promise<TEntityClass[]> {
     const record: any[] =
-      (await this.db.query[
-        this.schemaKey as keyof PostyBirbDatabaseType
-      ].findMany({
+      (await this.db.query[this.schemaKey].findMany({
         ...query,
         with: query.with
           ? query.with
@@ -243,9 +266,7 @@ export class PostyBirbDatabase<
       >
     >,
   ): Promise<TEntityClass | null> {
-    const record = await this.db.query[
-      this.schemaKey as keyof PostyBirbDatabaseType
-    ].findFirst({
+    const record = await this.db.query[this.schemaKey].findFirst({
       ...query,
       with: query.with
         ? query.with
@@ -272,12 +293,11 @@ export class PostyBirbDatabase<
     await this.findById(id, { failOnMissing: true });
 
     await this.db
-      // eslint-disable-next-line testing-library/await-async-query
       .update(this.schemaEntity)
       .set(set)
       .where(eq(this.schemaEntity.id, id));
     this.notify([id], 'update');
-    return this.findById(id);
+    return this.findById(id, { failOnMissing: true });
   }
 
   public count(filter?: SQL): Promise<number> {
