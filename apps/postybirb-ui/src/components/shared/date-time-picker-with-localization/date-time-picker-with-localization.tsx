@@ -17,7 +17,11 @@ export function DateTimePickerWithLocalization(props: Props) {
       highlightToday
       firstDayOfWeek={startOfWeek as DayOfWeek}
       valueFormat={format}
-      timePickerProps={{ format: hourCycle === 'h12' ? '12h' : '24h' }}
+      timePickerProps={{
+        withDropdown: true,
+        popoverProps: { withinPortal: false },
+        format: hourCycle === 'h12' ? '12h' : '24h',
+      }}
       {...props}
       placeholder={placeholder ? dayjs(placeholder).format(format) : undefined}
       onChange={(value) => {
