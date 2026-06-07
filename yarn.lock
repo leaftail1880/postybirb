@@ -10278,25 +10278,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/html@npm:3.15.3":
-  version: 3.15.3
-  resolution: "@tiptap/html@npm:3.15.3"
+"@tiptap/html@npm:^3.19.0":
+  version: 3.26.0
+  resolution: "@tiptap/html@npm:3.26.0"
   peerDependencies:
-    "@tiptap/core": ^3.15.3
-    "@tiptap/pm": ^3.15.3
-    happy-dom: ^20.0.2
-  checksum: 10c0/7f51e7dc5f67a210378f20bd7dd8d240e778e47efb97e3798f23521d409d3fe6bb119c6b572f52e62278dfc5e273269e7f447d8b79a5b0c1c82cc383f0515754
-  languageName: node
-  linkType: hard
-
-"@tiptap/html@patch:@tiptap/html@npm%3A3.15.3#~/.yarn/patches/@tiptap-html-npm-3.15.3-a9641901db.patch":
-  version: 3.15.3
-  resolution: "@tiptap/html@patch:@tiptap/html@npm%3A3.15.3#~/.yarn/patches/@tiptap-html-npm-3.15.3-a9641901db.patch::version=3.15.3&hash=8d1ed8"
-  peerDependencies:
-    "@tiptap/core": ^3.15.3
-    "@tiptap/pm": ^3.15.3
-    happy-dom: ^20.0.2
-  checksum: 10c0/ccaaa32cd1a3154e102215a73dc3d59c45060c4929feafd8810318af4fb92acd999317f6389be79cd2f957e1ee263f25c926a7fe677cc697758ad16f0687e455
+    "@tiptap/core": 3.26.0
+    "@tiptap/pm": 3.26.0
+    happy-dom: ^20.8.9
+  checksum: 10c0/11c7ef2f8b5d53f854861b15757455517b7f191e0a34383649e1dd245e63ed4f68ce9749d7f098cf3d27447c8a550b5d5cd96d964a1feb81cca301ce2b5f1852
   languageName: node
   linkType: hard
 
@@ -24213,7 +24202,7 @@ __metadata:
     "@tiptap/extension-text-style": "npm:^3.19.0"
     "@tiptap/extension-underline": "npm:^3.19.0"
     "@tiptap/extensions": "npm:^3.19.0"
-    "@tiptap/html": "patch:@tiptap/html@npm%3A3.15.3#~/.yarn/patches/@tiptap-html-npm-3.15.3-a9641901db.patch"
+    "@tiptap/html": "npm:^3.19.0"
     "@tiptap/pm": "npm:^3.19.0"
     "@tiptap/react": "npm:^3.19.0"
     "@tiptap/suggestion": "npm:^3.19.0"
@@ -24335,7 +24324,7 @@ __metadata:
     swagger-ui-express: "npm:^4.1.6"
     tailwindcss: "npm:3.4.3"
     teleproto: "npm:^1.225.3"
-    tinykeys: "npm:^3.0.0"
+    tinykeys: "npm:^4.0.0"
     tippy.js: "npm:^6.3.7"
     tslib: "npm:2.5.2"
     turndown: "npm:^7.2.0"
@@ -27850,10 +27839,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tinykeys@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "tinykeys@npm:3.0.0"
-  checksum: 10c0/75eef480b3008cb1085da37ea1d33b162adb2237e1f6af4360679a7af4b8b75638c6f46b8d019745aae982e84d6ff24ac476299c1680e578859d87584d3e583c
+"tinykeys@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "tinykeys@npm:4.0.0"
+  checksum: 10c0/e7ccb4e4930b91d5412afddf7bdfc93909d3e69517c249ade4374ca8945ec05771c72b8d2af4e62944e29f59a7b7d87957322240740d54f0c2a77ec217f41dc5
   languageName: node
   linkType: hard
 
