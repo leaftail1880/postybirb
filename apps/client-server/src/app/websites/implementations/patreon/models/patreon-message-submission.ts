@@ -7,7 +7,6 @@ import {
   TextField,
 } from '@postybirb/form-builder';
 import {
-  DefaultDescriptionValue,
   DefaultTagValue,
   DescriptionType,
   DescriptionValue,
@@ -19,7 +18,7 @@ export class PatreonMessageSubmission extends BaseWebsiteOptions {
   @DescriptionField({
     descriptionType: DescriptionType.HTML,
   })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @TagField({
     maxTagLength: 25,

@@ -5,8 +5,6 @@ import {
   TagField,
 } from '@postybirb/form-builder';
 import {
-  DefaultDescriptionValue,
-  DefaultTagValue,
   DescriptionType,
   DescriptionValue,
   SubmissionRating,
@@ -19,12 +17,12 @@ export class ArtconomyFileSubmission extends BaseWebsiteOptions {
     descriptionType: DescriptionType.MARKDOWN,
     maxDescriptionLength: 2000,
   })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @TagField({
     minTags: 5,
   })
-  tags: TagValue = DefaultTagValue();
+  declare tags: TagValue;
 
   @RatingField({
     options: [
@@ -34,7 +32,7 @@ export class ArtconomyFileSubmission extends BaseWebsiteOptions {
       { value: SubmissionRating.EXTREME, label: 'Offensive/Disturbing' },
     ],
   })
-  rating: SubmissionRating = SubmissionRating.GENERAL;
+  declare rating: SubmissionRating;
 
   @BooleanField({
     label: 'private',

@@ -4,7 +4,6 @@ import {
   TagField,
 } from '@postybirb/form-builder';
 import {
-  DefaultDescriptionValue,
   DefaultTagValue,
   DescriptionType,
   DescriptionValue,
@@ -19,7 +18,7 @@ export class CaraFileSubmission extends BaseWebsiteOptions {
     expectsInlineTags: true,
     expectsInlineTitle: true,
   })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @BooleanField({
     label: 'addToPortfolio',

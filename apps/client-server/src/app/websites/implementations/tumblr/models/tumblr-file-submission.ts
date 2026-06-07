@@ -5,7 +5,6 @@ import {
   TagField,
 } from '@postybirb/form-builder';
 import {
-  DefaultDescriptionValue,
   DefaultTagValue,
   DescriptionType,
   DescriptionValue,
@@ -20,7 +19,7 @@ export class TumblrFileSubmission extends BaseWebsiteOptions {
     descriptionType: DescriptionType.CUSTOM,
     expectsInlineTitle: true,
   })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @TagField({
     section: 'common',

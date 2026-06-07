@@ -6,8 +6,6 @@ import {
   TagField,
 } from '@postybirb/form-builder';
 import {
-  DefaultDescriptionValue,
-  DefaultTagValue,
   DescriptionType,
   DescriptionValue,
   SubmissionRating,
@@ -20,17 +18,17 @@ export class KoFiFileSubmission extends BaseWebsiteOptions {
   @TagField({
     hidden: true,
   })
-  tags: TagValue = DefaultTagValue();
+  declare tags: TagValue;
 
   @RatingField({
     options: [{ value: SubmissionRating.GENERAL, label: 'General' }],
   })
-  rating: SubmissionRating = SubmissionRating.GENERAL;
+  declare rating: SubmissionRating;
 
   @DescriptionField({
     descriptionType: DescriptionType.PLAINTEXT,
   })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @SelectField<KoFiAccountData>({
     label: 'folder',

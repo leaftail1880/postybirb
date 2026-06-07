@@ -8,16 +8,16 @@ implement the `FileWebsite<T>` interface.
 ```ts
 class FooFileSubmission extends BaseWebsiteOptions {
   @TitleField({ 'title', required: true, row: 0, col: 1 })
-  title = '';
+  declare title: string;
 
   @TagField({ row: 2, col: 1 })
-  tags: TagValue = DefaultTagValue();
+  declare tags: TagValue;
 
   @DescriptionField({ row: 3, col: 1 })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @RatingField({ required: true, row: 0, col: 0 })
-  rating: SubmissionRating = SubmissionRating.GENERAL;
+  declare rating: SubmissionRating;
 }
 
 @WebsiteMetadata({

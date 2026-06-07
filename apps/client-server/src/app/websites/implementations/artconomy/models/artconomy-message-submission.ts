@@ -1,14 +1,10 @@
 import { DescriptionField } from '@postybirb/form-builder';
-import {
-  DefaultDescriptionValue,
-  DescriptionType,
-  DescriptionValue,
-} from '@postybirb/types';
+import { DescriptionType, DescriptionValue } from '@postybirb/types';
 import { BaseWebsiteOptions } from '../../../models/base-website-options';
 
 export class ArtconomyMessageSubmission extends BaseWebsiteOptions {
   @DescriptionField({
     descriptionType: DescriptionType.HTML,
   })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 }

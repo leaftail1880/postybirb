@@ -1,6 +1,5 @@
 import { DescriptionField, RatingField } from '@postybirb/form-builder';
 import {
-  DefaultDescriptionValue,
   DescriptionType,
   DescriptionValue,
   SubmissionRating,
@@ -13,7 +12,7 @@ export class TwitterMessageSubmission extends BaseWebsiteOptions {
     expectsInlineTags: true,
     expectsInlineTitle: true,
   })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @RatingField({
     options: [
@@ -27,5 +26,5 @@ export class TwitterMessageSubmission extends BaseWebsiteOptions {
       },
     ],
   })
-  rating: SubmissionRating = SubmissionRating.GENERAL;
+  declare rating: SubmissionRating;
 }

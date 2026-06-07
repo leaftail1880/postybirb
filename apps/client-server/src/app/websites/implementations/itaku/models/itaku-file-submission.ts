@@ -7,8 +7,6 @@ import {
   TextField,
 } from '@postybirb/form-builder';
 import {
-  DefaultDescriptionValue,
-  DefaultTagValue,
   DescriptionType,
   DescriptionValue,
   SubmissionRating,
@@ -25,19 +23,19 @@ export class ItakuFileSubmission extends BaseWebsiteOptions {
       { value: SubmissionRating.ADULT, label: 'NSFW' },
     ],
   })
-  rating: SubmissionRating = SubmissionRating.GENERAL;
+  declare rating: SubmissionRating;
 
   @TagField({
     maxTagLength: 59,
     minTags: 5,
   })
-  tags: TagValue = DefaultTagValue();
+  declare tags: TagValue;
 
   @DescriptionField({
     descriptionType: DescriptionType.PLAINTEXT,
     maxDescriptionLength: 5000,
   })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @TextField({
     label: 'contentWarning',

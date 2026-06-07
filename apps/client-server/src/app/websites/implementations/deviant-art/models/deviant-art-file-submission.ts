@@ -7,8 +7,6 @@ import {
   TitleField,
 } from '@postybirb/form-builder';
 import {
-  DefaultDescriptionValue,
-  DefaultTagValue,
   DescriptionType,
   DescriptionValue,
   SubmissionRating,
@@ -20,22 +18,22 @@ export class DeviantArtFileSubmission extends BaseWebsiteOptions {
   @RatingField({
     hidden: true,
   })
-  rating: SubmissionRating = SubmissionRating.GENERAL;
+  declare rating: SubmissionRating;
 
   @TitleField({
     maxLength: 50,
   })
-  title = '';
+  declare title: string;
 
   @TagField({
     maxTags: 30,
   })
-  tags: TagValue = DefaultTagValue();
+  declare tags: TagValue;
 
   @DescriptionField({
     descriptionType: DescriptionType.CUSTOM,
   })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @SelectField({
     section: 'website',

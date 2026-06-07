@@ -1,9 +1,5 @@
 import { DescriptionField, SelectField } from '@postybirb/form-builder';
-import {
-  DefaultDescriptionValue,
-  DescriptionType,
-  DescriptionValue,
-} from '@postybirb/types';
+import { DescriptionType, DescriptionValue } from '@postybirb/types';
 import { BaseWebsiteOptions } from '../../../models/base-website-options';
 import { SubscribeStarAccountData } from './subscribe-star-account-data';
 
@@ -11,7 +7,7 @@ export class SubscribeStarFileSubmission extends BaseWebsiteOptions {
   @DescriptionField({
     descriptionType: DescriptionType.HTML,
   })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @SelectField<SubscribeStarAccountData>({
     required: true,

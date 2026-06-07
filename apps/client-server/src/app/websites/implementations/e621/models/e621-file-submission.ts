@@ -1,6 +1,5 @@
 import { DescriptionField, TagField, TextField } from '@postybirb/form-builder';
 import {
-  DefaultDescriptionValue,
   DefaultTagValue,
   DescriptionType,
   DescriptionValue,
@@ -13,7 +12,7 @@ export class E621FileSubmission extends BaseWebsiteOptions {
     descriptionType: DescriptionType.CUSTOM,
     expectsInlineTitle: true,
   })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @TagField({
     minTags: 4,

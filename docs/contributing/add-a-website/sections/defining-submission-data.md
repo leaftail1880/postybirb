@@ -71,16 +71,16 @@ export const FieldLabelTranslations: {
 ```ts
 class FooFileSubmission extends BaseWebsiteOptions {
   @TitleField({ required: true, row: 0, col: 1 })
-  title: string;
+  declare title: string;
 
   @TagField({ row: 2, col: 1 })
-  tags: TagValue = DefaultTagValue();
+  declare tags: TagValue;
 
   @DescriptionField({ row: 3, col: 1 })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @RatingField({ required: true, row: 0, col: 0 })
-  rating: SubmissionRating = SubmissionRating.GENERAL;
+  declare rating: SubmissionRating;
 
   // This is a custom field that requires translation of the label 'feature'
   @BooleanField({ label: 'feature', defaultValue: true })

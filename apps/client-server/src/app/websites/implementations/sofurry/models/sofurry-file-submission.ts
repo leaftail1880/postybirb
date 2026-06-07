@@ -6,8 +6,6 @@ import {
   TagField,
 } from '@postybirb/form-builder';
 import {
-  DefaultDescriptionValue,
-  DefaultTagValue,
   DescriptionType,
   DescriptionValue,
   SubmissionRating,
@@ -25,12 +23,12 @@ export class SofurryFileSubmission extends BaseWebsiteOptions {
   @DescriptionField({
     descriptionType: DescriptionType.PLAINTEXT,
   })
-  description: DescriptionValue = DefaultDescriptionValue();
+  declare description: DescriptionValue;
 
   @TagField({
     minTags: 2,
   })
-  tags: TagValue = DefaultTagValue();
+  declare tags: TagValue;
 
   @RatingField({
     options: [
@@ -39,7 +37,7 @@ export class SofurryFileSubmission extends BaseWebsiteOptions {
       { value: SubmissionRating.EXTREME, label: 'Adult' },
     ],
   })
-  rating: SubmissionRating = SubmissionRating.GENERAL;
+  declare rating: SubmissionRating;
 
   @SelectField({
     label: 'category',

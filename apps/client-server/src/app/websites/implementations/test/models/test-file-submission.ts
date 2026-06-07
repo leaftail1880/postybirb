@@ -1,8 +1,8 @@
 import { TagField } from '@postybirb/form-builder';
-import { DefaultTagValue, TagValue } from '@postybirb/types';
+import { TagValue } from '@postybirb/types';
 import { BaseWebsiteOptions } from '../../../models/base-website-options';
 
 export class TestFileSubmission extends BaseWebsiteOptions {
   @TagField({ maxTags: 10 })
-  tags: TagValue = DefaultTagValue();
+  declare tags: TagValue;
 }

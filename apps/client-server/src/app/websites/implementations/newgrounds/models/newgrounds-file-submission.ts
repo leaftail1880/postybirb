@@ -13,7 +13,7 @@ export class NewgroundsFileSubmission extends NewgroundsBaseSubmission {
   @RatingField({
     hidden: true,
   })
-  rating: SubmissionRating = SubmissionRating.GENERAL;
+  declare rating: SubmissionRating;
 
   @SelectField({
     required: true,

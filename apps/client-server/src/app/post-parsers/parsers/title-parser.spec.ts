@@ -62,12 +62,12 @@ describe('TitleParserService', () => {
   it('should parse title with no website options', async () => {
     class TestWebsiteOptions extends BaseWebsiteOptions {
       @TitleField({ maxLength: 5 })
-      title = '';
+      declare title: string;
     }
 
     class TestDefaultWebsiteOptions extends DefaultWebsiteOptions {
       @TitleField({ maxLength: 10 })
-      title = '';
+      declare title: string;
     }
 
     const defaultOptions: IWebsiteOptions = {
