@@ -6,9 +6,12 @@ import { MessageDescriptor } from '@lingui/core';
 import { useLingui } from '@lingui/react/macro';
 import { Input } from '@mantine/core';
 import type { FieldAggregateType } from '@postybirb/form-builder';
-import { FieldLabelTranslations } from '@postybirb/translations';
+import {
+  FieldLabelTranslations,
+  ValidationTranslation,
+} from '@postybirb/translations';
 import { PropsWithChildren } from 'react';
-import { ValidationTranslation } from '../../../../../../../i18n/validation-translation';
+import { ExternalLink } from '../../../../../../shared/external-link/external-link';
 import { UseValidationResult } from '../hooks/use-validations';
 
 interface FieldLabelProps {
@@ -52,7 +55,11 @@ export function FieldLabel(
           key={`${fieldName}-${error.id}-${JSON.stringify(error.values)}`}
           pb={4}
         >
-          <ValidationTranslation id={error.id} values={error.values} />
+          <ValidationTranslation
+            id={error.id}
+            values={error.values}
+            ExternalLink={ExternalLink}
+          />
         </Input.Error>
       ))}
       {warnings.map((warning) => (
@@ -61,7 +68,11 @@ export function FieldLabel(
           c="orange"
           pb={4}
         >
-          <ValidationTranslation id={warning.id} values={warning.values} />
+          <ValidationTranslation
+            id={warning.id}
+            values={warning.values}
+            ExternalLink={ExternalLink}
+          />
         </Input.Error>
       ))}
     </Input.Wrapper>

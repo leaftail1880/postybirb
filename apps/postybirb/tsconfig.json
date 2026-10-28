@@ -2,6 +2,9 @@
   "extends": "../../tsconfig.base.json",
   "files": [],
   "include": [],
+  "compilerOptions": {
+    "jsx": "preserve"
+  },
   "references": [
     {
       "path": "./tsconfig.app.json"

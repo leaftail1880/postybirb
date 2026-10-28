@@ -14,6 +14,7 @@ import {
   ThemeIcon,
   UnstyledButton,
 } from '@mantine/core';
+import { ValidationTranslation } from '@postybirb/translations';
 import type { EntityId, IUnitOfWork } from '@postybirb/types';
 import { UnitOfWorkState } from '@postybirb/types';
 import {
@@ -32,9 +33,9 @@ import {
 } from '@tabler/icons-react';
 import { useMemo, type ReactNode } from 'react';
 import { useLocale } from '../../../../hooks';
-import { ValidationTranslation } from '../../../../i18n/validation-translation';
 import { useAccountsMap, useSubmissionsMap } from '../../../../stores';
 import type { SubmissionRecord } from '../../../../stores/records';
+import { ExternalLink } from '../../../shared/external-link/external-link';
 import { getUnitErrorMessages } from '../submission-history/history-utils';
 import { getNextPostAt } from './utils';
 
@@ -543,6 +544,7 @@ export function SubmissionBadges({ submission }: SubmissionBadgesProps) {
                             <ValidationTranslation
                               id={error.id}
                               values={error.values}
+                              ExternalLink={ExternalLink}
                             />
                           </Text>
                         </Group>
@@ -567,6 +569,7 @@ export function SubmissionBadges({ submission }: SubmissionBadgesProps) {
                             <ValidationTranslation
                               id={warning.id}
                               values={warning.values}
+                              ExternalLink={ExternalLink}
                             />
                           </Text>
                         </Group>

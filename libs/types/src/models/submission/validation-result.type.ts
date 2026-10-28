@@ -1,8 +1,6 @@
 import { IEntityDto } from '../../dtos';
-import { FileType } from '../../enums';
 import { IAccount } from '../account/account.interface';
 import { EntityId } from '../database/entity.interface';
-import { ImageResizeProps } from '../website/image-resize-props';
 import { IWebsiteFormFields } from './website-form-fields.interface';
 
 export type SimpleValidationResult<T extends IWebsiteFormFields = never> = Omit<
@@ -34,13 +32,12 @@ export type ValidationResult<T extends IWebsiteFormFields = never> = {
 };
 
 export type ValidationMessage<
-  T extends object = never,
-  Id extends keyof ValidationMessages = keyof ValidationMessages,
+  T extends object = never
 > = {
   /**
    * Localization message id.
    */
-  id: Id;
+  id: string;
 
   /**
    * Associates the message to a input field.
@@ -50,204 +47,6 @@ export type ValidationMessage<
   /**
    * Values to fill in the message.
    */
-  values: ValidationMessages[Id];
+  values: Record<string, unknown>;
 };
 
-/**
- * Map containing validation id as key and values as value
- */
-export interface ValidationMessages {
-  // An error message for when the validation fails
-  'validation.failed': {
-    /**
-     * The error message
-     */
-    message: string;
-  };
-
-  'validation.file.invalid-mime-type': {
-    mimeType: string;
-    acceptedMimeTypes: string[];
-    fileId: string;
-  };
-
-  'validation.file.all-ignored': object;
-
-  'validation.file.unsupported-file-type': {
-    fileName: string;
-    fileType: FileType;
-    fileId: string;
-  };
-
-  'validation.file.file-batch-size': {
-    maxBatchSize: number;
-    expectedBatchesToCreate: number;
-  };
-
-  'validation.file.text-file-no-fallback': {
-    fileName: string;
-    fileExtension: string;
-    fileId: string;
-  };
-
-  'validation.file.file-size': {
-    maxFileSize: number;
-    fileSize: number;
-    fileName: string;
-    fileId: string;
-  };
-
-  'validation.file.image-resize': {
-    fileName: string;
-    resizeProps: ImageResizeProps;
-    fileId: string;
-  };
-
-  'validation.file.alt-text.max-length': {
-    fileName: string;
-    fileId: string;
-    currentLength: number;
-    maxLength: number;
-  };
-
-  'validation.description.required': object;
-
-  'validation.description.max-length': {
-    currentLength: number;
-    maxLength: number;
-  };
-
-  'validation.description.min-length': {
-    currentLength: number;
-    minLength: number;
-  };
-
-  'validation.description.missing-tags': object;
-
-  'validation.description.unexpected-tags': object;
-
-  'validation.description.missing-title': object;
-
-  'validation.description.unexpected-title': object;
-
-  'validation.tags.max-tags': {
-    currentLength: number;
-    maxLength: number;
-  };
-
-  'validation.tags.min-tags': {
-    currentLength: number;
-    minLength: number;
-  };
-
-  'validation.tags.max-tag-length': {
-    tags: string[];
-    maxLength: number;
-  };
-
-  'validation.tags.double-hashtag': {
-    tags: string[];
-  };
-
-  'validation.title.max-length': {
-    currentLength: number;
-    maxLength: number;
-  };
-
-  'validation.title.min-length': {
-    currentLength: number;
-    minLength: number;
-  };
-
-  'validation.select-field.min-selected': {
-    minSelected: number;
-    currentSelected: number;
-  };
-
-  'validation.select-field.invalid-option': {
-    invalidOptions: string[];
-  };
-
-  'validation.field.required': object;
-
-  'validation.datetime.invalid-format': {
-    value: string;
-  };
-
-  'validation.datetime.min': {
-    currentDate: string;
-    minDate: string;
-  };
-
-  'validation.datetime.max': {
-    currentDate: string;
-    maxDate: string;
-  };
-
-  'validation.datetime.range': {
-    currentDate: string;
-    minDate: string;
-    maxDate: string;
-  };
-
-  'validation.rating.unsupported-rating': {
-    rating: string;
-  };
-
-  // ----------- Website specific validation messages --------------
-  'validation.file.itaku.must-share-feed': object;
-
-  'validation.file.bluesky.unsupported-combination-of-files': object;
-
-  'validation.file.bluesky.gif-conversion': object;
-
-  'validation.file.bluesky.invalid-reply-url': object;
-
-  'validation.file.bluesky.rating-matches-default': object;
-
-  'validation.file.bluesky.invalid-quote-url': { error: string };
-
-  'validation.description.bluesky.invalid-mentions': { mentions: string[] };
-
-  'validation.file.e621.tags.network-error': object;
-
-  'validation.file.e621.tags.recommended': {
-    generalTags: number;
-  };
-
-  'validation.file.e621.tags.missing': {
-    tag: string;
-  };
-
-  'validation.file.e621.tags.missing-create': {
-    tag: string;
-  };
-
-  'validation.file.e621.tags.invalid': {
-    tag: string;
-  };
-
-  'validation.file.e621.tags.low-use': {
-    tag: string;
-    postCount: number;
-  };
-
-  'validation.file.e621.user-feedback.network-error': object;
-
-  'validation.file.e621.user-feedback.recent': {
-    negativeOrNeutral: string;
-    feedback: string;
-    username: string;
-  };
-
-  'validation.folder.missing-or-invalid': object;
-
-  'validation.file.instagram.invalid-aspect-ratio': {
-    fileName: string;
-  };
-
-  'validation.tags.furaffinity.keywords-max-length': {
-    currentLength: number;
-    maxLength: number;
-  };
-}

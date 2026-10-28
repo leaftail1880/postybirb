@@ -108,7 +108,6 @@ export async function validateNotAllFilesIgnored({
 }
 
 export async function validateAcceptedFiles({
-  result,
   websiteInstance,
   submission,
   data,
@@ -153,7 +152,6 @@ export async function validateAcceptedFiles({
 
       if (fileType === FileType.TEXT) {
         validateTextFileRequiresFallback({
-          result,
           websiteInstance,
           submission,
           file,
@@ -250,7 +248,6 @@ export async function validateFileSize({
 }
 
 export async function validateImageFileDimensions({
-  result,
   websiteInstance,
   submission,
   validator,
@@ -270,15 +267,7 @@ export async function validateImageFileDimensions({
     if (getFileType(file.fileName) === FileType.IMAGE) {
       const resizeProps = websiteInstance.calculateImageResize(file);
       if (resizeProps) {
-        validator.warning(
-          'validation.file.image-resize',
-          {
-            fileName: file.fileName,
-            resizeProps,
-            fileId: file.id,
-          },
-          'files',
-        );
+        validator.warning('validation.file.image-resize', {}, 'files');
       }
     }
   });

@@ -3,13 +3,13 @@ import { Account, Submission, WebsiteOptions } from '@postybirb/database';
 import { formBuilder } from '@postybirb/form-builder';
 import { Logger } from '@postybirb/logger';
 import {
-    EntityId,
-    ISubmission,
-    IWebsiteOptions,
-    PostData,
-    SimpleValidationResult,
-    SubmissionType,
-    ValidationResult,
+  EntityId,
+  ISubmission,
+  IWebsiteOptions,
+  PostData,
+  SimpleValidationResult,
+  SubmissionType,
+  ValidationResult,
 } from '@postybirb/types';
 import { toError } from '@postybirb/utils/common';
 import { FileConverterService } from '../file-converter/file-converter.service';
@@ -22,9 +22,9 @@ import { UnknownWebsite } from '../websites/website';
 import { WebsiteRegistryService } from '../websites/website-registry.service';
 import { validators } from './validators';
 import {
-    FieldValidator,
-    Validator,
-    ValidatorParams,
+  FieldValidator,
+  Validator,
+  ValidatorParams,
 } from './validators/validator.type';
 
 @Injectable()
@@ -116,7 +116,6 @@ export class ValidationService {
       ).mergeDefaults(defaultOpts);
 
       const params: ValidatorParams = {
-        result,
         validator: new FieldValidator(result.errors, result.warnings),
         websiteInstance: website,
         data,

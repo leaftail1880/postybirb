@@ -8,19 +8,11 @@ import {
   FileType,
   SubmissionRating,
   ValidationMessage,
-  ValidationMessages,
 } from '@postybirb/types';
 import { filesize } from 'filesize';
-import { ExternalLink } from '../components/shared/external-link';
 
-type TranslationsMap = {
-  [K in keyof ValidationMessages]: (
-    props: ValidationMessage<object, K>['values'],
-  ) => JSX.Element;
-};
-
-export const TranslationMessages: TranslationsMap = {
-  'validation.failed': (props) => {
+export const TranslationMessages = {
+  'validation.failed': (props: { message: string }) => {
     const message = props?.message;
     return <Trans>Failed to validate submission: {message}</Trans>;
   },
@@ -29,7 +21,10 @@ export const TranslationMessages: TranslationsMap = {
     <Trans>Description shouldn't be empty</Trans>
   ),
 
-  'validation.description.max-length': (props) => {
+  'validation.description.max-length': (props: {
+    currentLength: number;
+    maxLength: number;
+  }) => {
     const maxLength = props?.maxLength ?? 0;
     const currentLength = props?.currentLength ?? 0;
     return (
@@ -40,7 +35,10 @@ export const TranslationMessages: TranslationsMap = {
     );
   },
 
-  'validation.description.min-length': (props) => {
+  'validation.description.min-length': (props: {
+    currentLength: number;
+    minLength: number;
+  }) => {
     const minLength = props?.minLength ?? 0;
     const currentLength = props?.currentLength ?? 0;
     return (
@@ -74,7 +72,10 @@ export const TranslationMessages: TranslationsMap = {
     </Trans>
   ),
 
-  'validation.file.file-batch-size': (props) => {
+  'validation.file.file-batch-size': (props: {
+    maxBatchSize: number;
+    expectedBatchesToCreate: number;
+  }) => {
     const { maxBatchSize, expectedBatchesToCreate } = props;
     return (
       <Trans>
@@ -85,7 +86,11 @@ export const TranslationMessages: TranslationsMap = {
     );
   },
 
-  'validation.file.text-file-no-fallback': (props) => {
+  'validation.file.text-file-no-fallback': (props: {
+    fileName: string;
+    fileExtension: string;
+    fileId: string;
+  }) => {
     const { fileExtension } = props;
     return (
       <Trans>
@@ -94,7 +99,11 @@ export const TranslationMessages: TranslationsMap = {
     );
   },
 
-  'validation.file.invalid-mime-type': (props) => {
+  'validation.file.invalid-mime-type': (props: {
+    mimeType: string;
+    acceptedMimeTypes: string[];
+    fileId: string;
+  }) => {
     const { mimeType, acceptedMimeTypes } = props;
     return (
       <>
@@ -108,7 +117,11 @@ export const TranslationMessages: TranslationsMap = {
     <Trans>All files are marked ignored.</Trans>
   ),
 
-  'validation.file.unsupported-file-type': (props) => {
+  'validation.file.unsupported-file-type': (props: {
+    fileName: string;
+    fileType: FileType;
+    fileId: string;
+  }) => {
     const { fileType } = props;
     let fileTypeString;
     switch (fileType) {
@@ -131,7 +144,12 @@ export const TranslationMessages: TranslationsMap = {
     return <Trans>Unsupported submission type: {fileTypeString}</Trans>;
   },
 
-  'validation.file.file-size': (props) => {
+  'validation.file.file-size': (props: {
+    maxFileSize: number;
+    fileSize: number;
+    fileName: string;
+    fileId: string;
+  }) => {
     const { maxFileSize, fileSize } = props;
     const fileSizeString = filesize(fileSize);
     const maxFileSizeString = filesize(maxFileSize);
@@ -147,7 +165,12 @@ export const TranslationMessages: TranslationsMap = {
     <Trans>File will be modified to support website requirements</Trans>
   ),
 
-  'validation.file.alt-text.max-length': (props) => {
+  'validation.file.alt-text.max-length': (props: {
+    fileName: string;
+    fileId: string;
+    currentLength: number;
+    maxLength: number;
+  }) => {
     const maxLength = props?.maxLength ?? 0;
     const currentLength = props?.currentLength ?? 0;
     const { fileName } = props;
@@ -159,7 +182,10 @@ export const TranslationMessages: TranslationsMap = {
     );
   },
 
-  'validation.tags.max-tags': (props) => {
+  'validation.tags.max-tags': (props: {
+    currentLength: number;
+    maxLength: number;
+  }) => {
     const { maxLength, currentLength } = props;
     return (
       <Trans>
@@ -168,7 +194,10 @@ export const TranslationMessages: TranslationsMap = {
     );
   },
 
-  'validation.tags.min-tags': (props) => {
+  'validation.tags.min-tags': (props: {
+    currentLength: number;
+    minLength: number;
+  }) => {
     const { minLength, currentLength } = props;
     return (
       <>
@@ -184,7 +213,10 @@ export const TranslationMessages: TranslationsMap = {
     );
   },
 
-  'validation.tags.max-tag-length': (props) => {
+  'validation.tags.max-tag-length': (props: {
+    tags: string[];
+    maxLength: number;
+  }) => {
     const { tags, maxLength } = props;
     return (
       <>
@@ -194,7 +226,7 @@ export const TranslationMessages: TranslationsMap = {
     );
   },
 
-  'validation.tags.double-hashtag': (props) => {
+  'validation.tags.double-hashtag': (props: { tags: string[] }) => {
     const { tags } = props;
     return (
       <>
@@ -204,7 +236,10 @@ export const TranslationMessages: TranslationsMap = {
     );
   },
 
-  'validation.title.max-length': (props) => {
+  'validation.title.max-length': (props: {
+    currentLength: number;
+    maxLength: number;
+  }) => {
     const { maxLength, currentLength } = props;
     const translatedMsg = (
       <Trans>Title is too long and will be truncated</Trans>
@@ -216,7 +251,10 @@ export const TranslationMessages: TranslationsMap = {
     );
   },
 
-  'validation.title.min-length': (props) => {
+  'validation.title.min-length': (props: {
+    currentLength: number;
+    minLength: number;
+  }) => {
     const { minLength, currentLength } = props;
     return (
       <>
@@ -229,7 +267,10 @@ export const TranslationMessages: TranslationsMap = {
     <Trans>Share on Feed is required to support posting multiple files.</Trans>
   ),
 
-  'validation.select-field.min-selected': (props) => {
+  'validation.select-field.min-selected': (props: {
+    minSelected: number;
+    currentSelected: number;
+  }) => {
     const { currentSelected, minSelected } = props;
     return (
       <Trans>
@@ -244,7 +285,9 @@ export const TranslationMessages: TranslationsMap = {
     );
   },
 
-  'validation.select-field.invalid-option': (props) => {
+  'validation.select-field.invalid-option': (props: {
+    invalidOptions: string[];
+  }) => {
     const { invalidOptions } = props;
     return (
       <span>
@@ -255,14 +298,17 @@ export const TranslationMessages: TranslationsMap = {
 
   'validation.field.required': () => <Trans>Required</Trans>,
 
-  'validation.datetime.invalid-format': (props) => {
+  'validation.datetime.invalid-format': (props: { value: string }) => {
     const { value } = props;
     return (
       <Trans>Invalid date format: {value}. Expected ISO date string.</Trans>
     );
   },
 
-  'validation.datetime.min': (props) => {
+  'validation.datetime.min': (props: {
+    currentDate: string;
+    minDate: string;
+  }) => {
     const { currentDate, minDate } = props;
     return (
       <Trans>
@@ -271,7 +317,10 @@ export const TranslationMessages: TranslationsMap = {
     );
   },
 
-  'validation.datetime.max': (props) => {
+  'validation.datetime.max': (props: {
+    currentDate: string;
+    maxDate: string;
+  }) => {
     const { currentDate, maxDate } = props;
     return (
       <Trans>
@@ -280,7 +329,11 @@ export const TranslationMessages: TranslationsMap = {
     );
   },
 
-  'validation.datetime.range': (props) => {
+  'validation.datetime.range': (props: {
+    currentDate: string;
+    minDate: string;
+    maxDate: string;
+  }) => {
     const { currentDate, minDate, maxDate } = props;
     return (
       <Trans>
@@ -303,9 +356,15 @@ export const TranslationMessages: TranslationsMap = {
     <Trans>Invalid post URL to reply to.</Trans>
   ),
 
-  'validation.file.bluesky.invalid-quote-url': ({ error }) => (
+  'validation.file.bluesky.invalid-quote-url': ({
+    error,
+  }: {
+    error: string;
+  }) => (
     // eslint-disable-next-line lingui/no-unlocalized-strings
-    <Trans>Invalid quote post URL: {error.replace("Invalid quote post url", "")}</Trans>
+    <Trans>
+      Invalid quote post URL: {error.replace('Invalid quote post url', '')}
+    </Trans>
   ),
 
   'validation.file.bluesky.rating-matches-default': () => (
@@ -314,7 +373,11 @@ export const TranslationMessages: TranslationsMap = {
     </Trans>
   ),
 
-  'validation.description.bluesky.invalid-mentions': ({ mentions }) => {
+  'validation.description.bluesky.invalid-mentions': ({
+    mentions,
+  }: {
+    mentions: string[];
+  }) => {
     const mentionsList = mentions.join(', ');
     return (
       <Trans>
@@ -328,7 +391,12 @@ export const TranslationMessages: TranslationsMap = {
     <Trans>Failed to validate tags. Please check them manually</Trans>
   ),
 
-  'validation.file.e621.tags.recommended': ({ generalTags }) => (
+  'validation.file.e621.tags.recommended': ({
+    generalTags,
+    ExternalLink,
+  }: {
+    generalTags: number;
+  } & WithExternalLink) => (
     <Trans>
       It is recommended to add at least 10 general tags{' '}
       <strong>( {generalTags} / 10 )</strong>. See{' '}
@@ -348,7 +416,12 @@ export const TranslationMessages: TranslationsMap = {
     feedback,
     negativeOrNeutral,
     username,
-  }) => (
+    ExternalLink,
+  }: {
+    negativeOrNeutral: string;
+    feedback: string;
+    username: string;
+  } & WithExternalLink) => (
     <Trans>
       You have recent {negativeOrNeutral} feedback: {feedback}, you can view it
       <ExternalLink
@@ -359,7 +432,12 @@ export const TranslationMessages: TranslationsMap = {
     </Trans>
   ),
 
-  'validation.file.e621.tags.missing': ({ tag }) => (
+  'validation.file.e621.tags.missing': ({
+    tag,
+    ExternalLink,
+  }: {
+    tag: string;
+  } & WithExternalLink) => (
     <Trans>
       Tag{' '}
       <ExternalLink
@@ -371,7 +449,12 @@ export const TranslationMessages: TranslationsMap = {
     </Trans>
   ),
 
-  'validation.file.e621.tags.missing-create': ({ tag }) => (
+  'validation.file.e621.tags.missing-create': ({
+    tag,
+    ExternalLink,
+  }: {
+    tag: string;
+  } & WithExternalLink) => (
     <Trans>
       Tag{' '}
       <ExternalLink
@@ -388,7 +471,12 @@ export const TranslationMessages: TranslationsMap = {
     </Trans>
   ),
 
-  'validation.file.e621.tags.invalid': ({ tag }) => (
+  'validation.file.e621.tags.invalid': ({
+    tag,
+    ExternalLink,
+  }: {
+    tag: string;
+  } & WithExternalLink) => (
     <Trans>
       Tag{' '}
       <ExternalLink
@@ -400,7 +488,13 @@ export const TranslationMessages: TranslationsMap = {
     </Trans>
   ),
 
-  'validation.file.e621.tags.low-use': ({ tag, postCount }) => (
+  'validation.file.e621.tags.low-use': ({
+    tag,
+    postCount,
+  }: {
+    tag: string;
+    postCount: number;
+  }) => (
     <Trans>
       Tag {tag} has {postCount} post(s). Tag may be invalid or low use
     </Trans>
@@ -410,7 +504,9 @@ export const TranslationMessages: TranslationsMap = {
     <Trans>Selected option is invalid or missing</Trans>
   ),
 
-  'validation.file.instagram.invalid-aspect-ratio': (props) => {
+  'validation.file.instagram.invalid-aspect-ratio': (props: {
+    fileName: string;
+  }) => {
     const { fileName } = props;
     return (
       <Trans>
@@ -445,7 +541,10 @@ export const TranslationMessages: TranslationsMap = {
     return <Trans>Unsupported rating: {ratingLabel}</Trans>;
   },
 
-  'validation.tags.furaffinity.keywords-max-length': (props) => {
+  'validation.tags.furaffinity.keywords-max-length': (props: {
+    currentLength: number;
+    maxLength: number;
+  }) => {
     const { maxLength, currentLength } = props;
     return (
       <Trans>
@@ -453,17 +552,44 @@ export const TranslationMessages: TranslationsMap = {
       </Trans>
     );
   },
-};
+
+  'validation.tags.furaffinity2.keywords-max-length': (props: {
+    currentLength: number;
+    maxLength: number;
+  }) => {
+    const { maxLength, currentLength } = props;
+    return (
+      <Trans>
+        Keywords field limit reached ({currentLength} / {maxLength})
+      </Trans>
+    );
+  },
+} satisfies Record<string, (props: any) => JSX.Element>;
+
+type ExternalLinkComponent = (props: {
+  href: string;
+  children: React.ReactNode;
+}) => React.ReactNode;
+
+interface WithExternalLink {
+  ExternalLink: ExternalLinkComponent;
+}
 
 export function ValidationTranslation({
   values,
   id,
-}: Pick<ValidationMessage, 'id' | 'values'>): JSX.Element {
-  const translation = TranslationMessages[id];
-  if (translation) {
+  ExternalLink,
+}: Pick<ValidationMessage, 'id' | 'values'> & WithExternalLink): JSX.Element {
+  if (id in TranslationMessages) {
+    const translation =
+      TranslationMessages[id as keyof typeof TranslationMessages];
+
     return translation(
-      // @ts-expect-error Typescript does not know union type
-      values,
+      // @ts-expect-error If this errors, you have missing typings in the TranslationMessages
+      {
+        ...values,
+        ExternalLink,
+      },
     );
   }
 

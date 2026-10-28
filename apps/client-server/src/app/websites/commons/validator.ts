@@ -1,8 +1,11 @@
+import type {
+  TranslationMessages,
+  ValidationMessages,
+} from '@postybirb/translations';
 import {
   IWebsiteFormFields,
   SimpleValidationResult,
   ValidationMessage,
-  ValidationMessages,
 } from '@postybirb/types';
 
 type KeysToOmit =
@@ -11,10 +14,8 @@ type KeysToOmit =
   | 'getFormFields'
   | 'getProcessedTags';
 
-type ValidationArray<Fields extends IWebsiteFormFields> = ValidationMessage<
-  Fields,
-  keyof ValidationMessages
->[];
+type ValidationArray<Fields extends IWebsiteFormFields> =
+  ValidationMessage<Fields>[];
 
 export class SubmissionValidator<Fields extends IWebsiteFormFields = never> {
   protected readonly warnings: ValidationArray<Fields> = [];
@@ -24,13 +25,15 @@ export class SubmissionValidator<Fields extends IWebsiteFormFields = never> {
   /**
    * Adds error to the validation result
    *
-   * @param id - Error localization message id. {@link ValidationMessages}
+   * @param id - Error localization message id. {@link TranslationMessages}
    * @param values - Values to fill in the message
    * @param field - Associates the error to a input field
    */
   error<T extends keyof ValidationMessages>(
     id: T,
-    values: ValidationMessages[T],
+    values: ValidationMessages[T] extends undefined
+      ? Record<string, never>
+      : ValidationMessages[T],
     field?: keyof Omit<Fields, KeysToOmit>,
   ) {
     this.errors.push({ id, values, field });
@@ -39,13 +42,15 @@ export class SubmissionValidator<Fields extends IWebsiteFormFields = never> {
   /**
    * Adds warning to the validation result
    *
-   * @param id - Warning localization message id. {@link ValidationMessages}
+   * @param id - Warning localization message id. {@link TranslationMessages}
    * @param values - Values to fill in the message
    * @param field - Associates the warning to a input field
    */
   warning<T extends keyof ValidationMessages>(
     id: T,
-    values: ValidationMessages[T],
+    values: ValidationMessages[T] extends undefined
+      ? Record<string, never>
+      : ValidationMessages[T],
     field?: keyof Omit<Fields, KeysToOmit>,
   ) {
     this.warnings.push({ id, values, field });

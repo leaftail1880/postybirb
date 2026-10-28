@@ -3,8 +3,7 @@ import {
   ISubmission,
   IWebsiteFormFields,
   PostData,
-  ValidationMessage,
-  ValidationResult,
+  ValidationMessage
 } from '@postybirb/types';
 import { FileConverterService } from '../../file-converter/file-converter.service';
 import { FileService } from '../../file/file.service';
@@ -13,7 +12,6 @@ import { BaseWebsiteOptions } from '../../websites/models/base-website-options';
 import { UnknownWebsite } from '../../websites/website';
 
 export type ValidatorParams = {
-  result: ValidationResult;
   validator: FieldValidator;
   websiteInstance: UnknownWebsite;
   data: PostData<IWebsiteFormFields & DynamicObject>;

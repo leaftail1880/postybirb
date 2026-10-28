@@ -4,9 +4,10 @@
  */
 
 import { Alert, Stack } from '@mantine/core';
+import { ValidationTranslation } from '@postybirb/translations';
 import { IconAlertCircle, IconAlertTriangle } from '@tabler/icons-react';
 import { useMemo } from 'react';
-import { ValidationTranslation } from '../../../../../../i18n/validation-translation';
+import { ExternalLink } from '../../../../../shared/external-link/external-link';
 import { useFormFieldsContext } from './form-fields-context';
 
 /**
@@ -61,7 +62,11 @@ export function ValidationAlerts() {
           styles={{ title: { fontSize: 'sm' }, message: { fontSize: 'sm' } }}
           icon={<IconAlertCircle size={16} />}
         >
-          <ValidationTranslation id={error.id} values={error.values} />
+          <ValidationTranslation
+            id={error.id}
+            values={error.values}
+            ExternalLink={ExternalLink}
+          />
         </Alert>
       ))}
       {warnings.map((warning, index) => (
@@ -74,7 +79,11 @@ export function ValidationAlerts() {
           styles={{ title: { fontSize: 'sm' }, message: { fontSize: 'sm' } }}
           icon={<IconAlertTriangle size={16} />}
         >
-          <ValidationTranslation id={warning.id} values={warning.values} />
+          <ValidationTranslation
+            id={warning.id}
+            values={warning.values}
+            ExternalLink={ExternalLink}
+          />
         </Alert>
       ))}
     </Stack>
